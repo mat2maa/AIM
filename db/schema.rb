@@ -11,11 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711112326) do
+ActiveRecord::Schema.define(:version => 20130711124212) do
 
   create_table "aeroplanes", :force => true do |t|
     t.string   "name"
     t.string   "manufacturer"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "aeroplanes_life_jackets", :id => false, :force => true do |t|
+    t.integer  "aeroplane_id"
+    t.integer  "life_jacket_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "aeroplanes_seat_layouts", :id => false, :force => true do |t|
+    t.integer  "aeroplane_id"
+    t.integer  "seat_layout_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "aeroplanes_seats", :id => false, :force => true do |t|
+    t.integer  "aeroplane_id"
+    t.integer  "seat_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -25,6 +46,14 @@ ActiveRecord::Schema.define(:version => 20130711112326) do
     t.string   "code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "airlines_aeroplanes", :id => false, :force => true do |t|
+    t.integer  "airline_id"
+    t.integer  "aeroplane_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "life_jackets", :force => true do |t|
@@ -46,20 +75,24 @@ ActiveRecord::Schema.define(:version => 20130711112326) do
 
   create_table "safety_cards", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "airline_id"
+    t.integer  "aeroplane_id"
   end
 
   create_table "seat_belts", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "seat_id"
   end
 
   create_table "seat_classes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "seat_id"
   end
 
   create_table "seat_layouts", :force => true do |t|
@@ -72,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20130711112326) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "seat_id"
   end
 
   create_table "seats", :force => true do |t|
@@ -88,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20130711112326) do
     t.string   "fax"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

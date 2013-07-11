@@ -2,6 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.hidden_field :user_id,
+                       value: current_user.id %>
     <%= f.input :contact_name %>
     <%= f.input :address %>
     <%= f.input :phone %>
