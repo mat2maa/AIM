@@ -1,0 +1,23 @@
+<h1>Listing seat_classes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @seat_classes.each do |seat_class| %>
+  <tr>
+    <td><%= seat_class.name %></td>
+    <td><%= link_to 'Show', seat_class %></td>
+    <td><%= link_to 'Edit', edit_seat_class_path(seat_class) %></td>
+    <td><%= link_to 'Destroy', seat_class, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Seat class', new_seat_class_path %>

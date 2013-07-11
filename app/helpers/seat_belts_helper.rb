@@ -1,0 +1,2 @@
+module SeatBeltsHelper
+end

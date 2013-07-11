@@ -1,0 +1,23 @@
+<h1>Listing safety_cards</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @safety_cards.each do |safety_card| %>
+  <tr>
+    <td><%= safety_card.name %></td>
+    <td><%= link_to 'Show', safety_card %></td>
+    <td><%= link_to 'Edit', edit_safety_card_path(safety_card) %></td>
+    <td><%= link_to 'Destroy', safety_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Safety card', new_safety_card_path %>

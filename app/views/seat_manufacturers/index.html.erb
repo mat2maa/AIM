@@ -1,0 +1,23 @@
+<h1>Listing seat_manufacturers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @seat_manufacturers.each do |seat_manufacturer| %>
+  <tr>
+    <td><%= seat_manufacturer.name %></td>
+    <td><%= link_to 'Show', seat_manufacturer %></td>
+    <td><%= link_to 'Edit', edit_seat_manufacturer_path(seat_manufacturer) %></td>
+    <td><%= link_to 'Destroy', seat_manufacturer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Seat manufacturer', new_seat_manufacturer_path %>

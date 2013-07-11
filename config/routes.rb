@@ -1,4 +1,34 @@
 Aim::Application.routes.draw do
+  resources :life_jackets
+
+
+  resources :seat_belts
+
+
+  resources :seat_classes
+
+
+  resources :seat_manufacturers
+
+
+  resources :seat_layouts
+
+
+  resources :seats
+
+
+  resources :safety_cards
+
+
+  resources :aeroplanes
+
+
+  resources :airlines
+
+
+  resources :user_profiles
+
+
   authenticated :user do
     root :to => 'home#index'
   end

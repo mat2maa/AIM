@@ -1,0 +1,23 @@
+<h1>Listing seat_belts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @seat_belts.each do |seat_belt| %>
+  <tr>
+    <td><%= seat_belt.name %></td>
+    <td><%= link_to 'Show', seat_belt %></td>
+    <td><%= link_to 'Edit', edit_seat_belt_path(seat_belt) %></td>
+    <td><%= link_to 'Destroy', seat_belt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Seat belt', new_seat_belt_path %>
