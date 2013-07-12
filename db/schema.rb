@@ -11,11 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711124212) do
+ActiveRecord::Schema.define(:version => 20130712132245) do
 
   create_table "aeroplanes", :force => true do |t|
     t.string   "name"
     t.string   "manufacturer"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "aeroplanes_airlines", :id => false, :force => true do |t|
+    t.integer  "aeroplane_id"
+    t.integer  "airline_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -44,16 +51,21 @@ ActiveRecord::Schema.define(:version => 20130711124212) do
   create_table "airlines", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
-  end
-
-  create_table "airlines_aeroplanes", :id => false, :force => true do |t|
-    t.integer  "airline_id"
-    t.integer  "aeroplane_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "user_profile_id"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "livery_file_name"
+    t.string   "livery_content_type"
+    t.integer  "livery_file_size"
+    t.datetime "livery_updated_at"
+    t.string   "branding_file_name"
+    t.string   "branding_content_type"
+    t.integer  "branding_file_size"
+    t.datetime "branding_updated_at"
   end
 
   create_table "life_jackets", :force => true do |t|

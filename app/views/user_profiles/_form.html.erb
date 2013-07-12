@@ -4,6 +4,10 @@
   <div class="form-inputs">
     <%= f.hidden_field :user_id,
                        value: current_user.id %>
+    <%= f.simple_fields_for :airline do |airline| %>
+      <%= airline.input :name, label: 'Airline name' %>
+      <%= airline.input :code, label: 'Airline code' %>
+    <% end %>
     <%= f.input :contact_name %>
     <%= f.input :address %>
     <%= f.input :phone %>

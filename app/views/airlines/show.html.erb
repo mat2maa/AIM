@@ -10,6 +10,19 @@
   <%= @airline.code %>
 </p>
 
+<b>Logo:</b>
+<br>
+<%= image_tag @airline.logo.url %>
+<br>
+<b>Livery:</b>
+<br>
+<%= image_tag @airline.livery.url %>
+<br>
+<b>Branding:</b>
+<br>
+<%= image_tag @airline.branding.url %>
+<br>
+<br>
 
 <%= link_to 'Edit', edit_airline_path(@airline) %> |
 <%= link_to 'Back', airlines_path %>

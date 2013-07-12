@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
 
   has_one :user_profile
-  has_one :airline
 
   rolify
   # Include default devise modules. Others available are:

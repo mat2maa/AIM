@@ -2,6 +2,8 @@
 
 <table>
   <tr>
+    <th>Airline name</th>
+    <th>Airline code</th>
     <th>Contact name</th>
     <th>Address</th>
     <th>Phone</th>
@@ -14,6 +16,8 @@
 
 <% @user_profiles.each do |user_profile| %>
   <tr>
+    <td><%= user_profile.airline[0].name if user_profile.airline.present? %></td>
+    <td><%= user_profile.airline[0].code if user_profile.airline.present? %></td>
     <td><%= user_profile.contact_name %></td>
     <td><%= user_profile.address %></td>
     <td><%= user_profile.phone %></td>

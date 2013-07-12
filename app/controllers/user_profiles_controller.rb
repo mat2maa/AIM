@@ -1,12 +1,10 @@
 class UserProfilesController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource :only => [:index, :show, :edit, :create, :update, :destroy]
 
   # GET /user_profiles
   # GET /user_profiles.json
   def index
-    @user_profiles = UserProfile.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @user_profiles }
@@ -16,8 +14,6 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles/1
   # GET /user_profiles/1.json
   def show
-    @user_profile = UserProfile.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user_profile }
@@ -27,8 +23,9 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles/new
   # GET /user_profiles/new.json
   def new
+    authorize! :new, UserProfile, :message => 'A profile already exists for this user.'
     @user_profile = UserProfile.new
-
+    @user_profile.airline.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user_profile }
@@ -37,14 +34,11 @@ class UserProfilesController < ApplicationController
 
   # GET /user_profiles/1/edit
   def edit
-    @user_profile = UserProfile.find(params[:id])
   end
 
   # POST /user_profiles
   # POST /user_profiles.json
   def create
-    @user_profile = UserProfile.new(params[:user_profile])
-
     respond_to do |format|
       if @user_profile.save
         format.html { redirect_to @user_profile, notice: 'User profile was successfully created.' }
@@ -59,8 +53,6 @@ class UserProfilesController < ApplicationController
   # PUT /user_profiles/1
   # PUT /user_profiles/1.json
   def update
-    @user_profile = UserProfile.find(params[:id])
-
     respond_to do |format|
       if @user_profile.update_attributes(params[:user_profile])
         format.html { redirect_to @user_profile, notice: 'User profile was successfully updated.' }
@@ -75,7 +67,6 @@ class UserProfilesController < ApplicationController
   # DELETE /user_profiles/1
   # DELETE /user_profiles/1.json
   def destroy
-    @user_profile = UserProfile.find(params[:id])
     @user_profile.destroy
 
     respond_to do |format|

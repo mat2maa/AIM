@@ -17,6 +17,8 @@ gem 'figaro'
 gem 'rolify'
 gem 'simple_form'
 gem 'yaml_db'
+gem 'rmagick', '2.13.2'
+gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 
 group :development do
   gem 'better_errors'

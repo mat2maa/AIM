@@ -1,9 +1,10 @@
 class AirlinesController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
   # GET /airlines
   # GET /airlines.json
   def index
-    @airlines = Airline.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @airlines }
@@ -13,8 +14,6 @@ class AirlinesController < ApplicationController
   # GET /airlines/1
   # GET /airlines/1.json
   def show
-    @airline = Airline.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @airline }
@@ -24,8 +23,6 @@ class AirlinesController < ApplicationController
   # GET /airlines/new
   # GET /airlines/new.json
   def new
-    @airline = Airline.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @airline }
@@ -34,14 +31,11 @@ class AirlinesController < ApplicationController
 
   # GET /airlines/1/edit
   def edit
-    @airline = Airline.find(params[:id])
   end
 
   # POST /airlines
   # POST /airlines.json
   def create
-    @airline = Airline.new(params[:airline])
-
     respond_to do |format|
       if @airline.save
         format.html { redirect_to @airline, notice: 'Airline was successfully created.' }
@@ -56,8 +50,6 @@ class AirlinesController < ApplicationController
   # PUT /airlines/1
   # PUT /airlines/1.json
   def update
-    @airline = Airline.find(params[:id])
-
     respond_to do |format|
       if @airline.update_attributes(params[:airline])
         format.html { redirect_to @airline, notice: 'Airline was successfully updated.' }
@@ -72,7 +64,6 @@ class AirlinesController < ApplicationController
   # DELETE /airlines/1
   # DELETE /airlines/1.json
   def destroy
-    @airline = Airline.find(params[:id])
     @airline.destroy
 
     respond_to do |format|

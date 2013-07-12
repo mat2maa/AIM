@@ -5,10 +5,12 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.has_role? :admin
       can :manage, :all
+      cannot :create, UserProfile if UserProfile.exists?(:user_id => user.id)
     end
 
     if user.has_role? :user
-      can :manage, UserProfile, :user_id => user.id
+      can :create, UserProfile, :user_id => user.id if !UserProfile.exists?(:user_id => user.id)
+      can :update, UserProfile, :user_id => user.id
     end
 
     # Define abilities for the passed in user here. For example:
