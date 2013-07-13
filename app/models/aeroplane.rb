@@ -1,10 +1,10 @@
 class Aeroplane < ActiveRecord::Base
 
-  has_and_belongs_to_many :airlines
   has_many :safety_cards
-  has_and_belongs_to_many :seats
-  has_and_belongs_to_many :seat_layouts
-  has_and_belongs_to_many :life_jackets
+  has_many :orders
+
+  has_many :seat_layouts, through: :orders
+  has_many :airlines, through: :orders
 
   attr_accessible :manufacturer, :name
 end

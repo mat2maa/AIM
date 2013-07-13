@@ -1,9 +1,14 @@
 class Seat < ActiveRecord::Base
 
-  has_and_belongs_to_many :aeroplanes
-  has_one :seat_manufacturer
-  has_one :seat_class
-  has_one :seat_belt
+  belongs_to :seat_manufacturer
+  belongs_to :seat_class
+  belongs_to :order
 
-  attr_accessible :name
+  has_one :seat_belt, :dependent => :destroy
+
+  attr_accessible :name, :seat_class_id, :seat_manufacturer_id, :seat_belt_attributes, :texture
+
+  accepts_nested_attributes_for :seat_belt
+
+  has_attached_file :texture
 end

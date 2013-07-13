@@ -1,0 +1,5 @@
+<h1>New order for <%= current_user.user_profile.airline.name if current_user.user_profile.present? %></h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', orders_path %>

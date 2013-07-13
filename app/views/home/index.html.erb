@@ -37,6 +37,12 @@
         <%= link_to 'Seat manufacturers', seat_manufacturers_path %>
       </li>
     </ul>
+    <p>Manage orders:</p>
+    <ul>
+      <li>
+        <%= link_to 'Orders', orders_path %>
+      </li>
+    </ul>
   <% elsif current_user.has_role? :user %>
     <h3>Home</h3>
     <p>Please create or edit an order above.</p>

@@ -25,7 +25,8 @@ class UserProfilesController < ApplicationController
   def new
     authorize! :new, UserProfile, :message => 'A profile already exists for this user.'
     @user_profile = UserProfile.new
-    @user_profile.airline.build
+    @user_profile.build_airline
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user_profile }

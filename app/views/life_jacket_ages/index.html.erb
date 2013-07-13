@@ -1,0 +1,23 @@
+<h1>Listing life_jacket_ages</h1>
+
+<table>
+  <tr>
+    <th>Age</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @life_jacket_ages.each do |life_jacket_age| %>
+  <tr>
+    <td><%= life_jacket_age.age %></td>
+    <td><%= link_to 'Show', life_jacket_age %></td>
+    <td><%= link_to 'Edit', edit_life_jacket_age_path(life_jacket_age) %></td>
+    <td><%= link_to 'Destroy', life_jacket_age, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Life jacket age', new_life_jacket_age_path %>

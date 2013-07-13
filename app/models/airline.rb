@@ -1,8 +1,11 @@
 class Airline < ActiveRecord::Base
 
   belongs_to :user_profile, :dependent => :destroy
-  has_and_belongs_to_many :aeroplanes
+
   has_many :safety_cards
+  has_many :orders
+
+  has_many :aeroplanes, through: :orders
 
   attr_accessible :code, :name, :logo, :livery, :branding
 

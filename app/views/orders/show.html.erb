@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>Airline:</b>
+  <%= @order.airline_id %>
+</p>
+
+<p>
+  <b>Aeroplane:</b>
+  <%= @order.aeroplane_id %>
+</p>
+
+<p>
+  <b>Safety card:</b>
+  <%= @order.safety_card_id %>
+</p>
+
+<p>
+  <b>Seat layout:</b>
+  <%= @order.seat_layout_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

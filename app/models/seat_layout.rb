@@ -1,6 +1,10 @@
 class SeatLayout < ActiveRecord::Base
 
-  has_and_belongs_to_many :aeroplanes
+  has_many :orders
 
-  attr_accessible :name
+  has_many :aeroplanes, through: :orders
+
+  attr_accessible :name, :layout_image
+
+  has_attached_file :layout_image
 end

@@ -1,7 +1,7 @@
 class UserProfile < ActiveRecord::Base
 
   belongs_to :user
-  has_many :airline, :dependent => :destroy
+  has_one :airline, dependent: :destroy
 
   attr_accessible :address, :contact_name, :fax, :mobile, :phone, :user_id, :airline_attributes
 

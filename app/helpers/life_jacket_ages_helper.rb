@@ -1,0 +1,2 @@
+module LifeJacketAgesHelper
+end

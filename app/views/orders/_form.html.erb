@@ -1,0 +1,77 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <br>
+    <p>Please create your order using the form below.</p>
+    <%= f.input :name %>
+    <%= f.hidden_field :airline_id,
+                       value: current_user.user_profile.airline.id %>
+
+    <h3>Aeroplane</h3>
+    <%= f.association :aeroplane,
+                      label: 'Aeroplane',
+                      as: :select,
+                      collection: Aeroplane.order('name') %>
+    <h3>Seats</h3>
+    <%= f.simple_fields_for :seats do |seat| %>
+      <%= seat.input :name, label: 'Seat name' %>
+      <%= seat.input :seat_manufacturer_id,
+                     label: 'Seat manufacturer',
+                     as: :select,
+                     collection: SeatManufacturer.order('name') %>
+      <%= seat.input :seat_class_id,
+                     label: 'Seat class',
+                     as: :select,
+                     collection: SeatClass.order('name') %>
+      <%= seat.input :texture,
+                     label: 'Seat texture',
+                     as: :file %>
+      <%= seat.simple_fields_for :seat_belt do |seat_belt| %>
+        <%= seat_belt.input :name, label: 'Seat belt name' %>
+        <%= seat_belt.input :belt_image,
+                            label: 'Seat belt image',
+                            as: :file %>
+      <% end %>
+    <% end %>
+    <h3>Safety cards</h3>
+    <%= f.association :safety_card,
+                      label: 'Safety card',
+                      as: :select,
+                      collection: SafetyCard.order('name') %>
+    <h3>Seat layouts</h3>
+    <%= f.association :seat_layout,
+                      label: 'Seat layout',
+                      as: :select,
+                      collection: SeatLayout.order('name') %>
+    <h3>Life jackets</h3>
+    <%= f.association :life_jackets,
+                      collection: LifeJacket.order("name"),
+                      label: 'Life jacket',
+                      as: :check_boxes %>
+    <h3>Other</h3>
+    <%= f.input :console,
+                label: 'Console',
+                as: :file %>
+    <%= f.input :bin,
+                label: 'Bin',
+                as: :file %>
+    <%= f.input :lavatory,
+                label: 'Lavatory',
+                as: :file %>
+    <%= f.input :open_exit_door,
+                label: 'Open exit door',
+                as: :file %>
+    <%= f.input :closed_exit_door,
+                label: 'Closed exit door',
+                as: :file %>
+    <%= f.input :carpet_texture,
+                label: 'Carpet texture',
+                as: :file %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

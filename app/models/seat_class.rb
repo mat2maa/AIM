@@ -1,6 +1,6 @@
 class SeatClass < ActiveRecord::Base
 
-  belongs_to :seat
+  has_many :seats
 
   attr_accessible :name
 end

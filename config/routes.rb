@@ -1,4 +1,10 @@
 Aim::Application.routes.draw do
+  resources :life_jacket_ages
+
+
+  resources :orders
+
+
   resources :life_jackets
 
 
