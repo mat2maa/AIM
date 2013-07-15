@@ -7,10 +7,8 @@ class Airline < ActiveRecord::Base
 
   has_many :aeroplanes, through: :orders
 
-  attr_accessible :code, :name, :logo, :livery, :branding
+  attr_accessible :code, :name, :logo
 
   has_attached_file :logo
-  has_attached_file :livery
-  has_attached_file :branding
 
 end

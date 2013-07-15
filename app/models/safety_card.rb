@@ -1,11 +1,9 @@
 class SafetyCard < ActiveRecord::Base
 
-  belongs_to :airline
-  belongs_to :aeroplane
+  belongs_to :order
 
-  has_many :orders
+  attr_accessible :name, :order_id, :front, :back
 
-  attr_accessible :name, :airline_id, :aeroplane_id, :card_image
-
-  has_attached_file :card_image
+  has_attached_file :front
+  has_attached_file :back
 end

@@ -27,6 +27,8 @@ class OrdersController < ApplicationController
     @order = Order.new
     @seats = @order.seats.build
     @seats.build_seat_belt
+    @seats.seat_assets.build
+    @order.build_safety_card
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +38,12 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    authorize! :edit, Order
+    @order = Order.find(params[:id])
+    @seats = @order.seats.build
+    @seats.build_seat_belt
+    @seats.seat_assets.build
+    @order.build_safety_card
   end
 
   # POST /orders

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130713101550) do
+ActiveRecord::Schema.define(:version => 20130715141021) do
 
   create_table "aeroplanes", :force => true do |t|
     t.string   "name"
@@ -23,21 +23,13 @@ ActiveRecord::Schema.define(:version => 20130713101550) do
   create_table "airlines", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "user_profile_id"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.string   "livery_file_name"
-    t.string   "livery_content_type"
-    t.integer  "livery_file_size"
-    t.datetime "livery_updated_at"
-    t.string   "branding_file_name"
-    t.string   "branding_content_type"
-    t.integer  "branding_file_size"
-    t.datetime "branding_updated_at"
   end
 
   create_table "life_jacket_ages", :force => true do |t|
@@ -105,6 +97,14 @@ ActiveRecord::Schema.define(:version => 20130713101550) do
     t.string   "carpet_texture_content_type"
     t.integer  "carpet_texture_file_size"
     t.datetime "carpet_texture_updated_at"
+    t.string   "livery_file_name"
+    t.string   "livery_content_type"
+    t.integer  "livery_file_size"
+    t.datetime "livery_updated_at"
+    t.string   "branding_file_name"
+    t.string   "branding_content_type"
+    t.integer  "branding_file_size"
+    t.datetime "branding_updated_at"
   end
 
   create_table "roles", :force => true do |t|
@@ -120,14 +120,27 @@ ActiveRecord::Schema.define(:version => 20130713101550) do
 
   create_table "safety_cards", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-    t.integer  "airline_id"
-    t.integer  "aeroplane_id"
-    t.string   "card_image_file_name"
-    t.string   "card_image_content_type"
-    t.integer  "card_image_file_size"
-    t.datetime "card_image_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "order_id"
+    t.string   "front_file_name"
+    t.string   "front_content_type"
+    t.integer  "front_file_size"
+    t.datetime "front_updated_at"
+    t.string   "back_file_name"
+    t.string   "back_content_type"
+    t.integer  "back_file_size"
+    t.datetime "back_updated_at"
+  end
+
+  create_table "seat_assets", :force => true do |t|
+    t.integer  "seat_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
   end
 
   create_table "seat_belts", :force => true do |t|
@@ -170,10 +183,6 @@ ActiveRecord::Schema.define(:version => 20130713101550) do
     t.integer  "seat_manufacturer_id"
     t.integer  "seat_class_id"
     t.integer  "order_id"
-    t.string   "texture_file_name"
-    t.string   "texture_content_type"
-    t.integer  "texture_file_size"
-    t.datetime "texture_updated_at"
   end
 
   create_table "user_profiles", :force => true do |t|

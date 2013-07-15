@@ -6,15 +6,16 @@
     <p>Please create your order using the form below.</p>
     <%= f.input :name %>
     <%= f.hidden_field :airline_id,
-                       value: current_user.user_profile.airline.id %>
+                       value: current_user.user_profile.airline.id if current_user.user_profile.present? %>
 
     <h3>Aeroplane</h3>
     <%= f.association :aeroplane,
                       label: 'Aeroplane',
                       as: :select,
                       collection: Aeroplane.order('name') %>
+
     <h3>Seats</h3>
-    <%= f.simple_fields_for :seats do |seat| %>
+     <%= f.simple_fields_for :seats do |seat| %>
       <%= seat.input :name, label: 'Seat name' %>
       <%= seat.input :seat_manufacturer_id,
                      label: 'Seat manufacturer',
@@ -24,31 +25,59 @@
                      label: 'Seat class',
                      as: :select,
                      collection: SeatClass.order('name') %>
-      <%= seat.input :texture,
-                     label: 'Seat texture',
-                     as: :file %>
+      <%= seat.simple_fields_for :seat_assets do |seat_asset| %>
+        <% if seat_asset.object.new_record? %>
+          <%= seat_asset.input :asset,
+                               label: 'Seat asset',
+                               as: :file %>
+        <% else %>
+          <% @order.seats.each do |seat| %>
+            <% seat.seat_assets.each do |seat_assets| %>
+              <%= image_tag seat_asset.asset.url(:original) if seat_asset.asset.present? %>
+              <br>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
       <%= seat.simple_fields_for :seat_belt do |seat_belt| %>
-        <%= seat_belt.input :name, label: 'Seat belt name' %>
-        <%= seat_belt.input :belt_image,
-                            label: 'Seat belt image',
-                            as: :file %>
+        <%= seat_belt.input :name,
+                            label: 'Seat belt name' %>
+        <% if seat_belt.object.new_record? %>
+          <%= seat_belt.input :belt_image,
+                              label: 'Seat belt image',
+                              as: :file %>
+        <% else %>
+          <% @order.seats.each do |seat| %>
+            <%= image_tag seat.seat_belt.belt_image.url(:original) if seat.seat_belt.present? %>
+            <br>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
+
     <h3>Safety cards</h3>
-    <%= f.association :safety_card,
-                      label: 'Safety card',
-                      as: :select,
-                      collection: SafetyCard.order('name') %>
+    <%= f.simple_fields_for :safety_card do |safety_card| %>
+      <%= safety_card.input :name, label: 'Safety card name' %>
+      <%= safety_card.input :front,
+                            label: 'Safety card front',
+                            as: :file %>
+      <%= safety_card.input :back,
+                            label: 'Safety card back',
+                            as: :file %>
+    <% end %>
+
     <h3>Seat layouts</h3>
     <%= f.association :seat_layout,
                       label: 'Seat layout',
                       as: :select,
                       collection: SeatLayout.order('name') %>
+
     <h3>Life jackets</h3>
     <%= f.association :life_jackets,
                       collection: LifeJacket.order("name"),
                       label: 'Life jacket',
                       as: :check_boxes %>
+
     <h3>Other</h3>
     <%= f.input :console,
                 label: 'Console',
@@ -67,6 +96,12 @@
                 as: :file %>
     <%= f.input :carpet_texture,
                 label: 'Carpet texture',
+                as: :file %>
+    <%= f.input :livery,
+                label: 'Aeroplane livery',
+                as: :file %>
+    <%= f.input :branding,
+                label: 'Aeroplane branding',
                 as: :file %>
 
   </div>
