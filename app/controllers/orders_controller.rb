@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource :only => [:index, :show, :edit, :create, :update, :destroy]
+  load_and_authorize_resource :only => [:index, :show, :create, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -40,10 +40,6 @@ class OrdersController < ApplicationController
   def edit
     authorize! :edit, Order
     @order = Order.find(params[:id])
-    @seats = @order.seats.build
-    @seats.build_seat_belt
-    @seats.seat_assets.build
-    @order.build_safety_card
   end
 
   # POST /orders

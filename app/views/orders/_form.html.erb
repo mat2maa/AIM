@@ -26,18 +26,13 @@
                      as: :select,
                      collection: SeatClass.order('name') %>
       <%= seat.simple_fields_for :seat_assets do |seat_asset| %>
-        <% if seat_asset.object.new_record? %>
-          <%= seat_asset.input :asset,
-                               label: 'Seat asset',
-                               as: :file %>
-        <% else %>
-          <% @order.seats.each do |seat| %>
-            <% seat.seat_assets.each do |seat_assets| %>
-              <%= image_tag seat_asset.asset.url(:original) if seat_asset.asset.present? %>
-              <br>
-            <% end %>
-          <% end %>
-        <% end %>
+        <%= image_tag seat_asset.object.asset.url,
+                      size: '100x100' %>
+        <%= seat_asset.input :asset,
+                             label: 'Seat asset',
+                             as: :file %>
+        <br>
+        <br>
       <% end %>
       <%= seat.simple_fields_for :seat_belt do |seat_belt| %>
         <%= seat_belt.input :name,
