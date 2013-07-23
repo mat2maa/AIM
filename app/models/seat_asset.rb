@@ -4,5 +4,6 @@ class SeatAsset < ActiveRecord::Base
 
   attr_accessible :asset, :seat_id
 
-  has_attached_file :asset
+  has_attached_file :asset,
+                    default_url: '/images/normal/missing_seat_asset.png'
 end

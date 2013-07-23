@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715141021) do
+ActiveRecord::Schema.define(:version => 20130723124933) do
 
   create_table "aeroplanes", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,66 @@ ActiveRecord::Schema.define(:version => 20130715141021) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "bins", :force => true do |t|
+    t.integer  "order_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  create_table "brandings", :force => true do |t|
+    t.integer  "order_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  create_table "carpet_textures", :force => true do |t|
+    t.integer  "order_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  create_table "closed_exit_doors", :force => true do |t|
+    t.integer  "order_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  create_table "consoles", :force => true do |t|
+    t.integer  "order_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  create_table "lavatories", :force => true do |t|
+    t.integer  "order_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
   end
 
   create_table "life_jacket_ages", :force => true do |t|
@@ -63,6 +123,26 @@ ActiveRecord::Schema.define(:version => 20130715141021) do
     t.integer  "order_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "liveries", :force => true do |t|
+    t.integer  "order_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  create_table "open_exit_doors", :force => true do |t|
+    t.integer  "order_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
   end
 
   create_table "orders", :force => true do |t|
@@ -134,6 +214,16 @@ ActiveRecord::Schema.define(:version => 20130715141021) do
   end
 
   create_table "seat_assets", :force => true do |t|
+    t.integer  "seat_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  create_table "seat_belt_assets", :force => true do |t|
     t.integer  "seat_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false

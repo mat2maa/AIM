@@ -1,0 +1,34 @@
+<div class="hideable">
+  <div class="row">
+    <div class="span6">
+      <%= f.input :name, label: 'Seat name' %>
+      <%= f.input :seat_manufacturer_id,
+                  label: 'Seat manufacturer',
+                  as: :select,
+                  collection: SeatManufacturer.order('name') %>
+      <%= f.input :seat_class_id,
+                  label: 'Seat class',
+                  as: :select,
+                  collection: SeatClass.order('name') %>
+    </div>
+    <div class="span6">
+      <h5>Seat Assets</h5>
+      <%= f.simple_fields_for :seat_assets do |builder| %>
+        <%= render 'seat_asset_fields',
+                   f: builder %>
+      <% end %>
+      <p><%= f.link_to_add "Add a seat asset", :seat_assets %></p>
+      <br>
+      <h5>Seat Belt Assets</h5>
+      <%= f.simple_fields_for :seat_belt_assets do |builder| %>
+        <%= render 'seat_belt_asset_fields',
+                   f: builder %>
+      <% end %>
+      <p><%= f.link_to_add "Add a seat belt asset", :seat_belt_assets %></p>
+
+    </div>
+  </div>
+  <%= f.link_to_remove "Remove this seat" %>
+  <hr>
+</div>
+

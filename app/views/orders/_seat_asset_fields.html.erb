@@ -1,0 +1,11 @@
+<div class="hideable">
+  <%= image_tag f.object.asset.url,
+                size: '100x100' %>
+  <%= f.input :asset,
+              label: 'Seat asset',
+              as: :file %>
+  <%= f.link_to_remove "Remove this seat asset" %>
+  <br>
+
+  <br>
+</div>

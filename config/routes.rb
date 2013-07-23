@@ -8,9 +8,6 @@ Aim::Application.routes.draw do
   resources :life_jackets
 
 
-  resources :seat_belts
-
-
   resources :seat_classes
 
 

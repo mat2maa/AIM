@@ -1,54 +1,28 @@
-<%= simple_form_for(@order) do |f| %>
+<%= simple_nested_form_for @order do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <br>
-    <p>Please create your order using the form below.</p>
+
+    <h5>Please create your order using the form below.</h5>
+    <br>
     <%= f.input :name %>
     <%= f.hidden_field :airline_id,
                        value: current_user.user_profile.airline.id if current_user.user_profile.present? %>
 
-    <h3>Aeroplane</h3>
     <%= f.association :aeroplane,
                       label: 'Aeroplane',
                       as: :select,
                       collection: Aeroplane.order('name') %>
 
+    <hr>
     <h3>Seats</h3>
-     <%= f.simple_fields_for :seats do |seat| %>
-      <%= seat.input :name, label: 'Seat name' %>
-      <%= seat.input :seat_manufacturer_id,
-                     label: 'Seat manufacturer',
-                     as: :select,
-                     collection: SeatManufacturer.order('name') %>
-      <%= seat.input :seat_class_id,
-                     label: 'Seat class',
-                     as: :select,
-                     collection: SeatClass.order('name') %>
-      <%= seat.simple_fields_for :seat_assets do |seat_asset| %>
-        <%= image_tag seat_asset.object.asset.url,
-                      size: '100x100' %>
-        <%= seat_asset.input :asset,
-                             label: 'Seat asset',
-                             as: :file %>
-        <br>
-        <br>
-      <% end %>
-      <%= seat.simple_fields_for :seat_belt do |seat_belt| %>
-        <%= seat_belt.input :name,
-                            label: 'Seat belt name' %>
-        <% if seat_belt.object.new_record? %>
-          <%= seat_belt.input :belt_image,
-                              label: 'Seat belt image',
-                              as: :file %>
-        <% else %>
-          <% @order.seats.each do |seat| %>
-            <%= image_tag seat.seat_belt.belt_image.url(:original) if seat.seat_belt.present? %>
-            <br>
-          <% end %>
-        <% end %>
-      <% end %>
+    <%= f.simple_fields_for :seats do |builder| %>
+      <%= render 'seat_fields',
+                 f: builder %>
     <% end %>
+    <p><%= f.link_to_add "Add a seat", :seats %></p>
+    <hr>
 
     <h3>Safety cards</h3>
     <%= f.simple_fields_for :safety_card do |safety_card| %>
@@ -60,44 +34,78 @@
                             label: 'Safety card back',
                             as: :file %>
     <% end %>
+    <hr>
 
     <h3>Seat layouts</h3>
     <%= f.association :seat_layout,
                       label: 'Seat layout',
                       as: :select,
                       collection: SeatLayout.order('name') %>
+    <hr>
 
     <h3>Life jackets</h3>
     <%= f.association :life_jackets,
                       collection: LifeJacket.order("name"),
                       label: 'Life jacket',
                       as: :check_boxes %>
+    <hr>
 
     <h3>Other</h3>
-    <%= f.input :console,
-                label: 'Console',
-                as: :file %>
-    <%= f.input :bin,
-                label: 'Bin',
-                as: :file %>
-    <%= f.input :lavatory,
-                label: 'Lavatory',
-                as: :file %>
-    <%= f.input :open_exit_door,
-                label: 'Open exit door',
-                as: :file %>
-    <%= f.input :closed_exit_door,
-                label: 'Closed exit door',
-                as: :file %>
-    <%= f.input :carpet_texture,
-                label: 'Carpet texture',
-                as: :file %>
-    <%= f.input :livery,
-                label: 'Aeroplane livery',
-                as: :file %>
-    <%= f.input :branding,
-                label: 'Aeroplane branding',
-                as: :file %>
+    <%= f.simple_fields_for :consoles do |builder| %>
+      <%= f.input :asset,
+                  label: 'Console asset',
+                  as: :file %>
+    <% end %>
+    <p><%= f.link_to_add "Add a console", :consoles %></p>
+
+    <%= f.simple_fields_for :bins do |builder| %>
+      <%= f.input :asset,
+                  label: 'Bin asset',
+                  as: :file %>
+    <% end %>
+    <p><%= f.link_to_add "Add a bin", :bins %></p>
+
+    <%= f.simple_fields_for :lavatories do |builder| %>
+      <%= f.input :asset,
+                  label: 'Lavatory asset',
+                  as: :file %>
+    <% end %>
+    <p><%= f.link_to_add "Add a lavatory", :lavatories %></p>
+
+    <%= f.simple_fields_for :open_exit_doors do |builder| %>
+      <%= f.input :asset,
+                  label: 'Open exit door asset',
+                  as: :file %>
+    <% end %>
+    <p><%= f.link_to_add "Add an open exit door", :open_exit_doors %></p>
+
+    <%= f.simple_fields_for :closed_exit_doors do |builder| %>
+      <%= f.input :asset,
+                  label: 'Closed exit door asset',
+                  as: :file %>
+    <% end %>
+    <p><%= f.link_to_add "Add a closed exit door", :closed_exit_doors %></p>
+
+    <%= f.simple_fields_for :carpet_textures do |builder| %>
+      <%= f.input :asset,
+                  label: 'Carpet texture asset',
+                  as: :file %>
+    <% end %>
+    <p><%= f.link_to_add "Add a carpet texture", :carpet_textures %></p>
+
+    <%= f.simple_fields_for :liveries do |builder| %>
+      <%= f.input :asset,
+                  label: 'Aeroplane livery asset',
+                  as: :file %>
+    <% end %>
+    <p><%= f.link_to_add "Add a livery", :liveries %></p>
+
+    <%= f.simple_fields_for :brandings do |builder| %>
+      <%= f.input :asset,
+                  label: 'Aeroplane branding asset',
+                  as: :file %>
+    <% end %>
+    <p><%= f.link_to_add "Add a branding", :brandings %></p>
 
   </div>
 

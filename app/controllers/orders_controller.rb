@@ -25,10 +25,11 @@ class OrdersController < ApplicationController
   def new
     authorize! :new, Order
     @order = Order.new
-    @seats = @order.seats.build
-    @seats.build_seat_belt
-    @seats.seat_assets.build
     @order.build_safety_card
+
+    #seats = @order.seats.build
+    #seats.seat_belt_assets.build
+    #seats.seat_assets.build
 
     respond_to do |format|
       format.html # new.html.erb
