@@ -1,5 +1,5 @@
 Aim::Application.routes.draw do
-  resources :user_steps
+  resources :order_steps
 
 
   resources :scenes

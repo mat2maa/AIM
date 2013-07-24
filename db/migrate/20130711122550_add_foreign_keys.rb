@@ -7,7 +7,6 @@ class AddForeignKeys < ActiveRecord::Migration
     add_column :seats, :seat_manufacturer_id, :integer
     add_column :seats, :seat_class_id, :integer
     add_column :seats, :order_id, :integer
-    add_column :seat_belts, :seat_id, :integer
   end
 
   def self.down
@@ -18,6 +17,5 @@ class AddForeignKeys < ActiveRecord::Migration
     remove_column :seats, :seat_manufacturer_id
     remove_column :seats, :seat_class_id
     remove_column :seats, :order_id
-    remove_column :seat_belts, :seat_id
   end
 end

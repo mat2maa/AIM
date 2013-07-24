@@ -1,0 +1,4 @@
+<p>Current Step: <%= @step = wizard_path.split("_").last %></p>
+
+<%= render partial: 'scene_info',
+           locals: { step: @step } %>

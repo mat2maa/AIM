@@ -1,0 +1,8 @@
+<p>
+  script_id: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.script_id %><br>
+  sequence_position: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.sequence_position %><br>
+  storyboard: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.storyboard %><br>
+  english_subtitle: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.english_subtitle %><br>
+  foreign_subtitle_1: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.foreign_subtitle_1 %><br>
+  foreign_subtitle_2: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.foreign_subtitle_2 %>
+</p>

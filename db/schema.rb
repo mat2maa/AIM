@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723124933) do
+ActiveRecord::Schema.define(:version => 20130724102712) do
 
   create_table "aeroplanes", :force => true do |t|
     t.string   "name"
@@ -151,40 +151,8 @@ ActiveRecord::Schema.define(:version => 20130723124933) do
     t.integer  "aeroplane_id"
     t.integer  "safety_card_id"
     t.integer  "seat_layout_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.string   "console_file_name"
-    t.string   "console_content_type"
-    t.integer  "console_file_size"
-    t.datetime "console_updated_at"
-    t.string   "bin_file_name"
-    t.string   "bin_content_type"
-    t.integer  "bin_file_size"
-    t.datetime "bin_updated_at"
-    t.string   "lavatory_file_name"
-    t.string   "lavatory_content_type"
-    t.integer  "lavatory_file_size"
-    t.datetime "lavatory_updated_at"
-    t.string   "open_exit_door_file_name"
-    t.string   "open_exit_door_content_type"
-    t.integer  "open_exit_door_file_size"
-    t.datetime "open_exit_door_updated_at"
-    t.string   "closed_exit_door_file_name"
-    t.string   "closed_exit_door_content_type"
-    t.integer  "closed_exit_door_file_size"
-    t.datetime "closed_exit_door_updated_at"
-    t.string   "carpet_texture_file_name"
-    t.string   "carpet_texture_content_type"
-    t.integer  "carpet_texture_file_size"
-    t.datetime "carpet_texture_updated_at"
-    t.string   "livery_file_name"
-    t.string   "livery_content_type"
-    t.integer  "livery_file_size"
-    t.datetime "livery_updated_at"
-    t.string   "branding_file_name"
-    t.string   "branding_content_type"
-    t.integer  "branding_file_size"
-    t.datetime "branding_updated_at"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "roles", :force => true do |t|
@@ -213,6 +181,31 @@ ActiveRecord::Schema.define(:version => 20130723124933) do
     t.datetime "back_updated_at"
   end
 
+  create_table "scenes", :force => true do |t|
+    t.integer  "script_id"
+    t.integer  "sequence_position"
+    t.text     "storyboard"
+    t.text     "english_subtitle"
+    t.text     "foreign_subtitle_1"
+    t.text     "foreign_subtitle_2"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "audio_file_file_name"
+    t.string   "audio_file_content_type"
+    t.integer  "audio_file_file_size"
+    t.datetime "audio_file_updated_at"
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
+  end
+
+  create_table "scripts", :force => true do |t|
+    t.integer  "aeroplane_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "seat_assets", :force => true do |t|
     t.integer  "seat_id"
     t.datetime "created_at",         :null => false
@@ -231,17 +224,6 @@ ActiveRecord::Schema.define(:version => 20130723124933) do
     t.string   "asset_content_type"
     t.integer  "asset_file_size"
     t.datetime "asset_updated_at"
-  end
-
-  create_table "seat_belts", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-    t.integer  "seat_id"
-    t.string   "belt_image_file_name"
-    t.string   "belt_image_content_type"
-    t.integer  "belt_image_file_size"
-    t.datetime "belt_image_updated_at"
   end
 
   create_table "seat_classes", :force => true do |t|
