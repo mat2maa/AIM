@@ -36,6 +36,18 @@ Aeroplane.create(
         {
             manufacturer: 'Airbus',
             name: 'A320'
+        },
+        {
+            manufacturer: 'Airbus',
+            name: 'A330 - 200'
+        }
+    ]
+)
+
+Script.create(
+    [
+        {
+            aeroplane_id: 5
         }
     ]
 )

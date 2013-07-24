@@ -1,4 +1,13 @@
 Aim::Application.routes.draw do
+  resources :user_steps
+
+
+  resources :scenes
+
+
+  resources :scripts
+
+
   resources :life_jacket_ages
 
 

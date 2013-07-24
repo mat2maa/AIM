@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Script:</b>
+  <%= @scene.script_id %>
+</p>
+
+<p>
+  <b>Sequence position:</b>
+  <%= @scene.sequence_position %>
+</p>
+
+<p>
+  <b>Storyboard:</b>
+  <%= @scene.storyboard %>
+</p>
+
+<p>
+  <b>English subtitle:</b>
+  <%= @scene.english_subtitle %>
+</p>
+
+<p>
+  <b>Foreign subtitle 1:</b>
+  <%= @scene.foreign_subtitle_1 %>
+</p>
+
+<p>
+  <b>Foreign subtitle 2:</b>
+  <%= @scene.foreign_subtitle_2 %>
+</p>
+
+<p>
+  <b>Remark:</b>
+  <%= @scene.remark %>
+</p>
+
+
+<%= link_to 'Edit', edit_scene_path(@scene) %> |
+<%= link_to 'Back', scenes_path %>

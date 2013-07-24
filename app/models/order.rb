@@ -25,16 +25,24 @@ class Order < ActiveRecord::Base
                   :closed_exit_doors_attributes, :carpet_textures_attributes, :liveries_attributes,
                   :brandings_attributes
 
-                  accepts_nested_attributes_for :seats,
+  accepts_nested_attributes_for :seats,
                                 allow_destroy: true
   accepts_nested_attributes_for :safety_card
-  accepts_nested_attributes_for :consoles
-  accepts_nested_attributes_for :bins
-  accepts_nested_attributes_for :lavatories
-  accepts_nested_attributes_for :open_exit_doors
-  accepts_nested_attributes_for :closed_exit_doors
-  accepts_nested_attributes_for :carpet_textures
-  accepts_nested_attributes_for :liveries
-  accepts_nested_attributes_for :brandings
+  accepts_nested_attributes_for :consoles,
+                                allow_destroy: true
+  accepts_nested_attributes_for :bins,
+                                allow_destroy: true
+  accepts_nested_attributes_for :lavatories,
+                                allow_destroy: true
+  accepts_nested_attributes_for :open_exit_doors,
+                                allow_destroy: true
+  accepts_nested_attributes_for :closed_exit_doors,
+                                allow_destroy: true
+  accepts_nested_attributes_for :carpet_textures,
+                                allow_destroy: true
+  accepts_nested_attributes_for :liveries,
+                                allow_destroy: true
+  accepts_nested_attributes_for :brandings,
+                                allow_destroy: true
 
 end

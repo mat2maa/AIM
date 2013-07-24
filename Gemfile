@@ -18,8 +18,15 @@ gem 'rolify'
 gem 'simple_form'
 gem 'yaml_db'
 gem 'rmagick', '2.13.2'
+
+# Attachments
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
+
+# Nested Forms
 gem 'nested_form'
+
+# Multistep Forms
+gem 'wicked'
 
 group :development do
   gem 'better_errors'
