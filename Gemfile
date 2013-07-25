@@ -28,6 +28,9 @@ gem 'nested_form'
 # Multistep Forms
 gem 'wicked'
 
+# Audio
+gem 'soundmanager-rails'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

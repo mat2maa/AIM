@@ -1,7 +1,4 @@
 Aim::Application.routes.draw do
-  resources :order_steps
-
-
   resources :scenes
 
 
@@ -11,7 +8,9 @@ Aim::Application.routes.draw do
   resources :life_jacket_ages
 
 
-  resources :orders
+  resources :orders do
+    resources :order_steps, controller: 'order_steps'
+  end
 
 
   resources :life_jackets

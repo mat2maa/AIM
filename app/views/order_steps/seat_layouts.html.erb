@@ -1,0 +1,7 @@
+<%= simple_nested_form_for @order, url: wizard_path do |f| %>
+  <h3>Seat layouts</h3>
+  <%= f.association :seat_layout,
+                    label: 'Seat layout',
+                    as: :select,
+                    collection: SeatLayout.order('name') %>
+<% end %>

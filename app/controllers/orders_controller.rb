@@ -46,15 +46,12 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render json: @order, status: :created, location: @order }
-        redirect_to order_steps_path
-      else
-        format.html { render action: "new" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    @order = Order.new(params[:order])
+    if @order.save
+      session[:order_id] = @order.id
+      redirect_to wizard_path(steps.first, order_id: @order.id)
+    else
+      render :new
     end
   end
 

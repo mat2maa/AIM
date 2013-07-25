@@ -5,5 +5,5 @@ class Branding < ActiveRecord::Base
   attr_accessible :asset, :order_id
 
   has_attached_file :asset,
-                    default_url: '/images/normal/missing_branding_asset.png'
+                    default_url: '/assets/normal/missing_branding_asset.png'
 end

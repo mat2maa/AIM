@@ -1,50 +1,52 @@
-<% if !user_signed_in? %>
-  <h3>Welcome</h3>
-  <p>Welcome to the Animation in Motion Questionnaire portal.</p>
-  <p>If you are an airline that wishes to use this service for the first time, please sign up at the link above. Note that you will be sent an email to the address that you use as your username and must confirm your subscription before you can log in. Otherwise, please log in as usual.</p>
-<% end %>
-
-<% if user_signed_in? %>
-  <% if current_user.has_role? :admin %>
-    <h3>Administrative tools</h3>
-    <p>Manage the following components:</p>
-    <ul>
-      <li>
-        <%= link_to 'User profiles', user_profiles_path %>
-      </li>
-      <li>
-        <%= link_to 'Aeroplanes', aeroplanes_path %>
-      </li>
-      <li>
-        <%= link_to 'Airlines', airlines_path %>
-      </li>
-      <li>
-        <%= link_to 'Life jackets', life_jackets_path %>
-      </li>
-      <li>
-        <%= link_to 'Safety cards', safety_cards_path %>
-      </li>
-      <li>
-        <%= link_to 'Seats', seats_path %>
-      </li>
-      <li>
-        <%= link_to 'Seat classes', seat_classes_path %>
-      </li>
-      <li>
-        <%= link_to 'Seat layouts', seat_layouts_path %>
-      </li>
-      <li>
-        <%= link_to 'Seat manufacturers', seat_manufacturers_path %>
-      </li>
-    </ul>
-    <p>Manage orders:</p>
-    <ul>
-      <li>
-        <%= link_to 'Orders', orders_path %>
-      </li>
-    </ul>
-  <% elsif current_user.has_role? :user %>
-    <h3>Home</h3>
-    <p>Please create or edit an order above.</p>
+<div class="span12">
+  <% if !user_signed_in? %>
+    <h3>Welcome</h3>
+    <p>Welcome to the Animation in Motion Questionnaire portal.</p>
+    <p>If you are an airline that wishes to use this service for the first time, please sign up at the link above. Note that you will be sent an email to the address that you use as your username and must confirm your subscription before you can log in. Otherwise, please log in as usual.</p>
   <% end %>
-<% end %>
+
+  <% if user_signed_in? %>
+    <% if current_user.has_role? :admin %>
+      <h3>Administrative tools</h3>
+      <p>Manage the following components:</p>
+      <ul>
+        <li>
+          <%= link_to 'User profiles', user_profiles_path %>
+        </li>
+        <li>
+          <%= link_to 'Aeroplanes', aeroplanes_path %>
+        </li>
+        <li>
+          <%= link_to 'Airlines', airlines_path %>
+        </li>
+        <li>
+          <%= link_to 'Life jackets', life_jackets_path %>
+        </li>
+        <li>
+          <%= link_to 'Safety cards', safety_cards_path %>
+        </li>
+        <li>
+          <%= link_to 'Seats', seats_path %>
+        </li>
+        <li>
+          <%= link_to 'Seat classes', seat_classes_path %>
+        </li>
+        <li>
+          <%= link_to 'Seat layouts', seat_layouts_path %>
+        </li>
+        <li>
+          <%= link_to 'Seat manufacturers', seat_manufacturers_path %>
+        </li>
+      </ul>
+      <p>Manage orders:</p>
+      <ul>
+        <li>
+          <%= link_to 'Orders', orders_path %>
+        </li>
+      </ul>
+    <% elsif current_user.has_role? :user %>
+      <h3>Home</h3>
+      <p>Please create or edit an order above.</p>
+    <% end %>
+  <% end %>
+</div>

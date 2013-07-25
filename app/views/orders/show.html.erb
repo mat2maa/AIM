@@ -1,53 +1,55 @@
-<p id="notice"><%= notice %></p>
+<div class="span12">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @order.name %>
-</p>
+  <p>
+    <b>Name:</b>
+    <%= @order.name %>
+  </p>
 
-<p>
-  <b>Airline:</b>
-  <%= @order.airline_id %>
-</p>
+  <p>
+    <b>Airline:</b>
+    <%= @order.airline_id %>
+  </p>
 
-<p>
-  <b>Aeroplane:</b>
-  <%= @order.aeroplane_id %>
-</p>
+  <p>
+    <b>Aeroplane:</b>
+    <%= @order.aeroplane_id %>
+  </p>
 
-<p>
-  <b>Safety card:</b>
-  <%= @order.safety_card_id %>
-</p>
+  <p>
+    <b>Safety card:</b>
+    <%= @order.safety_card_id %>
+  </p>
 
-<p>
-  <b>Seat layout:</b>
-  <%= @order.seat_layout_id %>
-</p>
+  <p>
+    <b>Seat layout:</b>
+    <%= @order.seat_layout_id %>
+  </p>
 
-<b>Seats:</b>
-<ol>
-  <% for seat in @order.seats %>
-    <li><%=h seat.name %></li>
-    <ol>
-      <% for seat_asset in seat.seat_assets %>
-        <li>
-          <%=h image_tag seat_asset.asset.url,
-                         size: '100x100' %>
-        </li>
-      <% end %>
-    </ol>
-    <ol>
-      <% for seat_belt_asset in seat.seat_belt_assets %>
-        <li>
-          <%=h image_tag seat_belt_asset.asset.url,
-                         size: '100x100' %>
-        </li>
-      <% end %>
-    </ol>
-<% end %>
-</ol>
+  <b>Seats:</b>
+  <ol>
+    <% for seat in @order.seats %>
+      <li><%=h seat.name %></li>
+      <ol>
+        <% for seat_asset in seat.seat_assets %>
+          <li>
+            <%=h image_tag seat_asset.asset.url,
+                           size: '100x100' %>
+          </li>
+        <% end %>
+      </ol>
+      <ol>
+        <% for seat_belt_asset in seat.seat_belt_assets %>
+          <li>
+            <%=h image_tag seat_belt_asset.asset.url,
+                           size: '100x100' %>
+          </li>
+        <% end %>
+      </ol>
+    <% end %>
+  </ol>
 
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+  <%= link_to 'Edit', edit_order_path(@order) %> |
+  <%= link_to 'Back', orders_path %>
+</div>

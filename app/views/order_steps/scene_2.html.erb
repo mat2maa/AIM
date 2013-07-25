@@ -1,4 +1,14 @@
-<p>Current Step: <%= @step = wizard_path.split("_").last %></p>
+<div class="span12">
+  <div class="step-counter">
+    <p>Scene <%= @step = wizard_path.split("_").last %> of 40</p>
+  </div>
+</div>
 
 <%= render partial: 'scene_info',
            locals: { step: @step } %>
+
+<div class="span12">
+  <div class="audio-player" data-audio-file="<%= asset_path("scene_" + @step + ".mp3") %>">
+    Audio file: <a href="#" class="play-button">Play</a> | <a href="#" class="stop-button">Stop</a> | <a href="#" class="pause-button">Pause</a>
+  </div>
+</div>

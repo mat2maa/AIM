@@ -1,8 +1,13 @@
-<p>
-  script_id: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.script_id %><br>
-  sequence_position: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.sequence_position %><br>
-  storyboard: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.storyboard %><br>
-  english_subtitle: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.english_subtitle %><br>
-  foreign_subtitle_1: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.foreign_subtitle_1 %><br>
-  foreign_subtitle_2: <%= Scene.where('script_id = ? AND sequence_position = ?', 1, step).first.foreign_subtitle_2 %>
-</p>
+<div class="span4">
+  <%= image_tag @scene.screenshot.url %>
+</div>
+<div class="span8">
+  <p>
+    script_id: <%= @scene.script_id %><br>
+    sequence_position: <%= @scene.sequence_position %><br>
+    storyboard: <%= @scene.storyboard %><br>
+    english_subtitle: <%= @scene.english_subtitle %><br>
+    foreign_subtitle_1: <%= @scene.foreign_subtitle_1 %><br>
+    foreign_subtitle_2: <%= @scene.foreign_subtitle_2 %><br>
+  </p>
+</div>

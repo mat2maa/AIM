@@ -5,5 +5,5 @@ class Lavatory < ActiveRecord::Base
   attr_accessible :asset, :order_id
 
   has_attached_file :asset,
-                    default_url: '/images/normal/missing_lavatory_asset.png'
+                    default_url: '/assets/normal/missing_lavatory_asset.png'
 end

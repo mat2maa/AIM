@@ -1,0 +1,7 @@
+<%= simple_nested_form_for @order, url: wizard_path do |f| %>
+  <h3>Life jackets</h3>
+  <%= f.association :life_jackets,
+                    collection: LifeJacket.order("name"),
+                    label: 'Life jacket',
+                    as: :check_boxes %>
+<% end %>

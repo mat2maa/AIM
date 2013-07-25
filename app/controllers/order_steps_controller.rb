@@ -1,9 +1,16 @@
 class OrderStepsController < ApplicationController
 
   include Wicked::Wizard
-  steps :personal, :social
+
+  steps :brandings,:liveries,:seats,:seat_layouts,:safety_cards,:life_jackets,:consoles,:bins,:lavatories,:open_exit_doors,:closed_exit_doors,:carpet_textures,:scene_1,:scene_2,:scene_3,:scene_4,:scene_5,:scene_6,:scene_7,:scene_8,:scene_9,:scene_10,:scene_11,:scene_12,:scene_13,:scene_14,:scene_15,:scene_16,:scene_17,:scene_18,:scene_19,:scene_20,:scene_21,:scene_22,:scene_23,:scene_24,:scene_25,:scene_26,:scene_27,:scene_28,:scene_29,:scene_30,:scene_31,:scene_32,:scene_33,:scene_34,:scene_35,:scene_36,:scene_37,:scene_38,:scene_39,:scene_40
 
   def show
+    @order = Order.find(2)
+    (1..40).each do |i|
+      if step == :"scene_#{i}"
+        @scene = Scene.where('script_id = ? AND sequence_position = ?', 1, i).first
+      end
+    end
     render_wizard
   end
 
