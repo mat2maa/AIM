@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     if @order.save
       session[:order_id] = @order.id
-      redirect_to wizard_path(steps.first, order_id: @order.id)
+      redirect_to order_order_step_path(order_id: @order.id, id: :brandings)
     else
       render :new
     end

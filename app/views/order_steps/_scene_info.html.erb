@@ -10,4 +10,9 @@
     foreign_subtitle_1: <%= @scene.foreign_subtitle_1 %><br>
     foreign_subtitle_2: <%= @scene.foreign_subtitle_2 %><br>
   </p>
+  <%= link_to 'previous',
+              previous_wizard_path %>
+  |
+  <%= link_to 'next',
+              next_wizard_path %>
 </div>

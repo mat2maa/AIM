@@ -1,8 +1,13 @@
-<%= simple_nested_form_for @order, url: wizard_path do |f| %>
-  <%= f.simple_fields_for :carpet_textures do |builder| %>
-    <%= f.input :asset,
-                label: 'Carpet texture asset',
-                as: :file %>
+<div class="span12">
+  <%= simple_nested_form_for @order, url: wizard_path do |f| %>
+    <%= f.simple_fields_for :carpet_textures do |builder| %>
+      <%= f.input :asset,
+                  label: 'Carpet texture asset',
+                  as: :file %>
+    <% end %>
+    <p><%= f.link_to_add "Add a carpet texture", :carpet_textures %></p>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
   <% end %>
-  <p><%= f.link_to_add "Add a carpet texture", :carpet_textures %></p>
-<% end %>
+</div>

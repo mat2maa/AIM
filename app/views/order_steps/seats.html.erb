@@ -1,8 +1,13 @@
-<%= simple_nested_form_for @order, url: wizard_path do |f| %>
-  <h3>Seats</h3>
-  <%= f.simple_fields_for :seats do |builder| %>
-    <%= render 'seat_fields',
-               f: builder %>
+<div class="span12">
+  <%= simple_nested_form_for @order, url: wizard_path do |f| %>
+    <h3>Seats</h3>
+    <%= f.simple_fields_for :seats do |builder| %>
+      <%= render 'seat_fields',
+                 f: builder %>
+    <% end %>
+    <p><%= f.link_to_add "Add a seat", :seats %></p>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
   <% end %>
-  <p><%= f.link_to_add "Add a seat", :seats %></p>
-<% end %>
+</div>
