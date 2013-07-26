@@ -1,4 +1,5 @@
 Aim::Application.routes.draw do
+
   resources :scenes
 
 
@@ -9,6 +10,7 @@ Aim::Application.routes.draw do
 
 
   resources :orders do
+    resources :comments, :only => [:create, :destroy]
     resources :order_steps, controller: 'order_steps'
   end
 

@@ -10,9 +10,16 @@
     foreign_subtitle_1: <%= @scene.foreign_subtitle_1 %><br>
     foreign_subtitle_2: <%= @scene.foreign_subtitle_2 %><br>
   </p>
+</div>
+
+<%= render partial: 'audio_player' %>
+
+<div class="span12">
   <%= link_to 'previous',
               previous_wizard_path %>
   |
   <%= link_to 'next',
               next_wizard_path %>
 </div>
+
+<%= render partial: 'comments_stream' %>

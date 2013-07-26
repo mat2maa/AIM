@@ -11,6 +11,10 @@ class OrderStepsController < ApplicationController
         @scene = Scene.where('script_id = ? AND sequence_position = ?', 1, i).first
       end
     end
+    @comments = @order.comment_threads
+                      .where('order_step = ?', "#{step.to_s}")
+                      .order('created_at desc')
+    @new_comment = Comment.build_from(@order, current_user.id, "", "#{step.to_s}")
     render_wizard
   end
 

@@ -1,5 +1,7 @@
 class Order < ActiveRecord::Base
 
+  acts_as_commentable
+
   belongs_to :airline
   belongs_to :aeroplane
   belongs_to :seat_layout

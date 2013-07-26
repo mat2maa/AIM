@@ -28,6 +28,9 @@ gem 'nested_form'
 # Multistep Forms
 gem 'wicked'
 
+# Comments
+gem 'acts_as_commentable_with_threading'
+
 # Audio
 gem 'soundmanager-rails'
 

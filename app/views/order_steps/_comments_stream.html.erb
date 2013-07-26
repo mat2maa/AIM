@@ -1,0 +1,12 @@
+<div class="span12">
+  <hr>
+
+  <div class="comments">
+    <h2>Comments</h2>
+    <%= render partial: 'comments/form',
+               locals: { comment: @new_comment } %>
+    <%= render partial: 'comments/comment',
+               collection: @comments,
+               as: :comment %>
+  </div>
+</div>
