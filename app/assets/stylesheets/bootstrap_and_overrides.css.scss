@@ -1,9 +1,237 @@
 @import "bootstrap";
 
-body { padding-top: 60px; }
+body {
+  background-color: #333333;
+  padding-top: 160px;
+  color: #FFFFFF;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #FFF;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    color: #EEE;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight:  lighter;
+}
+.red {
+  color:red;
+}
+
+input, textarea, .uneditable-input {
+  width: 300px;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+  display: inline-block;
+  height: 28px;
+  padding: 10px 18px;
+  margin-bottom: 0;
+  font-size: 21px;
+  line-height: 20px;
+  color: #555555;
+  vertical-align: middle;
+  background-color: white;
+  border: 1px solid #cccccc;
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+
+label, input, button, select, textarea {
+  font-size: 21px;
+  font-weight: normal;
+  line-height: 28px;
+}
+
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+  border-color: rgba(140, 198, 63, 0.8);
+  border-width: 4px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.075) inset, 0 0 16px rgba(140, 198, 63, 0.6);
+  outline: 0 none;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  margin-bottom: 0;
+  font-size: 21px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: whitesmoke;
+  background-image: -moz-linear-gradient(top, white, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, white, #e6e6e6);
+  background-image: -o-linear-gradient(top, white, #e6e6e6);
+  background-image: linear-gradient(to bottom, white, #e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE6E6E6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  border: 1px solid #cccccc;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+input[type="radio"], input[type="checkbox"] {
+  margin: 8px 0 0;
+  margin-top: 1px \9;
+  line-height: normal;
+}
+
+.btn-green {
+  background-color: hsl(84, 78%, 68%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#baed6d", endColorstr="#baed6d");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#baed6d), to(#baed6d));
+  background-image: -moz-linear-gradient(top, #baed6d, #baed6d);
+  background-image: -ms-linear-gradient(top, #baed6d, #baed6d);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #baed6d), color-stop(100%, #baed6d));
+  background-image: -webkit-linear-gradient(top, #baed6d, #baed6d);
+  background-image: -o-linear-gradient(top, #baed6d, #baed6d);
+  background-image: linear-gradient(#baed6d, #baed6d);
+  border-color: #baed6d #baed6d hsl(84, 78%, 68%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.00);
+  -webkit-font-smoothing: antialiased;
+}
+
+.content {
+  background-color: transparent;
+  border:none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+}
 
 .media > .comment > .pull-left {
   margin-right:10px;
 }
 
+// Navbar text
+.brand-text-outer {
+  display:table;
+  height: 104px;
+  padding: 0 10px;
+}
+.brand-text-outer.pull-left {
+  padding: 0 10px 0 0;
+}
+
+.brand-text-outer.pull-right {
+  padding: 0 0 0 10px;
+}
+.brand-text-outer .brand-text {
+  font-size: 18px;
+  line-height: 18px;
+  display:table-cell;
+  vertical-align: middle;
+}
+.brand-text-outer .brand-text h4 {
+  margin-bottom:2px;
+}
+.navbar-inverse .brand-text-outer .brand-text {
+  color: white;
+}
+
+// Footer text
+#footer .brand-text-outer {
+  display:table;
+  height: 41px;
+}
+#footer .brand-text-outer .brand-text {
+  font-size: 13px;
+  line-height: 13px;
+  display:table-cell;
+  vertical-align: middle;
+}
+#footer .navbar-inverse .brand-text-outer .brand-text {
+  color: white;
+}
+
 @import "bootstrap-responsive";
+
+
+@media (max-width: 979px) {
+  .brand-text-outer.pull-left,
+  .brand-text-outer.pull-right {
+    padding: 0 10px;
+  }
+}

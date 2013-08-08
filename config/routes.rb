@@ -42,10 +42,19 @@ Aim::Application.routes.draw do
   resources :user_profiles
 
 
-  authenticated :user do
-    root :to => 'home#index'
-  end
-  root :to => "home#index"
+
   devise_for :users
+
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'home#index'
+    end
+    unauthenticated :user do
+      root :to => 'devise/sessions#new'
+    end
+    root :to => 'devise/sessions#new'
+  end
+
   resources :users
+
 end

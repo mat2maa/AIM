@@ -1,10 +1,19 @@
 <div class="span12">
-  <h2>Sign in</h2>
-  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-    <%= f.input :email, :autofocus => true %>
-    <%= f.input :password %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-    <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
+  <h2>Welcome to our <span class="red">Safety Video Builder</span>, the easiest way to create an order and customize your safety video brief.</h2>
+  <br><br>
+  <%= minimal_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+    <%= f.input :email,
+                placeholder: 'Email',
+                autofocus: true,
+                required: true %>
+    <%= f.input :password,
+                placeholder: 'Password',
+                required: true %>
+    <br>
+    <%= f.input_field :remember_me, inline_label: 'Remember me?', as: :boolean if devise_mapping.rememberable? %>
+    <br>
+    <%= f.button :submit, "Sign in", :class => 'btn-green' %>
   <% end %>
+  <br>
   <%= render "devise/shared/links" %>
 </div>
