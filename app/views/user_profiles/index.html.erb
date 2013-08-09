@@ -1,35 +1,37 @@
-<h1>Listing user_profiles</h1>
+<div class="span12">
+  <h1>Listing user profiles</h1>
+  <br>
+  <table>
+    <tr>
+      <th>Airline name</th>
+      <th>Airline code</th>
+      <th>Contact name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Mobile</th>
+      <th>Fax</th>
+      <th width="300" colspan="2"></th>
+    </tr>
 
-<table>
-  <tr>
-    <th>Airline name</th>
-    <th>Airline code</th>
-    <th>Contact name</th>
-    <th>Address</th>
-    <th>Phone</th>
-    <th>Mobile</th>
-    <th>Fax</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <% @user_profiles.each do |user_profile| %>
+      <tr>
+        <td><%= user_profile.airline.name if user_profile.airline.present? %></td>
+        <td><%= user_profile.airline.code if user_profile.airline.present? %></td>
+        <td><%= user_profile.contact_name %></td>
+        <td><%= user_profile.address %></td>
+        <td><%= user_profile.phone %></td>
+        <td><%= user_profile.mobile %></td>
+        <td><%= user_profile.fax %></td>
+        <td>
+          <%= link_to 'Show', user_profile, class: 'btn btn-mini btn-green' %>
+          <%= link_to 'Edit', edit_user_profile_path(user_profile), class: 'btn btn-mini btn-green' %>
+          <%= link_to 'Destroy', user_profile, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-green' %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 
-<% @user_profiles.each do |user_profile| %>
-  <tr>
-    <td><%= user_profile.airline.name if user_profile.airline.present? %></td>
-    <td><%= user_profile.airline.code if user_profile.airline.present? %></td>
-    <td><%= user_profile.contact_name %></td>
-    <td><%= user_profile.address %></td>
-    <td><%= user_profile.phone %></td>
-    <td><%= user_profile.mobile %></td>
-    <td><%= user_profile.fax %></td>
-    <td><%= link_to 'Show', user_profile %></td>
-    <td><%= link_to 'Edit', edit_user_profile_path(user_profile) %></td>
-    <td><%= link_to 'Destroy', user_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <br />
 
-<br />
-
-<%= link_to 'New User profile', new_user_profile_path %>
+  <%= link_to 'New User profile', new_user_profile_path %>
+</div>

@@ -1,13 +1,16 @@
 <div class="span12">
-  <%= simple_nested_form_for @order, url: wizard_path do |f| %>
+  <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
     <h3>Seat layouts</h3>
-    <%= f.association :seat_layout,
-                      label: 'Seat layout',
-                      as: :select,
-                      collection: SeatLayout.order('name') %>
-    <div class="form-actions">
-      <%= f.button :submit %>
+    <br>
+    <div class="controls controls-row">
+      <%= f.input_field :seat_layout_id,
+                        placeholder: 'Seat layout',
+                        collection: SeatLayout.order('name'),
+                        class: 'select2 span3' %>
     </div>
+
+    <br>
+    <%= f.button :submit, class: 'btn btn-green' %>
   <% end %>
 </div>
 

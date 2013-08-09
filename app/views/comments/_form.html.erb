@@ -1,24 +1,28 @@
 <div class="comment-form">
-  <%= simple_form_for comment,
-                      url: order_comments_path,
-                      method: 'post',
-                      remote: true do |f| %>
+  <%= minimal_form_for comment,
+                       url: order_comments_path,
+                       method: 'post',
+                       remote: true,
+                       :html => {:class => 'form-vertical'} do |f| %>
 
-    <%= f.input :body,
-                input_html: { rows: '2' },
-                label: false %>
-    <%= f.input :commentable_id,
-                as: :hidden,
-                value: comment.commentable_id %>
-    <%= f.input :commentable_type,
-                as: :hidden,
-                value: comment.commentable_type %>
-    <%= f.input :order_step,
-                as: :hidden,
-                input_html: { value: comment.order_step } %>
+    <div class="controls controls-row">
+      <%= f.input_field :body,
+                        rows: '4',
+                        placeholder: 'Message',
+                        class: 'span8' %>
+    </div>
+    <%= f.input_field :commentable_id,
+                      as: :hidden,
+                      value: comment.commentable_id %>
+    <%= f.input_field :commentable_type,
+                      as: :hidden,
+                      value: comment.commentable_type %>
+    <%= f.input_field :order_step,
+                      as: :hidden,
+                      input_html: {value: comment.order_step} %>
 
     <%= f.button :submit,
-                 class: 'btn btn-primary',
+                 class: 'btn btn-green',
                  disable_with: 'Submitting…' %>
 
   <% end %>

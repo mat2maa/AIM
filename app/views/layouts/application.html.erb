@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Aim" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Aim" %>">
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    <%= yield(:head) %>
-  </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Aim" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Aim" %>">
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+<div class="navbar navbar-fixed-top">
+  <nav class="navbar-inner">
+    <div class="container">
+      <%= render 'layouts/navigation' %>
     </div>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-             <div class="span12">
-               <%= render 'layouts/messages' %>
-             </div>
-             <%= yield %>
-          </div>
-          <footer>
-          </footer>
+  </nav>
+</div>
+<div id="main" role="main">
+  <div class="container">
+    <div class="content">
+      <div class="row">
+        <div class="span12">
+          <%= render 'layouts/messages' %>
         </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
-    <div class="navbar navbar-fixed-bottom navbar-inverse" id="footer">
-      <div class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/footer' %>
-        </div>
+        <%= yield %>
       </div>
+      <footer>
+      </footer>
     </div>
-  </body>
+  </div>
+  <!--! end of .container -->
+</div>
+<!--! end of #main -->
+<div class="navbar navbar-fixed-bottom navbar-inverse" id="footer">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= render 'layouts/footer' %>
+    </div>
+  </div>
+</div>
+</body>
 </html>

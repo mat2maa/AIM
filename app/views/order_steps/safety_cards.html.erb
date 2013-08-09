@@ -1,8 +1,9 @@
 <div class="span12">
-  <%= simple_nested_form_for @order, url: wizard_path do |f| %>
+  <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
     <h3>Safety cards</h3>
+    <br>
     <%= f.simple_fields_for :safety_card do |safety_card| %>
-      <%= safety_card.input :name, label: 'Safety card name' %>
+      <%= safety_card.input :name, placeholder: 'Safety card name' %>
       <%= safety_card.input :front,
                             label: 'Safety card front',
                             as: :file %>
@@ -10,9 +11,9 @@
                             label: 'Safety card back',
                             as: :file %>
     <% end %>
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
+
+    <br>
+    <%= f.button :submit, class: 'btn btn-green' %>
   <% end %>
 </div>
 

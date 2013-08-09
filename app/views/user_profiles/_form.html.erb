@@ -1,21 +1,44 @@
-<%= simple_form_for(@user_profile) do |f| %>
+<%= minimal_nested_form_for @user_profile,
+                            :html => {:class => 'form-vertical'} do |f| %>
   <%= f.error_notification %>
+  <%= display_base_errors @user_profile %>
 
-  <div class="form-inputs">
-    <%= f.hidden_field :user_id,
-                       value: current_user.id %>
+  <%= f.hidden_field :user_id,
+                     value: current_user.id %>
+  <div class="controls controls-row">
     <%= f.simple_fields_for :airline do |airline| %>
-      <%= airline.input :name, label: 'Airline name' %>
-      <%= airline.input :code, label: 'Airline code' %>
+      <%= airline.input_field :name,
+                              placeholder: 'Airline name',
+                              class: 'span3' %>
+      <%= airline.input_field :code,
+                              placeholder: 'Airline code',
+                              class: 'span3' %>
     <% end %>
-    <%= f.input :contact_name %>
-    <%= f.input :address %>
-    <%= f.input :phone %>
-    <%= f.input :mobile %>
-    <%= f.input :fax %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="controls controls-row">
+    <%= f.input_field :contact_name,
+                      placeholder: 'Contact name',
+                      class: 'span3' %>
   </div>
+  <div class="controls controls-row">
+    <%= f.input_field :address,
+                      placeholder: 'Address',
+                      rows: 4,
+                      class: 'span6' %>
+  </div>
+  <div class="controls controls-row">
+    <%= f.input_field :phone,
+                      placeholder: 'Phone',
+                      class: 'span3' %>
+    <%= f.input_field :mobile,
+                      placeholder: 'Mobile',
+                      class: 'span3' %>
+  </div>
+  <div class="controls controls-row">
+    <%= f.input_field :fax,
+                      placeholder: 'Fax',
+                      class: 'span3' %>
+  </div>
+  <br>
+  <%= f.button :submit, :class => 'btn-green' %>
 <% end %>

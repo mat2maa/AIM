@@ -25,6 +25,12 @@ gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 # Nested Forms
 gem 'nested_form'
 
+# Better select boxes
+gem 'select2-rails'
+
+# Bootstrap date picker
+gem 'bootstrap-datepicker-rails'
+
 # Multistep Forms
 gem 'wicked'
 

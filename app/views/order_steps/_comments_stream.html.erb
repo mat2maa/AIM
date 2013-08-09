@@ -2,9 +2,10 @@
   <hr>
 
   <div class="comments">
-    <h2>Comments</h2>
+    <h3>Comments</h3>
+    <br>
     <%= render partial: 'comments/form',
-               locals: { comment: @new_comment } %>
+               locals: {comment: @new_comment} %>
     <%= render partial: 'comments/comment',
                collection: @comments,
                as: :comment %>

@@ -1,14 +1,20 @@
 <div class="span12">
-  <%= simple_nested_form_for @order, url: wizard_path do |f| %>
+  <h3>Airline branding</h3>
+  <br>
+  <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
     <%= f.simple_fields_for :brandings do |builder| %>
-      <%= f.input :asset,
-                  label: 'Aeroplane branding asset',
-                  as: :file %>
+      <div class="border">
+        <%= image_tag builder.object.asset.url(:original) %>
+        <%= builder.input :asset,
+                          as: :file %>
+        <%= builder.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove branding".html_safe %>
+      </div>
+      <br>
     <% end %>
-    <p><%= f.link_to_add "Add a branding", :brandings %></p>
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
+    <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add branding".html_safe, :brandings %></p>
+
+    <br>
+    <%= f.button :submit, class: 'btn btn-green' %>
   <% end %>
 </div>
 

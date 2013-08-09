@@ -25,11 +25,6 @@ class OrdersController < ApplicationController
   def new
     authorize! :new, Order
     @order = Order.new
-    @order.build_safety_card
-
-    #seats = @order.seats.build
-    #seats.seat_belt_assets.build
-    #seats.seat_assets.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -58,14 +53,13 @@ class OrdersController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.json
   def update
-    respond_to do |format|
-      if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    @order = Order.find(params[:id])
+    if @order.update_attributes(params[:order])
+      session[:order_id] = @order.id
+      redirect_to order_order_step_path(order_id: @order.id, id: :brandings)
+    else
+      format.html { render action: "edit" }
+      format.json { render json: @order.errors, status: :unprocessable_entity }
     end
   end
 

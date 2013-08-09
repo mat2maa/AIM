@@ -1,3 +1,12 @@
+$(document).ready(function() {
+  //enable select2 js
+  $('.select2').select2();
+});
+
+$(document).on('nested:fieldAdded', function(event){
+  $('select.select2').select2();
+});
+
 $(window).load(function () {
   var sound;
   if($('.audio-player')) {

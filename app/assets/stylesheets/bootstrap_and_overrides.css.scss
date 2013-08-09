@@ -3,16 +3,41 @@
 body {
   background-color: #333333;
   padding-top: 160px;
+  padding-bottom: 80px;
   color: #FFFFFF;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 18px;
-  line-height: 28px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+.modal {
+  color: #444;
+  .form-horizontal .controls {
+    margin-left: 150px;
+  }
+}
+
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #555555;
+}
+
+/* Text */
+.red {
+  color: red;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: lighter;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  font-weight: normal;
+  line-height: 1;
+  color: #999999;
 }
 
 pre {
@@ -70,24 +95,13 @@ div {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight:  lighter;
-}
-.red {
-  color:red;
-}
-
 input, textarea, .uneditable-input {
   width: 300px;
 }
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
   display: inline-block;
-  height: 28px;
-  padding: 10px 18px;
   margin-bottom: 0;
-  font-size: 21px;
-  line-height: 20px;
   color: #555555;
   vertical-align: middle;
   background-color: white;
@@ -96,32 +110,24 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
+}
 
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
+textarea {
+  height: auto;
 }
 
 label, input, button, select, textarea {
-  font-size: 21px;
   font-weight: normal;
-  line-height: 28px;
 }
 
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
   border-color: rgba(140, 198, 63, 0.8);
-  border-width: 4px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.075) inset, 0 0 16px rgba(140, 198, 63, 0.6);
   outline: 0 none;
 }
 
-
 .btn {
   display: inline-block;
-  padding: 10px 18px;
-  margin-bottom: 0;
-  font-size: 21px;
-  line-height: 20px;
+  margin-bottom: 5px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -140,9 +146,6 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   border: 1px solid #cccccc;
   border-bottom-color: #b3b3b3;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -150,8 +153,15 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 
 input[type="radio"], input[type="checkbox"] {
   margin: 8px 0 0;
-  margin-top: 1px \9;
+  margin-top: 1px   \9;
   line-height: normal;
+}
+
+input[type="file"] {
+  font-size: 16px;
+  line-height: 16px;
+  margin-top: 10px;
+  height: 20px;
 }
 
 .btn-green {
@@ -173,7 +183,7 @@ input[type="radio"], input[type="checkbox"] {
 
 .content {
   background-color: transparent;
-  border:none;
+  border: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -182,15 +192,76 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .media > .comment > .pull-left {
-  margin-right:10px;
+  margin-right: 10px;
+}
+
+.comment-form {
+  margin-bottom: 50px;
+}
+
+.controls-row {
+  margin: 5px 0;
+  select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    margin: 5px 0 10px 0;
+  }
+}
+
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: 20px;
+}
+
+.help-block {
+  display: block;
+  margin: 0px 0px 10px 0px;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  margin-top: 5px;
+}
+
+.border {
+  border-bottom: 1px solid #555555;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding:0px 0px 20px 0px;
+}
+
+table {
+  font-size: 12px;
+  font-weight: lighter;
+  line-height: 14px;
+  text-align: left;
+
+  td {
+    font-size: 12px;
+    font-weight: lighter;
+    line-height: 14px;
+  }
+
+  td,
+  th {
+    padding:5px 10px;
+  }
+}
+
+// Select2 overrides
+.select2-container {
+  margin-left:0 !important;
+  margin-top:10px;
+  margin-bottom:10px;
 }
 
 // Navbar text
 .brand-text-outer {
-  display:table;
+  display: table;
   height: 104px;
   padding: 0 10px;
 }
+
 .brand-text-outer.pull-left {
   padding: 0 10px 0 0;
 }
@@ -198,36 +269,276 @@ input[type="radio"], input[type="checkbox"] {
 .brand-text-outer.pull-right {
   padding: 0 0 0 10px;
 }
+
 .brand-text-outer .brand-text {
-  font-size: 18px;
-  line-height: 18px;
-  display:table-cell;
+  display: table-cell;
   vertical-align: middle;
 }
+
 .brand-text-outer .brand-text h4 {
-  margin-bottom:2px;
+  margin-bottom: 2px;
 }
+
 .navbar-inverse .brand-text-outer .brand-text {
   color: white;
 }
 
 // Footer text
 #footer .brand-text-outer {
-  display:table;
+  display: table;
   height: 41px;
 }
+
 #footer .brand-text-outer .brand-text {
   font-size: 13px;
   line-height: 13px;
-  display:table-cell;
+  display: table-cell;
   vertical-align: middle;
 }
+
 #footer .navbar-inverse .brand-text-outer .brand-text {
   color: white;
 }
 
 @import "bootstrap-responsive";
 
+/* Large desktop */
+@media (min-width: 1200px) {
+  body {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 40px;
+  }
+
+  h5,
+  h6 {
+    line-height: 34.5px;
+  }
+
+  h1 {
+    font-size: 38.5px;
+  }
+
+  h2 {
+    font-size: 37.5px;
+  }
+
+  h3 {
+    font-size: 34.5px;
+  }
+
+  h4 {
+    font-size: 31.5px;
+  }
+
+  h5 {
+    font-size: 27.5px;
+  }
+
+  h6 {
+    font-size: 24.5px;
+  }
+
+  h1 small {
+    font-size: 24.5px;
+  }
+
+  h2 small {
+    font-size: 17.5px;
+  }
+
+  h3 small {
+    font-size: 14px;
+  }
+
+  h4 small {
+    font-size: 14px;
+  }
+
+  p, ol, ul, td {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+
+    small {
+      font-size: 13px;
+      line-height: 20px;
+    }
+  }
+
+  input, textarea, .uneditable-input {
+    width: 300px;
+  }
+
+  select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    height: 28px;
+    padding: 10px 18px;
+    font-size: 21px;
+    line-height: 28px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  }
+
+  textarea {
+    height: auto;
+  }
+
+  label, input, button, select, textarea {
+    font-size: 21px;
+    line-height: 28px;
+  }
+
+  textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+    border-color: rgba(140, 198, 63, 0.8);
+    border-width: 4px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.075) inset, 0 0 16px rgba(140, 198, 63, 0.6);
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 21px;
+    line-height: 20px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  }
+
+  .btn-small {
+    padding: 2px 10px;
+    font-size: 11.9px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+  }
+
+  .btn-mini {
+    padding: 0px 6px;
+    font-size: 10.5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .controls-row {
+    margin: 5px 0;
+    select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+      margin: 10px 0;
+    }
+  }
+
+  .alert .close {
+    line-height: 28px;
+  }
+
+  .help-block {
+    display: block;
+    margin: 5px 0px 20px 20px;
+  }
+
+  .select2-container .select2-choice {
+    height: 28px;
+    padding: 10px 18px;
+    font-size: 21px;
+    line-height: 28px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  }
+  .select2-dropdown-open .select2-choice {
+    border-bottom-color: transparent;
+    -webkit-box-shadow: 0 1px 0 #fff inset;
+    -moz-box-shadow: 0 1px 0 #fff inset;
+    box-shadow: 0 1px 0 #fff inset;
+    -webkit-border-bottom-left-radius: 0;
+    -moz-border-radius-bottomleft: 0;
+    border-bottom-left-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -moz-border-radius-bottomright: 0;
+    border-bottom-right-radius: 0;
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, white), color-stop(0.5, #eeeeee));
+    background-image: -webkit-linear-gradient(center bottom, white 0%, #eeeeee 50%);
+    background-image: -moz-linear-gradient(center bottom, white 0%, #eeeeee 50%);
+    background-image: -o-linear-gradient(bottom, white 0%, #eeeeee 50%);
+    background-image: -ms-linear-gradient(top, white 0%, #eeeeee 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff',GradientType=0 );
+    background-image: linear-gradient(top, white 0%, #eeeeee 50%);
+  }
+  .select2-drop {
+    width: 100%;
+    margin-top: -1px;
+    position: absolute;
+    z-index: 9999;
+    top: 100%;
+    background: #fff;
+    color: #000;
+    border: 1px solid #aaa;
+    border-top: 0;
+    -webkit-border-radius: 0 0 15px 15px;
+    -moz-border-radius: 0 0 15px 15px;
+    border-radius: 0 0 15px 15px;
+    -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+  }
+  .select2-search input {
+    width: 100%;
+    height: auto !important;
+    min-height: 26px;
+    padding: 4px 20px 4px 5px !important;
+    margin: 0;
+    outline: 0;
+    font-family: sans-serif;
+    font-size: 1em;
+    border: 1px solid #aaa !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: white url(/assets/select2.png) no-repeat 101% -24px;
+    background: url(/assets/select2.png) no-repeat 101% -24px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
+    background: url(/assets/select2.png) no-repeat 101% -24px, -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url(/assets/select2.png) no-repeat 101% -24px, -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);
+    background: url(/assets/select2.png) no-repeat 101% -24px, -o-linear-gradient(bottom, white 85%, #eeeeee 99%);
+    background: url(/assets/select2.png) no-repeat 101% -24px, -ms-linear-gradient(top, white 85%, #eeeeee 99%);
+    background: url(/assets/select2.png) no-repeat 101% -24px, linear-gradient(top, white 85%, #eeeeee 99%);
+  }
+  .select2-container .select2-choice .select2-arrow b {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(/assets/select2.png) no-repeat 0 10px;
+  }
+
+  .brand-text-outer .brand-text {
+    font-size: 18px;
+    line-height: 18px;
+  }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+}
 
 @media (max-width: 979px) {
   .brand-text-outer.pull-left,
@@ -235,3 +546,4 @@ input[type="radio"], input[type="checkbox"] {
     padding: 0 10px;
   }
 }
+

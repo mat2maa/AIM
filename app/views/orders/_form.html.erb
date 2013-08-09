@@ -1,23 +1,27 @@
-<%= simple_nested_form_for @order do |f| %>
+<%= minimal_nested_form_for @order,
+                            :html => {:class => 'form-vertical'} do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <br>
+    <div class="controls controls-row">
+      <%= f.input_field :name,
+                              placeholder: 'Order name',
+                              class: 'span4' %>
+    </div>
 
-    <h5>Please create your order using the form below.</h5>
-    <br>
-    <%= f.input :name %>
-    <%= f.hidden_field :airline_id,
-                       value: current_user.user_profile.airline.id if current_user.user_profile.present? %>
+    <div class="controls controls-row">
+      <%= f.hidden_field :airline_id,
+                         value: current_user.user_profile.airline.id if current_user.user_profile.present? %>
 
-    <%= f.association :aeroplane,
-                      label: 'Aeroplane',
-                      as: :select,
-                      collection: Aeroplane.order('name') %>
+      <%= f.input_field :aeroplane_id,
+                        placeholder: 'Aeroplane',
+                        collection: Aeroplane.order('name'),
+                        class: 'select2 span4'%>
+    </div>
 
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <br>
+
+  <%= f.button :submit, class: 'btn-green' %>
 <% end %>

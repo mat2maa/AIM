@@ -3,11 +3,11 @@
     <h3>Life jackets</h3>
     <%= f.association :life_jackets,
                       collection: LifeJacket.order("name"),
-                      label: 'Life jacket',
+                      label: '',
                       as: :check_boxes %>
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
+
+    <br>
+    <%= f.button :submit, class: 'btn btn-green' %>
   <% end %>
 </div>
 
