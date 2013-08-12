@@ -300,6 +300,28 @@ table {
   color: white;
 }
 
+
+.video {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index: -1000;
+}
+
+#video-background {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+
 @import "bootstrap-responsive";
 
 /* Large desktop */

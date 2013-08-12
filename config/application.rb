@@ -18,6 +18,8 @@ end
 module Aim
   class Application < Rails::Application
 
+    config.middleware.use Rack::Pjax
+
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       

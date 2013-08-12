@@ -19,6 +19,9 @@ gem 'simple_form'
 gem 'yaml_db'
 gem 'rmagick', '2.13.2'
 
+# PJAX (Ajax with pushState)
+gem 'rack-pjax'
+
 # Attachments
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 

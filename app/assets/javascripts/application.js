@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery.pjax
 //= require jquery_nested_form
 //= require select2
 //= require bootstrap-datepicker

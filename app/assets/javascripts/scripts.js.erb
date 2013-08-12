@@ -1,4 +1,39 @@
 $(document).ready(function() {
+
+  $(document).pjax('a', '[data-pjax-container]');
+
+  $(document).on('submit', 'form', function(event) {
+    $.pjax.submit(event, '[data-pjax-container]')
+  });
+
+  $(document).on('pjax:start', function() {
+    console.log("pjax:start");
+  });
+  $(document).on('pjax:end', function() {
+    console.log("pjax:end");
+  });
+  $(document).on('pjax:click', function() {
+    console.log("pjax:click");
+  });
+  $(document).on('pjax:beforeSend', function() {
+    console.log("pjax:beforeSend");
+  });
+  $(document).on('pjax:send', function() {
+    console.log("pjax:send");
+  });
+  $(document).on('pjax:complete', function() {
+    console.log("pjax:complete");
+  });
+  $(document).on('pjax:success', function() {
+    console.log("pjax:success");
+  });
+  $(document).on('pjax:error', function() {
+    console.log("pjax:error");
+  });
+  $(document).on('pjax:timeout', function() {
+    console.log("pjax:timeout");
+  });
+
   //enable select2 js
   $('.select2').select2();
 });
