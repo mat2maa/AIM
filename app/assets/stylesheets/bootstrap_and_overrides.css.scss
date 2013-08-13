@@ -310,7 +310,7 @@ table {
   z-index: -1000;
 }
 
-#video-background {
+.video > video {
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -319,6 +319,15 @@ table {
   width: auto;
   height: auto;
   overflow: hidden;
+  opacity: 0;
+}
+
+#video-background-1 {
+  z-index:2;
+}
+
+#video-background-2 {
+  z-index:1;
 }
 
 
