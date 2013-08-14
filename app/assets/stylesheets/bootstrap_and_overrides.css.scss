@@ -320,14 +320,12 @@ table {
   height: auto;
   overflow: hidden;
   opacity: 0;
+  z-index: 0;
 }
 
-#video-background-1 {
-  z-index:2;
-}
-
-#video-background-2 {
-  z-index:1;
+.video > video.in-view {
+  opacity: 1.0;
+  z-index: 1;
 }
 
 

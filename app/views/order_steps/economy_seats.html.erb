@@ -1,0 +1,17 @@
+<div class="span12">
+  <%= simple_nested_form_for @order, url: wizard_path do |f| %>
+    <h3>Aeroplane seats</h3>
+    <br>
+    <%= f.simple_fields_for :seats do |builder| %>
+      <%= render 'seat_fields',
+                 f: builder %>
+    <% end %>
+    <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a seat".html_safe, :seats %></p>
+
+    <br>
+    <%= f.button :submit, class: 'btn btn-green' %>
+  <% end %>
+</div>
+
+<%= render partial: 'comments_stream' %>
+
