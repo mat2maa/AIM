@@ -7,9 +7,9 @@ $(document).ready(function () {
   $('select.select2').select2();
 
   // PJAX
-  $(document).pjax('a', '[data-pjax-container]');
+  $(document).pjax('a:not(.no-pjax)', '[data-pjax-container]');
 
-  $(document).on('submit', 'form', function (event) {
+  $(document).on('submit', 'form:not(.no-pjax)', function (event) {
     $.pjax.submit(event, '[data-pjax-container]')
   });
 
@@ -18,6 +18,14 @@ $(document).ready(function () {
   $('body').on("click", "#action-button", function () {
     playVideo(video_seats, 0, 1);
   });
+
+  // Side Nav
+  $('body').on("click", '.side-menu-link', function() {
+    $('.side-menu-link').toggleClass('active');
+    $('#wrap').toggleClass('active');
+    return false;
+  });
+
 });
 
 $(document).on('pjax:start', function () {

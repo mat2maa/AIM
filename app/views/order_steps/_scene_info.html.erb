@@ -22,4 +22,6 @@
               next_wizard_path %>
 </div>
 
-<%= render partial: 'comments_stream' %>
+<%= content_for :comments do %>
+  <%= render partial: 'comments_stream' %>
+<% end %>

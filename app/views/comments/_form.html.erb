@@ -3,13 +3,17 @@
                        url: order_comments_path,
                        method: 'post',
                        remote: true,
-                       :html => {:class => 'form-vertical'} do |f| %>
+                       :html => {:class => 'form-vertical no-pjax'} do |f| %>
+
+    <div class="comments-errors">
+      <p></p>
+    </div>
 
     <div class="controls controls-row">
       <%= f.input_field :body,
                         rows: '4',
                         placeholder: 'Message',
-                        class: 'span8' %>
+                        class: 'span5' %>
     </div>
     <%= f.input_field :commentable_id,
                       as: :hidden,

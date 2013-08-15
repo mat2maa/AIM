@@ -48,6 +48,9 @@
         </div>
         <div data-pjax-container>
           <%= yield %>
+          <div class="row wrap span6" id="wrap">
+            <%= yield :comments %>
+          </div>
         </div>
       </div>
       <footer>
