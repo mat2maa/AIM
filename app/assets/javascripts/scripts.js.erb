@@ -1,4 +1,4 @@
-var video1_dom, video2_dom, video_seats_dom, video_boeing_top_dom, video1, video2, video_seats, video_boeing_top, t, href, step, timeout;
+var video1_dom, video2_dom, video_seats_dom, video_boeing_top_dom, video_boeing_full_dom, video1, video2, video_seats, video_boeing_top, video_boeing_full, t, href, step, timeout;
 
 
 $(document).ready(function () {
@@ -104,10 +104,12 @@ function loadVideoAssets() {
   video2_dom = $('#video-background-2');
   video_seats_dom = $('#video-background-seats');
   video_boeing_top_dom = $('#video-background-boeing-top');
+  video_boeing_full_dom = $('#video-background-boeing-full');
   video1 = video1_dom.get(0);
   video2 = video2_dom.get(0);
   video_seats = video_seats_dom.get(0);
   video_boeing_top = video_boeing_top_dom.get(0);
+  video_boeing_full = video_boeing_full_dom.get(0);
 }
 
 function videoSwitch() {
@@ -119,157 +121,157 @@ function videoSwitch() {
   switch (step) {
     case "edit":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
       if(t > 0.4) {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
       } else {
-        video_boeing_top.currentTime = 0.0;
+        video_boeing_full.currentTime = 0.0;
         setTimeout(function() {
-          playVideo(video_boeing_top, 0.0, 1.04);
+          playVideo(video_boeing_full, 0.0, 1.5);
         }, timeout);
       }
       break;
     case "brandings":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
       if(t > 0.4) {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
       } else {
-        video_boeing_top.currentTime = 0.0;
+        video_boeing_full.currentTime = 0.0;
         setTimeout(function() {
-          playVideo(video_boeing_top, 0.0, 1.04);
+          playVideo(video_boeing_full, 0.0, 1.5);
         }, timeout);
       }
       break;
     case "liveries":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
       if(t > 0.4) {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
       } else {
-        video_boeing_top.currentTime = 0.0;
+        video_boeing_full.currentTime = 0.0;
         setTimeout(function() {
-          playVideo(video_boeing_top, 0.0, 1.04);
+          playVideo(video_boeing_full, 0.0, 1.5);
         }, timeout);
       }
       break;
     case "seat_layouts":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
-      if(t > 1.44) {
-        video_boeing_top.currentTime = 2.16;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 1.9) {
+        video_boeing_full.currentTime = 3.2;
       } else {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
         setTimeout(function() {
-          playVideo(video_boeing_top, 1.04, 2.16);
+          playVideo(video_boeing_full, 1.5, 3.2);
         }, timeout);
       }
       break;
     case "life_jackets":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
-      if(t > 1.44) {
-        video_boeing_top.currentTime = 2.16;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 1.9) {
+        video_boeing_full.currentTime = 3.2;
       } else {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
         setTimeout(function() {
-          playVideo(video_boeing_top, 1.04, 2.16);
+          playVideo(video_boeing_full, 1.5, 3.2);
         }, timeout);
       }
       break;
     case "consoles":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
-      if(t > 1.44) {
-        video_boeing_top.currentTime = 2.16;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 1.9) {
+        video_boeing_full.currentTime = 3.2;
       } else {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
         setTimeout(function() {
-          playVideo(video_boeing_top, 1.04, 2.16);
+          playVideo(video_boeing_full, 1.5, 3.2);
         }, timeout);
       }
       break;
     case "bins":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
-      if(t > 1.44) {
-        video_boeing_top.currentTime = 2.16;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 1.9) {
+        video_boeing_full.currentTime = 3.2;
       } else {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
         setTimeout(function() {
-          playVideo(video_boeing_top, 1.04, 2.16);
+          playVideo(video_boeing_full, 1.5, 3.2);
         }, timeout);
       }
       break;
     case "lavatories":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
-      if(t > 1.44) {
-        video_boeing_top.currentTime = 2.16;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 1.9) {
+        video_boeing_full.currentTime = 3.2;
       } else {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
         setTimeout(function() {
-          playVideo(video_boeing_top, 1.04, 2.16);
+          playVideo(video_boeing_full, 1.5, 3.2);
         }, timeout);
       }
       break;
     case "open_exit_doors":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
-      if(t > 1.44) {
-        video_boeing_top.currentTime = 2.16;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 1.9) {
+        video_boeing_full.currentTime = 3.2;
       } else {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
         setTimeout(function() {
-          playVideo(video_boeing_top, 1.04, 2.16);
+          playVideo(video_boeing_full, 1.5, 3.2);
         }, timeout);
       }
       break;
     case "closed_exit_doors":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
-      if(t > 1.44) {
-        video_boeing_top.currentTime = 2.16;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 1.9) {
+        video_boeing_full.currentTime = 3.2;
       } else {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
         setTimeout(function() {
-          playVideo(video_boeing_top, 1.04, 2.16);
+          playVideo(video_boeing_full, 1.5, 3.2);
         }, timeout);
       }
       break;
     case "carpet_textures":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
-      if(t > 1.44) {
-        video_boeing_top.currentTime = 2.16;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 1.9) {
+        video_boeing_full.currentTime = 3.2;
       } else {
-        video_boeing_top.currentTime = 1.04;
+        video_boeing_full.currentTime = 1.5;
         setTimeout(function() {
-          playVideo(video_boeing_top, 1.04, 2.16);
+          playVideo(video_boeing_full, 1.5, 3.2);
         }, timeout);
       }
       break;
     case "economy_seats":
       $('.video > video').removeClass("in-view");
-      video_boeing_top_dom.addClass("in-view");
-      t = video_boeing_top.currentTime;
-      if(t > 2.56) {
-        video_boeing_top.currentTime = 3.0;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 3.6) {
+        video_boeing_full.currentTime = 5.0;
       } else {
-        video_boeing_top.currentTime = 2.16;
+        video_boeing_full.currentTime = 3.2;
         setTimeout(function() {
-          playVideo(video_boeing_top, 2.16, 3.0);
+          playVideo(video_boeing_full, 3.2, 5.0);
         }, timeout);
       }
       break;
@@ -288,26 +290,26 @@ function videoSwitch() {
 //      break;
     case "business_seats":
       $('.video > video').removeClass("in-view");
-      video_seats_dom.addClass("in-view");
-      t = video_seats.currentTime;
-      if(t > 0.9) {
-        video_seats.currentTime = 1.2;
+      video_boeing_full_dom.addClass("in-view");
+      t = video_boeing_full.currentTime;
+      if(t > 5.4) {
+        video_boeing_full.currentTime = 5.6;
       } else {
-        video_seats.currentTime = 0.5;
+        video_boeing_full.currentTime = 5.0;
         setTimeout(function() {
-          playVideo(video_seats, 0.5, 1.2);
+          playVideo(video_boeing_full, 5.0, 5.6);
         }, timeout);
       }
       break;
     case "first_class_seats":
       $('.video > video').removeClass("in-view");
-      video_seats_dom.addClass("in-view");
-      if(t > 1.6) {
-        video_seats.currentTime = 2.0;
+      video_boeing_full_dom.addClass("in-view");
+      if(t > 6.0) {
+        video_boeing_full.currentTime = 6.3;
       } else {
-        video_seats.currentTime = 1.2;
+        video_boeing_full.currentTime = 5.6;
         setTimeout(function() {
-          playVideo(video_seats, 1.2, 2.0);
+          playVideo(video_boeing_full, 5.6, 6.3);
         }, timeout);
       }
       break;
