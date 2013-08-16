@@ -21,3 +21,26 @@
 <%= content_for :comments do %>
   <%= render partial: 'comments_stream' %>
 <% end %>
+
+<%= content_for :helper do %>
+  <div class="step-counter">
+    <p style="left: <%= ((300/3) + (700/8) + (0/3) + (0/40))/4 %>%"><strong>Step 1:</strong> Carpet textures</p>
+  </div>
+<% end %>
+
+<%= content_for :progress do %>
+  <div class="progress-indicator">
+    <div class="progress-indicator-background progress-indicator-background-25">
+      <div class="progress-indicator-inner progress-indicator-inner-25" style="width: 100%;"></div>
+    </div>
+    <div class="progress-indicator-background progress-indicator-background-50">
+      <div class="progress-indicator-inner progress-indicator-inner-50" style="width: <%= 800/8 %>%;"></div>
+    </div>
+    <div class="progress-indicator-background progress-indicator-background-75">
+      <div class="progress-indicator-inner progress-indicator-inner-75" style="width: 0%;"></div>
+    </div>
+    <div class="progress-indicator-background progress-indicator-background-100">
+      <div class="progress-indicator-inner progress-indicator-inner-100" style="width: 0%;"></div>
+    </div>
+  </div>
+<% end %>

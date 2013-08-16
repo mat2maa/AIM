@@ -11,16 +11,16 @@
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
 <div class="navbar navbar-fixed-top">
-  <nav class="navbar-inner">
+  <nav class="navbar-inner navbar-inner-transparent">
     <div class="container">
       <%= render 'layouts/navigation' %>
     </div>
   </nav>
 </div>
 <div class="video">
-  <video id="video-background-boeing-full" preload="auto" muted="muted" volume="0">
-    <source src="<%= asset_path('boeing_full.webm') %>" type="video/webm">
-    <source src="<%= asset_path('boeing_full.mp4') %>" type="video/mp4">
+  <video id="video-background-final-menu" preload="auto" muted="muted" volume="0">
+    <source src="<%= asset_path('final_menu.webm') %>" type="video/webm">
+    <source src="<%= asset_path('final_menu.mp4') %>" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <!--<video id="video-background-1" preload="auto" muted="muted" volume="0">-->
@@ -65,15 +65,9 @@
   <!--! end of .container -->
 </div>
 <!--! end of #main -->
-<div class="navbar navbar-fixed-bottom" id="helper">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= yield :helper %>
-      <%= yield :progress %>
-    </div>
-  </div>
-</div>
 <div class="navbar navbar-fixed-bottom navbar-inverse" id="footer">
+  <%= yield :helper %>
+  <%= yield :progress %>
   <div class="navbar-inner">
     <div class="container">
       <%= render 'layouts/footer' %>
