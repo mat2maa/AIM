@@ -4,9 +4,8 @@
 
   <div class="form-inputs">
     <div class="controls controls-row">
-      <%= f.input_field :name,
-                              placeholder: 'Order name',
-                              class: 'span4' %>
+      <%= f.hidden_field :name,
+                         value: current_user.user_profile.airline.name if current_user.user_profile.present? %>
     </div>
 
     <div class="controls controls-row">
@@ -20,8 +19,5 @@
     </div>
 
   </div>
-
-  <br>
-
   <%= f.button :submit, class: 'btn-green' %>
 <% end %>

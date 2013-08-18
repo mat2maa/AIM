@@ -1,8 +1,8 @@
 <%= content_for :order_title do %>
-  <h3>Aircraft and branding</h3>
+  <h2>Aircraft and branding</h2>
 <% end %>
 
-<%= content_for :order_steps do %>
+<%= content_for :order_steps_footer do %>
   <div class="span12">
     <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
       <h3>Seat layouts</h3>
