@@ -1,11 +1,17 @@
-<div class="span12">
-  <h3>Please edit your order using the form below.</h3>
-  <br>
-  <%= render 'form' %>
+<%= content_for :order_title do %>
+  <h3>Aircraft and branding</h3>
+<% end %>
 
-  <%= link_to 'Show', @order %> |
-  <%= link_to 'Back', orders_path %>
-</div>
+<%= content_for :order_steps do %>
+  <div class="span12">
+    <h3>Please edit your order using the form below.</h3>
+    <br>
+    <%= render 'form' %>
+
+    <%= link_to 'Show', @order %> |
+    <%= link_to 'Back', orders_path %>
+  </div>
+<% end %>
 
 <%= content_for :helper do %>
   <div class="step-counter">

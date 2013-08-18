@@ -1,22 +1,28 @@
-<div class="span12">
-  <h3>Aeroplane carpet texture</h3>
-  <br>
-  <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
-    <%= f.simple_fields_for :carpet_textures do |builder| %>
-      <div class="border">
-        <%= image_tag builder.object.asset.url(:original) %>
-        <%= builder.input :asset,
-                          as: :file %>
-        <%= builder.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove carpet texture".html_safe %>
-      </div>
-      <br>
-    <% end %>
-    <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a carpet texture".html_safe, :carpet_textures %></p>
+<%= content_for :order_title do %>
+  <h3>Aircraft and branding</h3>
+<% end %>
 
+<%= content_for :order_steps do %>
+  <div class="span12">
+    <h3>Aeroplane carpet texture</h3>
     <br>
-    <%= f.button :submit, class: 'btn btn-green' %>
-  <% end %>
-</div>
+    <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
+      <%= f.simple_fields_for :carpet_textures do |builder| %>
+        <div class="border">
+          <%= image_tag builder.object.asset.url(:original) %>
+          <%= builder.input :asset,
+                            as: :file %>
+          <%= builder.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove carpet texture".html_safe %>
+        </div>
+        <br>
+      <% end %>
+      <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a carpet texture".html_safe, :carpet_textures %></p>
+
+      <br>
+      <%= f.button :submit, class: 'btn btn-green' %>
+    <% end %>
+  </div>
+<% end %>
 
 <%= content_for :comments do %>
   <%= render partial: 'comments_stream' %>
@@ -24,7 +30,7 @@
 
 <%= content_for :helper do %>
   <div class="step-counter">
-    <p style="left: <%= ((300/3) + (700/8) + (0/3) + (0/40))/4 %>%"><strong>Step 1:</strong> Carpet textures</p>
+    <p style="left: <%= ((300/3) + (700/8) + (0/3) + (0/40))/4 %>%"><strong>Step 11:</strong> Carpet textures</p>
   </div>
 <% end %>
 

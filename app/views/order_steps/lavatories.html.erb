@@ -1,22 +1,28 @@
-<div class="span12">
-  <h3>Aeroplane lavatory</h3>
-  <br>
-  <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
-    <%= f.simple_fields_for :lavatories do |builder| %>
-      <div class="border">
-        <%= image_tag builder.object.asset.url(:original) %>
-        <%= builder.input :asset,
-                          as: :file %>
-        <%= builder.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove lavatory".html_safe %>
-      </div>
-      <br>
-    <% end %>
-    <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a lavatory".html_safe, :lavatories %></p>
+<%= content_for :order_title do %>
+  <h3>Aircraft and branding</h3>
+<% end %>
 
+<%= content_for :order_steps do %>
+  <div class="span12">
+    <h3>Aeroplane lavatory</h3>
     <br>
-    <%= f.button :submit, class: 'btn btn-green' %>
-  <% end %>
-</div>
+    <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
+      <%= f.simple_fields_for :lavatories do |builder| %>
+        <div class="border">
+          <%= image_tag builder.object.asset.url(:original) %>
+          <%= builder.input :asset,
+                            as: :file %>
+          <%= builder.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove lavatory".html_safe %>
+        </div>
+        <br>
+      <% end %>
+      <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a lavatory".html_safe, :lavatories %></p>
+
+      <br>
+      <%= f.button :submit, class: 'btn btn-green' %>
+    <% end %>
+  </div>
+<% end %>
 
 <%= content_for :comments do %>
   <%= render partial: 'comments_stream' %>
@@ -24,7 +30,7 @@
 
 <%= content_for :helper do %>
   <div class="step-counter">
-    <p style="left: <%= ((300/3) + (400/8) + (0/3) + (0/40))/4 %>%"><strong>Step 1:</strong> Lavatories</p>
+    <p style="left: <%= ((300/3) + (400/8) + (0/3) + (0/40))/4 %>%"><strong>Step 8:</strong> Lavatories</p>
   </div>
 <% end %>
 

@@ -21,7 +21,7 @@ $(document).ready(function () {
 //  });
 
   // Side Nav
-  $('body').on("click", '.side-menu-link', function() {
+  $('body').on("click", '.side-menu-link', function () {
     $('.side-menu-link').toggleClass('active');
     $('#wrap').toggleClass('active');
     return false;
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 $(document).on('pjax:start', function () {
   console.log("pjax:start");
-  $('#main').fadeOut("fast");
+  $('#pjax-container').fadeOut("fast");
 });
 $(document).on('pjax:waiting', function () {
   console.log("pjax:waiting");
@@ -40,7 +40,7 @@ $(document).on('pjax:end', function () {
   console.log("pjax:end");
   videoSwitch();
   $('select.select2').select2();
-  $('#main').fadeIn("slow");
+  $('#pjax-container').fadeIn("fast");
 });
 $(document).on('pjax:click', function () {
   console.log("pjax:click");
@@ -138,202 +138,201 @@ function videoSwitch() {
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 1.7) {
+      if (t == 1.7) {
         video_final_menu.currentTime = 1.7;
       } else {
         video_final_menu.currentTime = 0.0;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 0.0, 1.5, 1.7);
         }, timeout);
       }
-      progress25.width(100/3 + "%");
+      progress25.width(100 / 3 + "%");
       progress50.width("0%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((0/3) + (0/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Aircraft make and model");
+      stepCounter.find("p").css({left: ((0 / 3) + (0 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 1:</strong> Aircraft make and model");
       break;
     case "brandings":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 1.7) {
+      if (t == 1.7) {
         video_final_menu.currentTime = 1.7;
       } else {
         video_final_menu.currentTime = 0.0;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 0.0, 1.5, 1.7);
         }, timeout);
       }
-      progress25.width(200/3 + "%");
+      progress25.width(200 / 3 + "%");
       progress50.width("0%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((100/3) + (0/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Brandings");
+      stepCounter.find("p").css({left: ((100 / 3) + (0 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 2:</strong> Brandings");
       break;
     case "liveries":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 1.7 || t == 3.3) {
+      if (t == 1.7 || t == 3.3) {
         video_final_menu.currentTime = 1.7;
       } else {
         video_final_menu.currentTime = 0.0;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 0.0, 1.5, 1.7)
-              .text("Aircraft make and model");
         }, timeout);
       }
       progress25.width("100%");
       progress50.width("0%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((200/3) + (0/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Liveries");
+      stepCounter.find("p").css({left: ((200 / 3) + (0 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 3:</strong> Liveries");
       break;
     case "seat_layouts":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 3.3) {
+      if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.currentTime = 1.7;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 1.7, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
-      progress50.width(100/8 + "%");
+      progress50.width(100 / 8 + "%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (0/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Seat layouts");
+      stepCounter.find("p").css({left: ((300 / 3) + (0 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 4:</strong> Seat layouts");
       break;
     case "life_jackets":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 3.3) {
+      if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.currentTime = 1.7;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 1.7, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
-      progress50.width(200/8 + "%");
+      progress50.width(200 / 8 + "%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (100/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Life jackets");
+      stepCounter.find("p").css({left: ((300 / 3) + (100 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 5:</strong> Life jackets");
       break;
     case "consoles":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 3.3) {
+      if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.currentTime = 1.7;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 1.7, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
-      progress50.width(300/8 + "%");
+      progress50.width(300 / 8 + "%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (200/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Consoles");
+      stepCounter.find("p").css({left: ((300 / 3) + (200 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 6:</strong> Consoles");
       break;
     case "bins":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 3.3) {
+      if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.currentTime = 1.7;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 1.7, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
-      progress50.width(400/8 + "%");
+      progress50.width(400 / 8 + "%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (300/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Bins");
+      stepCounter.find("p").css({left: ((300 / 3) + (300 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 7:</strong> Bins");
       break;
     case "lavatories":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 3.3) {
+      if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.currentTime = 1.7;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 1.7, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
-      progress50.width(500/8 + "%");
+      progress50.width(500 / 8 + "%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (400/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Lavatories");
+      stepCounter.find("p").css({left: ((300 / 3) + (400 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 8:</strong> Lavatories");
       break;
     case "open_exit_doors":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 3.3) {
+      if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.currentTime = 1.7;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 1.7, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
-      progress50.width(600/8 + "%");
+      progress50.width(600 / 8 + "%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (500/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Open exit doors");
+      stepCounter.find("p").css({left: ((300 / 3) + (500 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 9:</strong> Open exit doors");
       break;
     case "closed_exit_doors":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 3.3) {
+      if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.currentTime = 1.7;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 1.7, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
-      progress50.width(700/8 + "%");
+      progress50.width(700 / 8 + "%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (600/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Closed exit doors");
+      stepCounter.find("p").css({left: ((300 / 3) + (600 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 10:</strong> Closed exit doors");
       break;
     case "carpet_textures":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 3.3 || t == 5.2) {
+      if (t == 3.3 || t == 5.2) {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.currentTime = 1.7;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 1.7, 3.1, 3.3);
         }, timeout);
       }
@@ -341,27 +340,27 @@ function videoSwitch() {
       progress50.width("100%");
       progress75.width("0%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (700/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Carpet textures");
+      stepCounter.find("p").css({left: ((300 / 3) + (700 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 11:</strong> Carpet textures");
       break;
     case "economy_seats":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 6.0) {
+      if (t == 6.0) {
         video_final_menu.currentTime = 5.2;
       } else {
         video_final_menu.currentTime = 3.3;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 3.3, 5.0, 5.2);
         }, timeout);
       }
       progress25.width("100%");
       progress50.width("100%");
-      progress75.width(100/3 + "%");
+      progress75.width(100 / 3 + "%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (800/8) + (0/3) + (0/40))/4 + "%"})
-          .text("Economy seats");
+      stepCounter.find("p").css({left: ((300 / 3) + (800 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 12:</strong> Economy seats");
       break;
 //    case "economy_seats":
 //      $('.video > video').removeClass("in-view");
@@ -380,34 +379,34 @@ function videoSwitch() {
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if(t == 6.7) {
+      if (t == 6.7) {
         video_final_menu.currentTime = 6.0;
       } else {
         video_final_menu.currentTime = 5.2;
-        setTimeout(function() {
+        setTimeout(function () {
           playVideo(video_final_menu, 5.2, 5.8, 6.0);
         }, timeout);
       }
       progress25.width("100%");
       progress50.width("100%");
-      progress75.width(200/3 + "%");
+      progress75.width(200 / 3 + "%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (800/8) + (100/3) + (0/40))/4 + "%"})
-          .text("Business seats");
+      stepCounter.find("p").css({left: ((300 / 3) + (800 / 8) + (100 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 13:</strong> Business seats");
       break;
     case "first_class_seats":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       video_final_menu.currentTime = 6.0;
-      setTimeout(function() {
+      setTimeout(function () {
         playVideo(video_final_menu, 6.0, 7.2, 7.4);
       }, timeout);
       progress25.width("100%");
       progress50.width("100%");
       progress75.width("100%");
       progress100.width("0%");
-      stepCounter.find("p").css({left: ((300/3) + (800/8) + (200/3) + (0/40))/4 + "%"})
-          .text("First class seats");
+      stepCounter.find("p").css({left: ((300 / 3) + (800 / 8) + (200 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 14:</strong> First class seats");
       break;
     default:
       $('.video > video').removeClass("in-view");

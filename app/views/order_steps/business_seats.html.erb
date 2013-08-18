@@ -1,17 +1,23 @@
-<div class="span12">
-  <%= simple_nested_form_for @order, url: wizard_path do |f| %>
-    <h3>Aeroplane seats</h3>
-    <br>
-    <%= f.simple_fields_for :seats do |builder| %>
-      <%= render 'seat_fields',
-                 f: builder %>
-    <% end %>
-    <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a seat".html_safe, :seats %></p>
+<%= content_for :order_title do %>
+  <h3>Aircraft and branding</h3>
+<% end %>
 
-    <br>
-    <%= f.button :submit, class: 'btn btn-green' %>
-  <% end %>
-</div>
+<%= content_for :order_steps do %>
+  <div class="span12">
+    <%= simple_nested_form_for @order, url: wizard_path do |f| %>
+      <h3>Aeroplane seats</h3>
+      <br>
+      <%= f.simple_fields_for :seats do |builder| %>
+        <%= render 'seat_fields',
+                   f: builder %>
+      <% end %>
+      <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a seat".html_safe, :seats %></p>
+
+      <br>
+      <%= f.button :submit, class: 'btn btn-green' %>
+    <% end %>
+  </div>
+<% end %>
 
 <%= content_for :comments do %>
   <%= render partial: 'comments_stream' %>
@@ -19,7 +25,7 @@
 
 <%= content_for :helper do %>
   <div class="step-counter">
-    <p style="left: <%= ((300/3) + (800/8) + (100/3) + (0/40))/4 %>%"><strong>Step 1:</strong> Business Seats</p>
+    <p style="left: <%= ((300/3) + (800/8) + (100/3) + (0/40))/4 %>%"><strong>Step 13:</strong> Business Seats</p>
   </div>
 <% end %>
 

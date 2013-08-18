@@ -1,22 +1,28 @@
-<div class="span12">
-  <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
-    <h3>Safety cards</h3>
-    <br>
-    <%= f.simple_fields_for :safety_card do |safety_card| %>
-      <%= safety_card.input :name, placeholder: 'Safety card name' %>
-      <%= safety_card.input :front,
-                            label: 'Safety card front',
-                            as: :file %>
-      <%= safety_card.input :back,
-                            label: 'Safety card back',
-                            as: :file %>
+<%= content_for :order_title do %>
+  <h3>Aircraft and branding</h3>
+<% end %>
+
+<%= content_for :order_steps do %>
+  <div class="span12">
+    <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
+      <h3>Safety cards</h3>
+      <br>
+      <%= f.simple_fields_for :safety_card do |safety_card| %>
+        <%= safety_card.input :name, placeholder: 'Safety card name' %>
+        <%= safety_card.input :front,
+                              label: 'Safety card front',
+                              as: :file %>
+        <%= safety_card.input :back,
+                              label: 'Safety card back',
+                              as: :file %>
+      <% end %>
+
+      <br>
+      <%= f.button :submit, class: 'btn btn-green' %>
     <% end %>
+  </div>
 
-    <br>
-    <%= f.button :submit, class: 'btn btn-green' %>
+  <%= content_for :comments do %>
+    <%= render partial: 'comments_stream' %>
   <% end %>
-</div>
-
-<%= content_for :comments do %>
-  <%= render partial: 'comments_stream' %>
 <% end %>

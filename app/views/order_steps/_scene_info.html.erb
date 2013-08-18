@@ -1,26 +1,33 @@
-<div class="span4">
-  <%= image_tag @scene.screenshot.url %>
-</div>
-<div class="span8">
-  <p>
-    script_id: <%= @scene.script_id %><br>
-    sequence_position: <%= @scene.sequence_position %><br>
-    storyboard: <%= @scene.storyboard %><br>
-    english_subtitle: <%= @scene.english_subtitle %><br>
-    foreign_subtitle_1: <%= @scene.foreign_subtitle_1 %><br>
-    foreign_subtitle_2: <%= @scene.foreign_subtitle_2 %><br>
-  </p>
-</div>
+<%= content_for :order_title do %>
+  <h3>Aircraft and branding</h3>
+<% end %>
 
-<%= render partial: 'audio_player' %>
+<%= content_for :order_steps do %>
+  <div class="span4">
+    <%= image_tag @scene.screenshot.url %>
+  </div>
+  <div class="span8">
+    <p>
+      script_id: <%= @scene.script_id %><br>
+      sequence_position: <%= @scene.sequence_position %><br>
+      storyboard: <%= @scene.storyboard %><br>
+      english_subtitle: <%= @scene.english_subtitle %><br>
+      foreign_subtitle_1: <%= @scene.foreign_subtitle_1 %><br>
+      foreign_subtitle_2: <%= @scene.foreign_subtitle_2 %><br>
+    </p>
+  </div>
 
-<div class="span12">
-  <%= link_to 'previous',
-              previous_wizard_path %>
-  |
-  <%= link_to 'next',
-              next_wizard_path %>
-</div>
+  <%= render partial: 'audio_player' %>
+
+  <div class="span12">
+    <%= link_to 'previous',
+                previous_wizard_path %>
+    |
+    <%= link_to 'next',
+                next_wizard_path %>
+
+  </div>
+<% end %>
 
 <%= content_for :comments do %>
   <%= render partial: 'comments_stream' %>
