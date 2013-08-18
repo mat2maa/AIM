@@ -7,17 +7,18 @@ $(document).ready(function () {
   $('select.select2').select2();
 
   // PJAX
-  $(document).pjax('a:not(.no-pjax)', '[data-pjax-container]');
+  var duration = 500;
+  $(document).pjax('a:not(.no-pjax)', '[data-pjax-container]', { duration: duration });
 
   $(document).on('submit', 'form:not(.no-pjax)', function (event) {
-    $.pjax.submit(event, '[data-pjax-container]')
+    $.pjax.submit(event, '[data-pjax-container]', { duration: duration })
   });
 
-  $('body').append('<div id="action-button" style="position: fixed; top: 0; left: 0; width: 100px; height: 50px; background-color: cadetblue; z-index: 3000; cursor: pointer;">Click!</div>');
-
-  $('body').on("click", "#action-button", function () {
-    playVideo(video_seats, 0, 1);
-  });
+//  $('body').append('<div id="action-button" style="position: fixed; top: 0; left: 0; width: 100px; height: 50px; background-color: cadetblue; z-index: 3000; cursor: pointer;">Click!</div>');
+//
+//  $('body').on("click", "#action-button", function () {
+//    playVideo(video_seats, 0, 1);
+//  });
 
   // Side Nav
   $('body').on("click", '.side-menu-link', function() {
@@ -30,11 +31,16 @@ $(document).ready(function () {
 
 $(document).on('pjax:start', function () {
   console.log("pjax:start");
+  $('#main').fadeOut("fast");
+});
+$(document).on('pjax:waiting', function () {
+  console.log("pjax:waiting");
 });
 $(document).on('pjax:end', function () {
   console.log("pjax:end");
   videoSwitch();
   $('select.select2').select2();
+  $('#main').fadeIn("slow");
 });
 $(document).on('pjax:click', function () {
   console.log("pjax:click");
