@@ -1,8 +1,4 @@
-<div class="span12">
-  <div class="step-counter">
-    <p>Scene <%= @step = wizard_path.split("_").last %> of 40</p>
-  </div>
-</div>
+<% @step = wizard_path.split("_").last %>
 
 <%= render partial: 'scene_info',
            locals: {step: @step} %>

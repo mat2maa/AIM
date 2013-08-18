@@ -1,7 +1,3 @@
-<div class="span4">&nbsp;</div>
-<div class="span8">
-  <div class="audio-player" data-audio-file="<%= asset_path("scene_" + @step + ".mp3") %>">
-    Audio file: <a href="#" class="play-button">Play</a> | <a href="#" class="stop-button">Stop</a> |
-    <a href="#" class="pause-button">Pause</a>
-  </div>
-</div>
+<span class="audio-player" data-audio-file="<%= asset_path("scene_" + @step + ".mp3") %>">
+  <a href="#" class="play-button"><%= image_tag "play.png" %></a>
+</span>

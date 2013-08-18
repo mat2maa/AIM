@@ -5,6 +5,7 @@ $(document).ready(function () {
 
   // enable select2 js
   $('select.select2').select2();
+  $('select.select2-fixed-width').select2({width: "200px"});
 
   // PJAX
   var duration = 500;
@@ -40,6 +41,7 @@ $(document).on('pjax:end', function () {
   console.log("pjax:end");
   videoSwitch();
   $('select.select2').select2();
+  $('select.select2-fixed-width').select2({width: "200px"});
   $('#pjax-container').fadeIn("fast");
 });
 $(document).on('pjax:click', function () {
@@ -66,6 +68,7 @@ $(document).on('pjax:timeout', function () {
 
 $(document).on('nested:fieldAdded', function (event) {
   $('select.select2').select2();
+  $('select.select2-fixed-width').select2({width: "200px"});
 });
 
 $(window).load(function () {

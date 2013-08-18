@@ -1,23 +1,13 @@
 <%= content_for :order_title do %>
-  <h3>Aircraft and branding</h3>
+  <h3>Storyboard and script</h3>
 <% end %>
 
 <%= content_for :order_steps do %>
   <div class="span4">
-    <%= image_tag @scene.screenshot.url %>
+    <h3>Scene <%= wizard_path.split("_").last %></h3>
+    <br>
+    <p><%= @scene.storyboard %></p>
   </div>
-  <div class="span8">
-    <p>
-      script_id: <%= @scene.script_id %><br>
-      sequence_position: <%= @scene.sequence_position %><br>
-      storyboard: <%= @scene.storyboard %><br>
-      english_subtitle: <%= @scene.english_subtitle %><br>
-      foreign_subtitle_1: <%= @scene.foreign_subtitle_1 %><br>
-      foreign_subtitle_2: <%= @scene.foreign_subtitle_2 %><br>
-    </p>
-  </div>
-
-  <%= render partial: 'audio_player' %>
 
   <div class="span12">
     <%= link_to 'previous',
@@ -28,6 +18,39 @@
 
   </div>
 <% end %>
+
+<div class="span12">
+  <ul>
+    <li>Voice Over: &nbsp;
+      <select name="voice_over_language" class="select2-fixed-width" id="voice-over-select">
+        <option value="english" selected="selected">English</option>
+        <option value="cantonese">Cantonese</option>
+        <option value="mandarin">Mandarin</option>
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp; <%= @scene.english_subtitle %>&nbsp;&nbsp;<%= render partial: 'audio_player' %>
+    </li>
+    <hr>
+    <li>Subtitle 1: &nbsp;&nbsp;&nbsp;
+      <select name="voice_over_language" class="select2-fixed-width" id="subtitle-1-select">
+        <option value="english">English</option>
+        <option value="cantonese" selected="selected">Cantonese</option>
+        <option value="mandarin">Mandarin</option>
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp; <%= @scene.foreign_subtitle_1 %>
+    </li>
+    <hr>
+    <li>Subtitle 2: &nbsp;&nbsp;&nbsp;
+      <select name="voice_over_language" class="select2-fixed-width" id="subtitle-2-select">
+        <option value="english">English</option>
+        <option value="cantonese">Cantonese</option>
+        <option value="mandarin" selected="selected">Mandarin</option>
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp; <%= @scene.foreign_subtitle_2 %>
+    </li>
+  </ul>
+</div>
+
+
 
 <%= content_for :comments do %>
   <%= render partial: 'comments_stream' %>

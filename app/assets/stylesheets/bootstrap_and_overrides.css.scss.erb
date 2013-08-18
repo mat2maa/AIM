@@ -114,6 +114,13 @@ body {
   background: rgba(0, 0, 0, 0.55);
 }
 
+#order-steps-footer-outer {
+  bottom: 47px;
+}
+#order-steps-footer {
+  background: rgba(0, 0, 0, 0.55);
+}
+
 .modal {
   color: #444;
   .form-horizontal .controls {
@@ -166,6 +173,11 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
 }
 
 .navbar-inner-transparent {
@@ -306,8 +318,12 @@ input[type="file"] {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  padding: 20px;
+  padding: 0;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+}
+
+[class*="span"] {
+  padding: 20px 0;
 }
 
 .media > .comment > .pull-left {
@@ -457,7 +473,7 @@ table {
 .step-counter {
   position:absolute;
   width:100%;
-  top:-15px;
+  margin-top:-15px;
 }
 
 .step-counter > p {
