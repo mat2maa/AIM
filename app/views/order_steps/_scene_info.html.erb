@@ -8,15 +8,13 @@
     <br>
     <p><%= @scene.storyboard %></p>
   </div>
-
-  <div class="span12">
-    <%= link_to 'previous',
-                previous_wizard_path %>
-    |
-    <%= link_to 'next',
-                next_wizard_path %>
-
+  <div class="span4">
+    <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last}.png" %>
   </div>
+  <div class="span4">
+    <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 1}.png" %>
+  </div>
+
 <% end %>
 
 <div class="span12">
@@ -48,6 +46,15 @@
       &nbsp;&nbsp;&nbsp;&nbsp; <%= @scene.foreign_subtitle_2 %>
     </li>
   </ul>
+</div>
+
+<div class="span12">
+  <%= link_to 'previous',
+              previous_wizard_path %>
+  |
+  <%= link_to 'next',
+              next_wizard_path %>
+
 </div>
 
 

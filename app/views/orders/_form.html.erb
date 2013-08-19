@@ -3,21 +3,54 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <div class="controls controls-row">
       <%= f.hidden_field :name,
                          value: current_user.user_profile.airline.name if current_user.user_profile.present? %>
-    </div>
 
-    <div class="controls controls-row">
+    <div class="span6">
+      <ul id="logo-list">
+        <div class="prev"><%= image_tag 'arrow_left.png' %></div>
+        <div class="next"><%= image_tag 'arrow_right.png' %></div>
+        <li class="in-view-minus" data-logo="2">
+          <%= image_tag "airbus_logo.png" %>
+        </li>
+        <li class="in-view" data-logo="1">
+          <%= image_tag "boeing_logo.png" %>
+        </li>
+        <li class="in-view-plus" data-logo="3">
+          <%= image_tag "embraer_logo.png" %>
+        </li>
+      </ul>
+
       <%= f.hidden_field :airline_id,
                          value: current_user.user_profile.airline.id if current_user.user_profile.present? %>
 
-      <%= f.input_field :aeroplane_id,
-                        placeholder: 'Aeroplane',
-                        collection: Aeroplane.order('name'),
-                        class: 'select2 span4'%>
-    </div>
+      <%= f.hidden_field :aeroplane_id,
+                         value: current_user.user_profile.airline.id if current_user.user_profile.present? %>
 
+      <div class="manufacturer-container">
+        <%= select_tag 'manufacturer',
+                       options_from_collection_for_select(Aeroplane.group("manufacturer"), "id", "manufacturer", 1),
+                       class: 'select2 span2' %>
+      </div>
+
+      <div class="airbus-container">
+        <%= select_tag 'airbus',
+                       options_from_collection_for_select(Aeroplane.where("manufacturer = 'Airbus'").order("name"), "id", "name"),
+                       class: 'select2 span2' %>
+      </div>
+      <div class="boeing-container">
+        <%= select_tag 'boeing',
+                       options_from_collection_for_select(Aeroplane.where("manufacturer = 'Boeing'").order("name"), "id", "name"),
+                       class: 'select2 span2' %>
+      </div>
+      <div class="embraer-container">
+        <%= select_tag 'embraer',
+                       options_from_collection_for_select(Aeroplane.where("manufacturer = 'Embraer'").order("name"), "id", "name"),
+                       class: 'select2 span2' %>
+      </div>
+
+      <%= f.button :submit, class: 'btn-green logo-list-submit' %>
+
+    </div>
   </div>
-  <%= f.button :submit, class: 'btn-green' %>
 <% end %>

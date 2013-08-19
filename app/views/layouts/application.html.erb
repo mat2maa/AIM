@@ -11,7 +11,7 @@
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
 <div class="navbar navbar-fixed-top">
-  <nav class="navbar-inner navbar-inner-transparent">
+  <nav class="navbar-inner">
     <div class="container">
       <%= render 'layouts/navigation' %>
     </div>
@@ -23,16 +23,16 @@
     <source src="<%= asset_path('final_menu.mp4') %>" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-  <!--<video id="video-background-1" preload="auto" muted="muted" volume="0">-->
-  <!--<source src="<%= asset_path('airbus_in.webm') %>" type="video/webm">-->
-  <!--<source src="<%= asset_path('airbus_in.mp4') %>" type="video/mp4">-->
-  <!--Your browser does not support the video tag.-->
-  <!--</video>-->
-  <!--<video id="video-background-2" preload="auto" muted="muted" volume="0">-->
-  <!--<source src="<%= asset_path('airbus_off.webm') %>" type="video/webm">-->
-  <!--<source src="<%= asset_path('airbus_off.mp4') %>" type="video/mp4">-->
-  <!--Your browser does not support the video tag.-->
-  <!--</video>-->
+  <video id="video-background-1" preload="auto" muted="muted" volume="0">
+    <source src="<%= asset_path('airbus_in.webm') %>" type="video/webm">
+    <source src="<%= asset_path('airbus_in.mp4') %>" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <video id="video-background-2" preload="auto" muted="muted" volume="0">
+    <source src="<%= asset_path('airbus_off.webm') %>" type="video/webm">
+    <source src="<%= asset_path('airbus_off.mp4') %>" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
   <!--<video id="video-background-seats" preload="auto" muted="muted" volume="0">-->
   <!--<source src="<%= asset_path('seats.webm') %>" type="video/webm">-->
   <!--<source src="<%= asset_path('seats.mp4') %>" type="video/mp4">-->
@@ -81,11 +81,11 @@
       <!--! end of .container -->
     </div>
     <!--! end of #order-steps-footer -->
+    <%= yield :helper %>
+    <%= yield :progress %>
   </div>
 </div>
 <div class="navbar navbar-fixed-bottom navbar-inverse" id="footer">
-  <%= yield :helper %>
-  <%= yield :progress %>
   <div class="navbar-inner">
     <div class="container">
       <%= render 'layouts/footer' %>

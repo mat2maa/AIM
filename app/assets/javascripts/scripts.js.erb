@@ -1,4 +1,4 @@
-var video1_dom, video2_dom, video_seats_dom, video_boeing_top_dom, video_boeing_full_dom, video_final_menu_dom, video1, video2, video_seats, video_boeing_top, video_boeing_full, video_final_menu, t, href, step, timeout, progress25, progress50, progress75, progress100, stepCounter;
+var video1_dom, video2_dom, video_seats_dom, video_boeing_top_dom, video_boeing_full_dom, video_final_menu_dom, video1_dom, video2, video_seats, video_boeing_top, video_boeing_full, video_final_menu, t, href, step, action, timeout, progress25, progress50, progress75, progress100, stepCounter;
 
 
 $(document).ready(function () {
@@ -12,7 +12,7 @@ $(document).ready(function () {
   $(document).pjax('a:not(.no-pjax)', '[data-pjax-container]', { duration: duration });
 
   $(document).on('submit', 'form:not(.no-pjax)', function (event) {
-    $.pjax.submit(event, '[data-pjax-container]', { duration: duration })
+    $.pjax.submit(event, '[data-pjax-container]', { duration: duration });
   });
 
 //  $('body').append('<div id="action-button" style="position: fixed; top: 0; left: 0; width: 100px; height: 50px; background-color: cadetblue; z-index: 3000; cursor: pointer;">Click!</div>');
@@ -28,6 +28,96 @@ $(document).ready(function () {
     return false;
   });
 
+
+
+  var data = $('#manufacturer').select2("data"),
+      i = 1,
+      val = 0;
+  loadVideoAssets();
+
+
+  $(document).on("click", '.prev', function () {
+    if(i == 1) {
+      i = 2;
+    } else {
+      i = i - 1;
+    }
+
+    $('#manufacturer').select2("val", i);
+    data = $('#manufacturer').select2("data");
+    $('.airbus-container, .boeing-container, .embraer-container').hide();
+    $("." + data.text.toLowerCase() + "-container").show();
+
+    val = $("#" + data.text.toLowerCase()).select2("val");
+    $("#order_aeroplane_id").val(val);
+    console.log($("#order_aeroplane_id").val());
+
+    if(data.text.toLowerCase() == "airbus") {
+      $('.video > video').removeClass("in-view");
+      video1_dom.addClass("in-view");
+      video1.currentTime = 0.0;
+      playVideo(video1, 0.0, 1.5, 1.7);
+    } else if(data.text.toLowerCase() == "boeing") {
+      $('.video > video').removeClass("in-view");
+      video_final_menu_dom.addClass("in-view");
+      video_final_menu.currentTime = 0.0;
+      playVideo(video_final_menu, 0.0, 1.5, 1.7);
+    } else if(data.text.toLowerCase() == "embraer") {
+
+    }
+
+    $('#logo-list > li').removeClass('in-view').removeClass('in-view-minus').removeClass('in-view-plus');
+    $('#logo-list > li[data-logo="' + i + '"]').addClass('in-view');
+    $('#logo-list > li[data-logo="' + i + '"]').prevAll().addClass('in-view-minus');
+    $('#logo-list > li[data-logo="' + i + '"]').nextAll().addClass('in-view-plus');
+
+  });
+  $(document).on("click", '.next', function () {
+    if(i == 2) {
+      i = 1;
+    } else {
+      i = i + 1;
+    }
+    $('#manufacturer').select2("val", i);
+    data = $('#manufacturer').select2("data");
+    $('.airbus-container, .boeing-container, .embraer-container').hide();
+    $("." + data.text.toLowerCase() + "-container").show();
+
+    val = $("#" + data.text.toLowerCase()).select2("val");
+    $("#order_aeroplane_id").val(val);
+    console.log($("#order_aeroplane_id").val());
+
+    if(data.text.toLowerCase() == "airbus") {
+
+    } else if(data.text.toLowerCase() == "boeing") {
+
+    } else if(data.text.toLowerCase() == "embraer") {
+
+    }
+
+    $('#logo-list > li').removeClass('in-view').removeClass('in-view-minus').removeClass('in-view-plus');
+    $('#logo-list > li[data-logo="' + i + '"]').addClass('in-view');
+    $('#logo-list > li[data-logo="' + i + '"]').prevAll().addClass('in-view-minus');
+    $('#logo-list > li[data-logo="' + i + '"]').nextAll().addClass('in-view-plus');
+
+  });
+
+  $(document).on("change", '#airbus', function () {
+    val = $(this).select2("val");
+    $("#order_aeroplane_id").val(val);
+  });
+
+  $(document).on("change", '#boeing', function () {
+    val = $(this).select2("val");
+    $("#order_aeroplane_id").val(val);
+  });
+
+  $(document).on("change", '#embraer', function () {
+    val = $(this).select2("val");
+    $("#order_aeroplane_id").val(val);
+  });
+
+
 });
 
 $(document).on('pjax:start', function () {
@@ -40,6 +130,7 @@ $(document).on('pjax:waiting', function () {
 $(document).on('pjax:end', function () {
   console.log("pjax:end");
   videoSwitch();
+  $('.select2-container').remove();
   $('select.select2').select2();
   $('select.select2-fixed-width').select2({width: "200px"});
   $('#pjax-container').fadeIn("fast");
@@ -79,33 +170,33 @@ $(window).load(function () {
 
   if ($('.audio-player')) {
     sound = $('.audio-player').attr('data-audio-file');
+    soundManager.setup({
+      url: '/path/to/swf-files/',
+      // optional: use 100% HTML5 mode where available
+      // preferFlash: false,
+      onready: function () {
+        var mySound = soundManager.createSound({
+          id: 'aSound',
+          url: sound
+        });
+        $('.play-button').on("click", function (e) {
+          e.preventDefault();
+          mySound.play();
+        });
+        $('.stop-button').on("click", function (e) {
+          e.preventDefault();
+          mySound.stop();
+        });
+        $('.pause-button').on("click", function (e) {
+          e.preventDefault();
+          mySound.pause();
+        });
+      },
+      ontimeout: function () {
+        // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+      }
+    });
   }
-  soundManager.setup({
-    url: '/path/to/swf-files/',
-    // optional: use 100% HTML5 mode where available
-    // preferFlash: false,
-    onready: function () {
-      var mySound = soundManager.createSound({
-        id: 'aSound',
-        url: sound
-      });
-      $('.play-button').on("click", function (e) {
-        e.preventDefault();
-        mySound.play();
-      });
-      $('.stop-button').on("click", function (e) {
-        e.preventDefault();
-        mySound.stop();
-      });
-      $('.pause-button').on("click", function (e) {
-        e.preventDefault();
-        mySound.pause();
-      });
-    },
-    ontimeout: function () {
-      // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
-    }
-  });
 });
 
 function loadVideoAssets() {
@@ -133,11 +224,12 @@ function loadVideoAssets() {
 function videoSwitch() {
   href = window.location.href.split('/');
   step = href[href.length - 1];
+  action = step == "edit" ? href[href.length - 3] : href[href.length - 2];
   timeout = 0;
-  console.log(href + " " + step);
+  console.log(href + " " + step + " " + action);
 
-  switch (step) {
-    case "edit":
+  switch (step + "_" + action) {
+    case "edit_orders":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -156,7 +248,26 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((0 / 3) + (0 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 1:</strong> Aircraft make and model");
       break;
-    case "brandings":
+    case "new_orders":
+      $('.video > video').removeClass("in-view");
+      video_final_menu_dom.addClass("in-view");
+      t = video_final_menu.currentTime;
+      if (t == 1.7) {
+        video_final_menu.currentTime = 1.7;
+      } else {
+        video_final_menu.currentTime = 0.0;
+        setTimeout(function () {
+          playVideo(video_final_menu, 0.0, 1.5, 1.7);
+        }, timeout);
+      }
+      progress25.width(100 / 3 + "%");
+      progress50.width("0%");
+      progress75.width("0%");
+      progress100.width("0%");
+      stepCounter.find("p").css({left: ((0 / 3) + (0 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
+          .html("<strong>Step 1:</strong> Aircraft make and model");
+      break;
+    case "brandings_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -175,7 +286,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((100 / 3) + (0 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 2:</strong> Brandings");
       break;
-    case "liveries":
+    case "liveries_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -194,7 +305,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((200 / 3) + (0 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 3:</strong> Liveries");
       break;
-    case "seat_layouts":
+    case "seat_layouts_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -213,7 +324,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((300 / 3) + (0 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 4:</strong> Seat layouts");
       break;
-    case "life_jackets":
+    case "life_jackets_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -232,7 +343,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((300 / 3) + (100 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 5:</strong> Life jackets");
       break;
-    case "consoles":
+    case "consoles_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -251,7 +362,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((300 / 3) + (200 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 6:</strong> Consoles");
       break;
-    case "bins":
+    case "bins_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -270,7 +381,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((300 / 3) + (300 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 7:</strong> Bins");
       break;
-    case "lavatories":
+    case "lavatories_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -289,7 +400,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((300 / 3) + (400 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 8:</strong> Lavatories");
       break;
-    case "open_exit_doors":
+    case "open_exit_doors_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -308,7 +419,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((300 / 3) + (500 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 9:</strong> Open exit doors");
       break;
-    case "closed_exit_doors":
+    case "closed_exit_doors_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -327,7 +438,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((300 / 3) + (600 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 10:</strong> Closed exit doors");
       break;
-    case "carpet_textures":
+    case "carpet_textures_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -346,7 +457,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((300 / 3) + (700 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 11:</strong> Carpet textures");
       break;
-    case "economy_seats":
+    case "economy_seats_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -378,7 +489,7 @@ function videoSwitch() {
 //        }, timeout);
 //      }
 //      break;
-    case "business_seats":
+    case "business_seats_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
@@ -397,7 +508,7 @@ function videoSwitch() {
       stepCounter.find("p").css({left: ((300 / 3) + (800 / 8) + (100 / 3) + (0 / 40)) / 4 + "%"})
           .html("<strong>Step 13:</strong> Business seats");
       break;
-    case "first_class_seats":
+    case "first_class_seats_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       video_final_menu.currentTime = 6.0;
