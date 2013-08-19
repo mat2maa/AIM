@@ -23,23 +23,51 @@ Aeroplane.create(
     [
         {
             manufacturer: 'Boeing',
-            name: '737-800'
+            name: '737'
         },
         {
             manufacturer: 'Airbus',
-            name: 'A330 - 300'
+            name: 'A310'
+        },
+        {
+            manufacturer: 'Embraer',
+            name: 'E170'
+        },
+        {
+            manufacturer: 'Boeing',
+            name: '747-200F'
+        },
+        {
+            manufacturer: 'Boeing',
+            name: '767-300'
+        },
+        {
+            manufacturer: 'Boeing',
+            name: '777-200'
         },
         {
             manufacturer: 'Airbus',
-            name: 'A330'
+            name: 'A300'
         },
         {
             manufacturer: 'Airbus',
-            name: 'A320'
+            name: 'A318'
         },
         {
             manufacturer: 'Airbus',
-            name: 'A330 - 200'
+            name: 'A319'
+        },
+        {
+            manufacturer: 'Embraer',
+            name: 'ERJ 135'
+        },
+        {
+            manufacturer: 'Embraer',
+            name: 'ERJ 140'
+        },
+        {
+            manufacturer: 'Embraer',
+            name: 'E195-E2'
         }
     ]
 )

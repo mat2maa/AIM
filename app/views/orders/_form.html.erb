@@ -6,7 +6,7 @@
       <%= f.hidden_field :name,
                          value: current_user.user_profile.airline.name if current_user.user_profile.present? %>
 
-    <div class="span6">
+    <div class="span5">
       <ul id="logo-list">
         <div class="prev"><%= image_tag 'arrow_left.png' %></div>
         <div class="next"><%= image_tag 'arrow_right.png' %></div>
@@ -20,6 +20,10 @@
           <%= image_tag "embraer_logo.png" %>
         </li>
       </ul>
+    </div>
+
+    <div class="span5">
+      <h3>Please edit your order using the form below.</h3>
 
       <%= f.hidden_field :airline_id,
                          value: current_user.user_profile.airline.id if current_user.user_profile.present? %>
@@ -51,6 +55,8 @@
 
       <%= f.button :submit, class: 'btn-green logo-list-submit' %>
 
+
     </div>
+
   </div>
 <% end %>
