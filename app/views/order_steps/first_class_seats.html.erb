@@ -12,7 +12,7 @@
 <%= content_for :order_steps_footer do %>
   <div class="span12">
     <%= simple_nested_form_for @order, url: wizard_path, html: { class: '' } do |f| %>
-      <h3>Aeroplane seats</h3>
+      <h3>Please choose your First Class seat and upload assets for both the seat and seat belts</h3>
       <br>
       <ul id="seat-list">
         <%= f.simple_fields_for :seats do |builder| %>
@@ -29,7 +29,7 @@
       <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a seat".html_safe, :seats, data: { target: "#seat-list" } %></p>
 
       <br>
-      <%= f.button :submit, class: 'btn btn-green' %>
+      <%= f.submit "OK", class: 'btn btn-green' %>
     <% end %>
   </div>
 <% end %>

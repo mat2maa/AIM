@@ -19,6 +19,38 @@ user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => EN
 puts 'user: ' << user.name
 user.add_role :admin
 
+user = User.find_or_create_by_email :name => ENV['AIM_NAME'].dup, :email => ENV['AIM_EMAIL'].dup, :password => ENV['AIM_PASSWORD'].dup, :password_confirmation => ENV['AIM_PASSWORD'].dup
+puts 'user: ' << user.name
+user.add_role :admin
+
+UserProfile.create(
+    [
+        {
+            contact_name: "Matthew Ager",
+            user_id: "1"
+        },
+        {
+            contact_name: "Animation In Motion",
+            user_id: "2"
+        }
+    ]
+)
+
+Airline.create(
+    [
+        {
+            name: "Matthew Air",
+            code: "MA",
+            user_profile_id: "1"
+        },
+        {
+            name: "Guest Airline",
+            code: "AIM",
+            user_profile_id: "2"
+        }
+    ]
+)
+
 Aeroplane.create(
     [
         {

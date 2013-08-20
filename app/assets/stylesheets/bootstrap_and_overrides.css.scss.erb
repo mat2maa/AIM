@@ -120,6 +120,12 @@ body {
   overflow-x: hidden;
 }
 
+#pjax-container-options,
+#main {
+  position:relative;
+  z-index:1;
+}
+
 #order-steps {
   background: rgba(0, 0, 0, 0.55);
 }
@@ -144,6 +150,9 @@ body {
 #order-steps-footer {
   background: rgba(0, 0, 0, 0.55);
 }
+#order-steps-footer .span12 {
+  padding-bottom: 24px;
+}
 
 .modal {
   color: #444;
@@ -161,6 +170,10 @@ hr {
 /* Text */
 .red {
   color: red;
+}
+
+.green {
+  color: #baed6e;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -391,15 +404,20 @@ input[type="file"] {
 }
 
 table {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: lighter;
-  line-height: 14px;
+  line-height: 18px;
   text-align: left;
 
+  th {
+    border-bottom: 1px solid #555555;
+    border-top: 1px solid #555555;
+  }
+
   td {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: lighter;
-    line-height: 14px;
+    line-height: 18px;
   }
 
   td,
@@ -546,6 +564,11 @@ table {
   height: 300px;
   position: relative;
   margin: 0;
+  -webkit-transition: height 0.25s;
+  -moz-transition: height 0.25s;
+  -o-transition: height 0.25s;
+  -ms-transition: height 0.25s;
+  transition: height 0.25s;
 }
 
 #seat-list > .fields {
@@ -688,7 +711,7 @@ table {
   left:0;
   width:100%;
   height:100%;
-  z-index: -1000;
+  z-index: 0;
 }
 
 .video > video {

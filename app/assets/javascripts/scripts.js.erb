@@ -39,6 +39,13 @@ $(document).ready(function () {
       $(".next-seat").hide();
       $('.divider').hide();
     }
+
+    if ($seats.length == 0) {
+      $('#seat-list').css({"height": "0px"});
+    } else {
+      $('#seat-list').css({"height": "300px"});
+    }
+
   });
 
   $(document).on("click", ".remove_nested_fields[data-association='seats']", function () {
@@ -57,6 +64,13 @@ $(document).ready(function () {
     $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').addClass('in-view');
     $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').prevAll().addClass('in-view-minus');
     $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').nextAll().addClass('in-view-plus');
+
+    if ($('#seat-list > .fields:not(:hidden)').length == 0) {
+      $('#seat-list').css({"height": "0px"});
+    } else {
+      $('#seat-list').css({"height": "300px"});
+    }
+
   });
 
   $(document).on("click", ".prev-seat", function (e) {
@@ -334,7 +348,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 1.6;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 0.0;
+//        video_final_menu.currentTime = 0.0;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6);
         }, timeout);
@@ -354,7 +368,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 1.6;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 0.0;
+//        video_final_menu.currentTime = 0.0;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6);
         }, timeout);
@@ -374,7 +388,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 1.6;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 0.0;
+//        video_final_menu.currentTime = 0.0;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6);
         }, timeout);
@@ -394,7 +408,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 1.6;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 0.0;
+//        video_final_menu.currentTime = 0.0;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6)
         }, timeout);
@@ -414,7 +428,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 1.6;
+//        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
@@ -434,7 +448,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 1.6;
+//        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
@@ -454,7 +468,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 1.6;
+//        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
@@ -474,7 +488,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 1.6;
+//        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
@@ -484,7 +498,7 @@ function videoSwitch() {
       progress75.width("0%");
       progress100.width("0%");
       stepCounter.find("p").css({left: ((300 / 3) + (300 / 8) + (0 / 3) + (0 / 40)) / 4 + "%"})
-          .html("<strong>Step 7:</strong> Bins");
+          .html("<strong>Step 7:</strong> Overhead compartments");
       break;
     case "lavatories_order_steps":
       $('.video > video').removeClass("in-view");
@@ -494,7 +508,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 1.6;
+//        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
@@ -514,7 +528,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 1.6;
+//        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
@@ -534,7 +548,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 1.6;
+//        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
@@ -554,7 +568,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 3.3;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 1.6;
+//        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
@@ -574,7 +588,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 5.2;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 3.3;
+//        video_final_menu.currentTime = 3.3;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 3.3, 5.0, 5.2);
         }, timeout);
@@ -607,7 +621,7 @@ function videoSwitch() {
         video_final_menu.currentTime = 6.0;
       } else {
         video_final_menu.play();
-        video_final_menu.currentTime = 5.2;
+//        video_final_menu.currentTime = 5.2;
         setTimeout(function () {
           playVideo(video_final_menu_dom, video_final_menu, 5.2, 5.8, 6.0);
         }, timeout);
@@ -623,7 +637,7 @@ function videoSwitch() {
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       video_final_menu.play();
-      video_final_menu.currentTime = 6.0;
+//      video_final_menu.currentTime = 6.0;
       setTimeout(function () {
         playVideo(video_final_menu_dom, video_final_menu, 6.0, 7.2, 7.4);
       }, timeout);

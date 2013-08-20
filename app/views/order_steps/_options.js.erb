@@ -44,3 +44,45 @@ $(document).on('pjax:error', function () {
 $(document).on('pjax:timeout', function () {
   console.log("pjax:timeout");
 });
+
+var data, $seats;
+
+$(document).ready(function () {
+  initSeats();
+});
+
+$(document).on('pjax:end', function () {
+  initSeats();
+});
+
+function initSeats() {
+  $seats = $('#seat-list > .fields:not(:hidden)');
+  if ($seats.length == 0 || $seats.length == 1) {
+    $(".prev-seat").hide();
+    $(".next-seat").hide();
+    $('.divider').hide();
+  } else {
+    $(".prev-seat").show();
+    $(".next-seat").hide();
+    $('.divider').hide();
+  }
+
+  $('#seat-list > .fields').each(function (index) {
+    $(this).attr('data-seat', index + 1);
+  });
+
+  data = $('#seat-list > .fields').length;
+
+  $('#seat-list > .fields').removeClass('in-view').removeClass('in-view-minus').removeClass('in-view-plus');
+  $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').addClass('in-view');
+  $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').prevAll().addClass('in-view-minus');
+  $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').nextAll().addClass('in-view-plus');
+
+  if ($seats.length == 0) {
+    $('#seat-list').css({"height": "0px"});
+  } else {
+    $('#seat-list').css({"height": "300px"});
+  }
+
+
+}

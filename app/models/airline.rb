@@ -7,7 +7,7 @@ class Airline < ActiveRecord::Base
 
   has_many :aeroplanes, through: :orders
 
-  attr_accessible :code, :name, :logo
+  attr_accessible :code, :name, :logo, :user_profile_id
 
   has_attached_file :logo
 

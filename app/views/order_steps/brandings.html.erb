@@ -10,7 +10,7 @@
 
 <%= content_for :order_steps_footer do %>
   <div class="span12">
-    <h3>Airline branding</h3>
+    <h3>Please upload your branding assets</h3>
     <br>
     <%= minimal_nested_form_for @order, url: wizard_path, html: { class: 'pjax' } do |f| %>
       <%= f.simple_fields_for :brandings do |builder| %>
@@ -25,7 +25,7 @@
       <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add branding".html_safe, :brandings %></p>
 
       <br>
-      <%= f.button :submit, class: 'btn btn-green' %>
+      <%= f.submit "OK", class: 'btn btn-green' %>
     <% end %>
   </div>
 <% end %>

@@ -10,7 +10,7 @@
 
 <%= content_for :order_steps_footer do %>
   <div class="span12">
-    <h3>Aeroplane bin</h3>
+    <h3>Please upload assets or images of the overhead compartments</h3>
     <br>
     <%= minimal_nested_form_for @order, url: wizard_path, html: { class: 'pjax' } do |f| %>
       <%= f.simple_fields_for :bins do |builder| %>
@@ -18,14 +18,14 @@
           <%#= image_tag builder.object.asset.url(:original) %>
           <%= builder.input :asset,
                             as: :file %>
-          <%= builder.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove bin".html_safe %>
+          <%= builder.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove overhead compartment".html_safe %>
         </div>
         <br>
       <% end %>
-      <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a bin".html_safe, :bins %></p>
+      <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add an overhead compartment".html_safe, :bins %></p>
 
       <br>
-      <%= f.button :submit, class: 'btn btn-green' %>
+      <%= f.submit "OK", class: 'btn btn-green' %>
     <% end %>
   </div>
 <% end %>
@@ -35,7 +35,7 @@
 
 <%= content_for :helper do %>
   <div class="step-counter">
-    <p style="left: <%= ((300/3) + (300/8) + (0/3) + (0/40))/4 %>%"><strong>Step 7:</strong> Bins</p>
+    <p style="left: <%= ((300/3) + (300/8) + (0/3) + (0/40))/4 %>%"><strong>Step 7:</strong> Overhead compartments</p>
   </div>
 <% end %>
 

@@ -1,13 +1,52 @@
 <div class="span12">
   <h2>Sign up</h2>
   <br>
-  <%= minimal_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+  <%= minimal_nested_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
     <%= f.error_notification %>
     <%= display_base_errors resource %>
+    <h3>Login Details</h3>
     <%= f.input :name, :autofocus => true %>
     <%= f.input :email, :required => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
+    <hr>
+    <h3>User Profile</h3>
+    <%= simple_fields_for :user_profile do |builder| %>
+      <div class="controls controls-row">
+        <%= builder.simple_fields_for :airline do |airline| %>
+          <%= airline.input_field :name,
+                                  placeholder: 'Airline name',
+                                  class: 'span3' %>
+          <%= airline.input_field :code,
+                                  placeholder: 'Airline code',
+                                  class: 'span3' %>
+        <% end %>
+      </div>
+      <div class="controls controls-row">
+        <%= builder.input_field :contact_name,
+                          placeholder: 'Contact name',
+                          class: 'span3' %>
+      </div>
+      <div class="controls controls-row">
+        <%= builder.input_field :address,
+                          placeholder: 'Address',
+                          rows: 4,
+                          class: 'span6' %>
+      </div>
+      <div class="controls controls-row">
+        <%= builder.input_field :phone,
+                          placeholder: 'Phone',
+                          class: 'span3' %>
+        <%= builder.input_field :mobile,
+                          placeholder: 'Mobile',
+                          class: 'span3' %>
+      </div>
+      <div class="controls controls-row">
+        <%= builder.input_field :fax,
+                          placeholder: 'Fax',
+                          class: 'span3' %>
+      </div>
+    <% end %>
     <br>
     <%= f.button :submit, 'Sign up', :class => 'btn-green' %>
   <% end %>

@@ -13,15 +13,17 @@
               <% if wizard_path.split("_").last != "1" %>
                 <%= link_to 'previous',
                             previous_wizard_path,
-                            class: 'prev-storyboard pjax' %>
-              <% end %>
-              <% if wizard_path.split("_").last != "1" && wizard_path.split("_").last != "40" %>
-                |
+                            class: 'prev-storyboard pjax btn btn-green btn-tiny' %>
               <% end %>
               <% if wizard_path.split("_").last != "40" %>
                 <%= link_to 'next',
                             next_wizard_path,
-                            class: 'next-storyboard pjax' %>
+                            class: 'next-storyboard pjax btn btn-green btn-tiny' %>
+              <% end %>
+              <% if wizard_path.split("_").last == "40" %>
+                <%= link_to 'finish',
+                            { :controller => "/home", :action => "index" },
+                            class: 'next-storyboard pjax btn btn-green btn-tiny' %>
               <% end %>
             </div>
             <div class="span8" id="scene-images">
@@ -40,10 +42,12 @@
                                   class: 'storyboard-image' %>
                   </li>
                 <% end %>
-                <li class="in-view-plus2 storyboard-image-next2" data-storyboard="4">
-                  <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 2}.png",
-                                class: 'storyboard-image' %>
-                </li>
+                <% if wizard_path.split("_").last != "39" %>
+                  <li class="in-view-plus2 storyboard-image-next2" data-storyboard="4">
+                    <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 2}.png",
+                                  class: 'storyboard-image' %>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>

@@ -4,21 +4,22 @@
 
 <div class="span12">
   <% if user_signed_in? %>
-    <h1>Welcome to the Animation in Motion Safety Video Builder.</h1>
+    <h1>Welcome <span class="green"><%= current_user.user_profile.airline.name %></span></h1>
+    <h2>Please click on the button below to start.</h2>
     <br>
     <%= link_to 'Create an order', new_order_path, class: 'btn btn-green' %>
+    <br><br><br>
+
+    <h4>We currently have <%= pluralize @current_user_order_count, 'order' %> on record
+      for <%= current_user.user_profile.airline.name %><%= ' and you can review them below' if @current_user_order_count > 0 %>.</h4>
+
     <br><br>
 
-    <p>We currently have <%= pluralize @current_user_order_count, 'order' %> on record
-      for <%= current_user.user_profile.airline.name %><%= ' and you can review them below' if @current_user_order_count > 0 %>.</p>
-
-    <table>
+    <table id="current-orders">
       <tr>
         <th>Name</th>
         <th>Airline</th>
         <th>Aeroplane</th>
-        <th>Safety card</th>
-        <th>Seat layout</th>
         <th></th>
         <th></th>
         <th></th>
@@ -27,61 +28,58 @@
       <% current_user.user_profile.airline.orders.each do |order| %>
         <tr>
           <td><%= order.name %></td>
-          <td><%= order.airline_id %></td>
-          <td><%= order.aeroplane_id %></td>
-          <td><%= order.safety_card_id %></td>
-          <td><%= order.seat_layout_id %></td>
+          <td><%= order.airline.name %></td>
+          <td><%= order.aeroplane.name %></td>
           <td><%= link_to 'Show', order %></td>
           <td><%= link_to 'Edit', edit_order_path(order) %></td>
-          <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Clear', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </table>
 
     <% if current_user.has_role? :user %>
     <% elsif current_user.has_role? :admin %>
-      <br>
-      <hr>
-      <br>
+      <!--<br>-->
+      <!--<br>-->
 
-      <h3>Administrative tools</h3>
+      <!--<h3>Administrative tools</h3>-->
 
-      <p>Manage the following components:</p>
-      <ul>
-        <li>
-          <%= link_to 'User profiles', user_profiles_path %>
-        </li>
-        <li>
-          <%= link_to 'Aeroplanes', aeroplanes_path %>
-        </li>
-        <li>
-          <%= link_to 'Airlines', airlines_path %>
-        </li>
-        <li>
-          <%= link_to 'Life jackets', life_jackets_path %>
-        </li>
-        <li>
-          <%= link_to 'Safety cards', safety_cards_path %>
-        </li>
-        <li>
-          <%= link_to 'Seats', seats_path %>
-        </li>
-        <li>
-          <%= link_to 'Seat classes', seat_classes_path %>
-        </li>
-        <li>
-          <%= link_to 'Seat layouts', seat_layouts_path %>
-        </li>
-        <li>
-          <%= link_to 'Seat manufacturers', seat_manufacturers_path %>
-        </li>
-      </ul>
-      <p>Manage orders:</p>
-      <ul>
-        <li>
-          <%= link_to 'Orders', orders_path %>
-        </li>
-      </ul>
+      <!--<p>Manage the following components:</p>-->
+      <!--<ul>-->
+        <!--<li>-->
+          <!--<%= link_to 'User profiles', user_profiles_path %>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<%= link_to 'Aeroplanes', aeroplanes_path %>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<%= link_to 'Airlines', airlines_path %>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<%= link_to 'Life jackets', life_jackets_path %>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<%= link_to 'Safety cards', safety_cards_path %>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<%= link_to 'Seats', seats_path %>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<%= link_to 'Seat classes', seat_classes_path %>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<%= link_to 'Seat layouts', seat_layouts_path %>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<%= link_to 'Seat manufacturers', seat_manufacturers_path %>-->
+        <!--</li>-->
+      <!--</ul>-->
+      <!--<p>Manage orders:</p>-->
+      <!--<ul>-->
+        <!--<li>-->
+          <!--<%= link_to 'Orders', orders_path %>-->
+        <!--</li>-->
+      <!--</ul>-->
     <% end %>
   <% end %>
 </div>

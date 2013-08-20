@@ -29,7 +29,7 @@
     </div>
 
     <div class="span5">
-      <h3>Please edit your order using the form below.</h3>
+      <h3>Please choose your aircraft <br> make and model</h3>
 
       <%= f.hidden_field :airline_id,
                          value: current_user.user_profile.airline.id if current_user.user_profile.present? %>
@@ -59,7 +59,7 @@
                        class: 'select2 span2' %>
       </div>
 
-      <%= f.button :submit, class: 'btn-green logo-list-submit' %>
+      <%= f.submit "OK", class: 'btn btn-green logo-list-submit' %>
 
 
     </div>
