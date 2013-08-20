@@ -43,6 +43,9 @@ gem 'acts_as_commentable_with_threading'
 # Audio
 gem 'soundmanager-rails'
 
+# Static pages
+gem 'high_voltage'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

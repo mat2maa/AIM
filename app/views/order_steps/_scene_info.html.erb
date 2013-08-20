@@ -22,7 +22,7 @@
               <% end %>
               <% if wizard_path.split("_").last == "40" %>
                 <%= link_to 'finish',
-                            { :controller => "/home", :action => "index" },
+                            page_path('thank_you'),
                             class: 'next-storyboard pjax btn btn-green btn-tiny' %>
               <% end %>
             </div>

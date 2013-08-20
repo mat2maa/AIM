@@ -1,0 +1,14 @@
+<%= content_for :order_title do %>
+  <h3>Safety video builder</h3>
+<% end %>
+
+<div class="span12">
+  <% if user_signed_in? %>
+    <h1>Thank you <span class="green"><%= current_user.user_profile.airline.name %></span> for creating your order!</h1>
+    <h2>Please click on the button below to finish.</h2>
+    <br>
+    <%= link_to 'Home',
+                { :controller => "/home", :action => "index" },
+                class: 'next-storyboard pjax btn btn-green btn-large' %>
+  <% end %>
+</div>
