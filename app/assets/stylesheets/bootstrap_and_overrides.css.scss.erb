@@ -116,10 +116,26 @@ body {
   padding-bottom: 80px;
   color: #FFFFFF;
   font-family: "OpenSansLight", verdana, arial, helvetica, sans-serif;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #order-steps {
   background: rgba(0, 0, 0, 0.55);
+}
+
+#storyboard-steps {
+  height: 240px;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+#storyboard {
+  height: 240px;
+}
+
+.storyboard-image {
+  height: 220px;
+  margin: 10px 5px;
 }
 
 #order-steps-footer-outer {
@@ -330,9 +346,9 @@ input[type="file"] {
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
 }
 
-[class*="span"] {
-  padding: 20px 0;
-}
+/*[class*="span"] {*/
+  /*padding: 20px 0;*/
+/*}*/
 
 .media > .comment > .pull-left {
   margin-right: 10px;
@@ -448,6 +464,7 @@ table {
   color: white;
 }
 
+/* Logo list */
 #logo-list {
   width: 250px;
   height: 100px;
@@ -514,10 +531,156 @@ table {
 }
 
 .logo-list-submit {
-  margin-top: 28px !important;
+  margin-top: 9px !important;
   margin-left: 28px !important;
 }
 
+
+/* Logo list */
+.controls {
+  margin-bottom: 20px;
+}
+
+#seat-list {
+  width: 100%;
+  height: 256px;
+  position: relative;
+  margin: 0;
+}
+
+#seat-list > .fields {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#seat-list > .fields.in-view {
+  left: 0%;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s 0.25s, left 0.5s;
+  -moz-transition: opacity 0.5s 0.25s, left 0.5s;
+  -o-transition: opacity 0.5s 0.25s, left 0.5s;
+  -ms-transition: opacity 0.5s 0.25s, left 0.5s;
+  transition: opacity 0.5s 0.25s, left 0.5s;
+}
+
+#seat-list > .fields.in-view-plus {
+  left: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, left 0.5s;
+  -moz-transition: opacity 0.5s, left 0.5s;
+  -o-transition: opacity 0.5s, left 0.5s;
+  -ms-transition: opacity 0.5s, left 0.5s;
+  transition: opacity 0.5s, left 0.5s;
+}
+
+#seat-list > .fields.in-view-minus {
+  left: -100%;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, left 0.5s;
+  -moz-transition: opacity 0.5s, left 0.5s;
+  -o-transition: opacity 0.5s, left 0.5s;
+  -ms-transition: opacity 0.5s, left 0.5s;
+  transition: opacity 0.5s, left 0.5s;
+}
+
+#seat-list .next {
+  position:absolute;
+  top:-8px;
+  right:-80px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+#seat-list .prev {
+  position:absolute;
+  top:-8px;
+  left:-80px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.seat-list-submit {
+  margin-top: 9px !important;
+  margin-left: 28px !important;
+}
+
+
+/* Storyboard list */
+#storyboard-list {
+  width: 782px;
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+#storyboard-list > li {
+  width: 391px;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#storyboard-list > li.in-view {
+  left: 0px;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s 0.25s, left 0.5s;
+  -moz-transition: opacity 0.5s 0.25s, left 0.5s;
+  -o-transition: opacity 0.5s 0.25s, left 0.5s;
+  -ms-transition: opacity 0.5s 0.25s, left 0.5s;
+  transition: opacity 0.5s 0.25s, left 0.5s;
+}
+
+#storyboard-list > li.in-view-minus {
+  left: -401px;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, left 0.5s;
+  -moz-transition: opacity 0.5s, left 0.5s;
+  -o-transition: opacity 0.5s, left 0.5s;
+  -ms-transition: opacity 0.5s, left 0.5s;
+  transition: opacity 0.5s, left 0.5s;
+}
+
+#storyboard-list > li.in-view-plus {
+  left: 401px;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s, left 0.5s;
+  -moz-transition: opacity 0.5s, left 0.5s;
+  -o-transition: opacity 0.5s, left 0.5s;
+  -ms-transition: opacity 0.5s, left 0.5s;
+  transition: opacity 0.5s, left 0.5s;
+}
+
+#storyboard-list > li.in-view-plus2 {
+  left: 802px;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, left 0.5s;
+  -moz-transition: opacity 0.5s, left 0.5s;
+  -o-transition: opacity 0.5s, left 0.5s;
+  -ms-transition: opacity 0.5s, left 0.5s;
+  transition: opacity 0.5s, left 0.5s;
+}
+
+#scene-info {
+  position:relative;
+  z-index:2;
+}
+
+#scene-images {
+  position:relative;
+  z-index:1;
+}
 
 .video {
   position:fixed;

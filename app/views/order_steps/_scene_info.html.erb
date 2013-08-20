@@ -1,64 +1,121 @@
+<%= content_for :storyboard_steps do %>
+  <div id="storyboard-steps">
+    <div class="container">
+      <div class="content">
+        <div data-pjax-container-storyboard id="pjax-container-storyboard">
+          <div class="row" id="storyboard">
+            <div class="span4" id="scene-info">
+              <h3>Scene <%= wizard_path.split("_").last %></h3>
+              <br>
+
+              <p><%= @scene.storyboard %></p>
+              <br>
+              <% if wizard_path.split("_").last != "1" %>
+                <%= link_to 'previous',
+                            previous_wizard_path,
+                            class: 'prev-storyboard pjax' %>
+              <% end %>
+              <% if wizard_path.split("_").last != "1" && wizard_path.split("_").last != "40" %>
+                |
+              <% end %>
+              <% if wizard_path.split("_").last != "40" %>
+                <%= link_to 'next',
+                            next_wizard_path,
+                            class: 'next-storyboard pjax' %>
+              <% end %>
+            </div>
+            <div class="span8" id="scene-images">
+              <ul id="storyboard-list">
+                <li class="in-view-minus storyboard-image-previous" data-storyboard="1">
+                  <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i - 1}.png",
+                                class: 'storyboard-image' %>
+                </li>
+                <li class="in-view storyboard-image-current" data-storyboard="2">
+                  <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last}.png",
+                                class: 'storyboard-image' %>
+                </li>
+                <li class="in-view-plus storyboard-image-next" data-storyboard="3">
+                  <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 1}.png",
+                                class: 'storyboard-image' %>
+                </li>
+                <li class="in-view-plus2 storyboard-image-next2" data-storyboard="4">
+                  <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 2}.png",
+                                class: 'storyboard-image' %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="span12">
+              <ul>
+                <li>
+                  <table>
+                    <tr>
+                      <td width="100">Voice Over:</td>
+                      <td>
+                        <select name="voice_over_language" class="select2-fixed-width" id="voice-over-select">
+                          <option value="english" selected="selected">English</option>
+                          <option value="cantonese">Cantonese</option>
+                          <option value="mandarin">Mandarin</option>
+                        </select>
+                      </td>
+                      <td><%= @scene.english_subtitle %>&nbsp;&nbsp;<%= render partial: 'audio_player' %></td>
+                    </tr>
+                  </table>
+                </li>
+                <hr>
+                <li>
+                  <table>
+                    <tr>
+                      <td width="100">Subtitle 1:</td>
+                      <td>
+                        <select name="voice_over_language" class="select2-fixed-width" id="subtitle-1-select">
+                          <option value="english">English</option>
+                          <option value="cantonese" selected="selected">Cantonese</option>
+                          <option value="mandarin">Mandarin</option>
+                        </select>
+                      </td>
+                      <td><%= @scene.foreign_subtitle_1 %></td>
+                    </tr>
+                  </table>
+                </li>
+                <hr>
+                <li>
+                  <table>
+                    <tr>
+                      <td width="100">Subtitle 2:</td>
+                      <td>
+                        <select name="voice_over_language" class="select2-fixed-width" id="subtitle-2-select">
+                          <option value="english">English</option>
+                          <option value="cantonese">Cantonese</option>
+                          <option value="mandarin" selected="selected">Mandarin</option>
+                        </select>
+                      </td>
+                      <td><%= @scene.foreign_subtitle_2 %></td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row wrap span6" id="wrap">
+            <%= render partial: 'comments_stream' %>
+          </div>
+        </div>
+        <!--! end of #pjax-container -->
+      </div>
+    </div>
+    <!--! end of .container -->
+  </div>
+<% end %>
+
+<% content_for :head do %>
+  <script type="text/javascript">
+    <%= render :partial => 'storyboard.js' %>
+  </script>
+<% end %>
+
 <%= content_for :order_title do %>
   <h3>Storyboard and script</h3>
-<% end %>
-
-<%= content_for :order_steps do %>
-  <div class="span4">
-    <h3>Scene <%= wizard_path.split("_").last %></h3>
-    <br>
-    <p><%= @scene.storyboard %></p>
-  </div>
-  <div class="span4">
-    <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last}.png" %>
-  </div>
-  <div class="span4">
-    <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 1}.png" %>
-  </div>
-
-<% end %>
-
-<div class="span12">
-  <ul>
-    <li>Voice Over: &nbsp;
-      <select name="voice_over_language" class="select2-fixed-width" id="voice-over-select">
-        <option value="english" selected="selected">English</option>
-        <option value="cantonese">Cantonese</option>
-        <option value="mandarin">Mandarin</option>
-      </select>
-      &nbsp;&nbsp;&nbsp;&nbsp; <%= @scene.english_subtitle %>&nbsp;&nbsp;<%= render partial: 'audio_player' %>
-    </li>
-    <hr>
-    <li>Subtitle 1: &nbsp;&nbsp;&nbsp;
-      <select name="voice_over_language" class="select2-fixed-width" id="subtitle-1-select">
-        <option value="english">English</option>
-        <option value="cantonese" selected="selected">Cantonese</option>
-        <option value="mandarin">Mandarin</option>
-      </select>
-      &nbsp;&nbsp;&nbsp;&nbsp; <%= @scene.foreign_subtitle_1 %>
-    </li>
-    <hr>
-    <li>Subtitle 2: &nbsp;&nbsp;&nbsp;
-      <select name="voice_over_language" class="select2-fixed-width" id="subtitle-2-select">
-        <option value="english">English</option>
-        <option value="cantonese">Cantonese</option>
-        <option value="mandarin" selected="selected">Mandarin</option>
-      </select>
-      &nbsp;&nbsp;&nbsp;&nbsp; <%= @scene.foreign_subtitle_2 %>
-    </li>
-  </ul>
-</div>
-
-<div class="span12">
-  <%= link_to 'previous',
-              previous_wizard_path %>
-  |
-  <%= link_to 'next',
-              next_wizard_path %>
-
-</div>
-
-
-
-<%= content_for :comments do %>
-  <%= render partial: 'comments_stream' %>
 <% end %>

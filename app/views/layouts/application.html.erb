@@ -7,7 +7,7 @@
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= yield(:head) %>
+  <%= yield :head %>
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
 <div class="navbar navbar-fixed-top">
@@ -19,18 +19,18 @@
 </div>
 <div class="video">
   <video id="video-background-final-menu" preload="auto" muted="muted" volume="0">
-    <source src="<%= asset_path('final_menu.webm') %>" type="video/webm">
-    <source src="<%= asset_path('final_menu.mp4') %>" type="video/mp4">
+    <source src="http://www.kukya.com/videos/final_menu.webm" type="video/webm">
+    <source src="http://www.kukya.com/videos/final_menu.mp4'" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <video id="video-background-1" preload="auto" muted="muted" volume="0">
-    <source src="<%= asset_path('airbus_in_out.webm') %>" type="video/webm">
-    <source src="<%= asset_path('airbus_in_out.mp4') %>" type="video/mp4">
+    <source src="http://www.kukya.com/videos/airbus_in_out.webm" type="video/webm">
+    <source src="http://www.kukya.com/videos/airbus_in_out.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <video id="video-background-2" preload="auto" muted="muted" volume="0">
-    <source src="<%= asset_path('embraer_in_out.webm') %>" type="video/webm">
-    <source src="<%= asset_path('embraer_in_out.mp4') %>" type="video/mp4">
+    <source src="http://www.kukya.com/videos/embraer_in_out.webm" type="video/webm">
+    <source src="http://www.kukya.com/videos/embraer_in_out.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <video id="video-background-3" preload="auto" muted="muted" volume="0">
@@ -49,7 +49,7 @@
   <!--Your browser does not support the video tag.-->
   <!--</video>-->
 </div>
-<div data-pjax-container id="pjax-container">
+<div data-pjax-container-options id="pjax-container-options">
   <div id="order-steps">
     <div class="container">
       <div class="content">
@@ -64,20 +64,6 @@
     <!--! end of .container -->
   </div>
   <!--! end of #order-steps -->
-  <div id="main" role="main">
-    <div class="container">
-      <div class="content">
-        <div class="row">
-          <div class="span12">
-            <%= render 'layouts/messages' %>
-          </div>
-          <%= yield %>
-        </div>
-      </div>
-    </div>
-    <!--! end of .container -->
-  </div>
-  <!--! end of #main -->
   <div class="navbar navbar-fixed-bottom" id="order-steps-footer-outer">
     <div id="order-steps-footer">
       <div class="container">
@@ -86,11 +72,31 @@
       <!--! end of .container -->
     </div>
     <!--! end of #order-steps-footer -->
-    <%= yield :helper %>
-    <%= yield :progress %>
   </div>
+  <!--! end of #order-steps-footer-outer -->
 </div>
+<!--! end of #pjax-container -->
+
+<%= yield :storyboard_steps %>
+
+<div id="main" role="main">
+  <div class="container">
+    <div class="content">
+      <div class="row">
+        <div class="span12">
+          <%= render 'layouts/messages' %>
+        </div>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <!--! end of .container -->
+</div>
+<!--! end of #main -->
+
 <div class="navbar navbar-fixed-bottom navbar-inverse" id="footer">
+  <%= yield :helper %>
+  <%= yield :progress %>
   <div class="navbar-inner">
     <div class="container">
       <%= render 'layouts/footer' %>

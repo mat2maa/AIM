@@ -1,0 +1,46 @@
+$(document).ready(function () {
+// PJAX
+  var duration = 500;
+  $(document).pjax('a.pjax', '[data-pjax-container-options]', { duration: duration });
+
+  $(document).on('submit', 'form.pjax', function (event) {
+    $.pjax.submit(event, '[data-pjax-container-options]', { duration: duration });
+  });
+});
+
+$(document).on('pjax:start', function () {
+  console.log("pjax:start");
+  $('#pjax-container-options').fadeOut("fast");
+});
+$(document).on('pjax:waiting', function () {
+  console.log("pjax:waiting");
+});
+$(document).on('pjax:end', function () {
+  console.log("pjax:end");
+  videoSwitch();
+  $('.select2-container').remove();
+  $('select.select2').select2();
+  $('select.select2-fixed-width').select2({width: "200px"});
+  $('#pjax-container-options').fadeIn("fast");
+});
+$(document).on('pjax:click', function () {
+  console.log("pjax:click");
+});
+$(document).on('pjax:beforeSend', function () {
+  console.log("pjax:beforeSend");
+});
+$(document).on('pjax:send', function () {
+  console.log("pjax:send");
+});
+$(document).on('pjax:complete', function () {
+  console.log("pjax:complete");
+});
+$(document).on('pjax:success', function () {
+  console.log("pjax:success");
+});
+$(document).on('pjax:error', function () {
+  console.log("pjax:error");
+});
+$(document).on('pjax:timeout', function () {
+  console.log("pjax:timeout");
+});

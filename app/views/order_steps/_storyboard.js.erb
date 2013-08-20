@@ -1,0 +1,70 @@
+var i, direction, current;
+
+$(document).ready(function () {
+// PJAX
+  var duration = 700;
+  $(document).pjax('a.pjax:not(.next-storyboard):not(.prev-storyboard)', '[data-pjax-container-storyboard]', { duration: duration });
+
+  $(document).on('submit', 'form.pjax', function (event) {
+    $.pjax.submit(event, '[data-pjax-container-storyboard]', { duration: duration });
+  });
+
+  if ($.support.pjax) {
+    $(document).on('click', 'a.next-storyboard', function(event) {
+      var container = $(this).closest('[data-pjax-container-storyboard]');
+      direction = "next";
+      console.log(direction);
+      $.pjax.click(event, {container: container, duration: duration});
+    })
+    $(document).on('click', 'a.prev-storyboard', function(event) {
+      var container = $(this).closest('[data-pjax-container-storyboard]');
+      direction = "prev";
+      console.log(direction);
+      $.pjax.click(event, {container: container, duration: duration});
+    })
+  }
+});
+
+$(document).on('pjax:start', function () {
+  console.log("pjax:start");
+
+  current = parseInt($('.storyboard-image-current').attr("data-storyboard"));
+  i = direction == "next" ? current + 1 : current - 1;
+  console.log(i);
+  $('#storyboard-list > li').removeClass('in-view').removeClass('in-view-minus').removeClass('in-view-plus').removeClass('in-view-plus2');
+  $('#storyboard-list > li[data-storyboard="' + i + '"]').addClass('in-view');
+  $('#storyboard-list > li[data-storyboard="' + i + '"]').prevAll().addClass('in-view-minus');
+  $('#storyboard-list > li[data-storyboard="' + i + '"]').nextAll().eq(0).addClass('in-view-plus');
+  $('#storyboard-list > li[data-storyboard="' + i + '"]').nextAll().eq(1).addClass('in-view-plus2');
+});
+$(document).on('pjax:waiting', function () {
+  console.log("pjax:waiting");
+});
+$(document).on('pjax:end', function () {
+  console.log("pjax:end");
+  videoSwitch();
+  $('.select2-container').remove();
+  $('select.select2').select2();
+  $('select.select2-fixed-width').select2({width: "200px"});
+});
+$(document).on('pjax:click', function () {
+  console.log("pjax:click");
+});
+$(document).on('pjax:beforeSend', function () {
+  console.log("pjax:beforeSend");
+});
+$(document).on('pjax:send', function () {
+  console.log("pjax:send");
+});
+$(document).on('pjax:complete', function () {
+  console.log("pjax:complete");
+});
+$(document).on('pjax:success', function () {
+  console.log("pjax:success");
+});
+$(document).on('pjax:error', function () {
+  console.log("pjax:error");
+});
+$(document).on('pjax:timeout', function () {
+  console.log("pjax:timeout");
+});

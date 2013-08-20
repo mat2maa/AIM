@@ -1,4 +1,4 @@
-var video1_dom, video2_dom, video3_dom, video_seats_dom, video_boeing_top_dom, video_boeing_full_dom, video_final_menu_dom, video1, video2, video3, video_seats, video_boeing_top, video_boeing_full, video_final_menu, t, href, step, action, timeout, progress25, progress50, progress75, progress100, stepCounter;
+var video1_dom, video2_dom, video3_dom, video_seats_dom, video_boeing_top_dom, video_boeing_full_dom, video_final_menu_dom, video1, video2, video3, video_seats, video_boeing_top, video_boeing_full, video_final_menu, t, href, step, action, timeout, progress25, progress50, progress75, progress100, stepCounter, time, $seats, $seat, $prevSeat, $nextSeat, data;
 
 
 $(document).ready(function () {
@@ -7,18 +7,10 @@ $(document).ready(function () {
   $('select.select2').select2();
   $('select.select2-fixed-width').select2({width: "200px"});
 
-  // PJAX
-  var duration = 500;
-  $(document).pjax('a:not(.no-pjax)', '[data-pjax-container]', { duration: duration });
-
-  $(document).on('submit', 'form:not(.no-pjax)', function (event) {
-    $.pjax.submit(event, '[data-pjax-container]', { duration: duration });
-  });
-
 //  $('body').append('<div id="action-button" style="position: fixed; top: 0; left: 0; width: 100px; height: 50px; background-color: cadetblue; z-index: 3000; cursor: pointer;">Click!</div>');
 //
 //  $('body').on("click", "#action-button", function () {
-//    playVideo(video_seats, 0, 1);
+//    playVideo(video_seats_dom, video_seats, 0, 1);
 //  });
 
   // Side Nav
@@ -28,12 +20,89 @@ $(document).ready(function () {
     return false;
   });
 
+  $(document).on("click", ".add_nested_fields[data-association='seats']", function () {
+    time = new Date().getTime();
+    $seats = $('#seat-list > .fields:not(:hidden)');
+    $seat = $seats.last();
+    $seat.attr('data-seat', time);
+    $seats.removeClass('in-view').removeClass('in-view-minus').removeClass('in-view-plus');
+    $seat.addClass("in-view");
+    $seat.prevAll().addClass('in-view-minus');
+    $seat.nextAll().addClass('in-view-plus');
+
+    if ($seats.length == 0 || $seats.length == 1) {
+      $(".prev-seat").hide();
+      $(".next-seat").hide();
+      $('.divider').hide();
+    } else {
+      $(".prev-seat").show();
+      $(".next-seat").hide();
+      $('.divider').hide();
+    }
+  });
+
+  $(document).on("click", ".remove_nested_fields[data-association='seats']", function () {
+    data = $('#seat-list > .fields:not(:hidden)').last().attr("data-seat");
+
+    $(".next-seat").hide();
+    if ($('#seat-list > .fields:not(:hidden)').length == 0 || $('#seat-list > .fields:not(:hidden)').length == 1) {
+      $(".prev-seat").hide();
+      $('.divider').hide();
+    } else {
+      $(".prev-seat").show();
+      $('.divider').hide();
+    }
+
+    $('#seat-list > .fields').removeClass('in-view').removeClass('in-view-minus').removeClass('in-view-plus');
+    $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').addClass('in-view');
+    $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').prevAll().addClass('in-view-minus');
+    $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').nextAll().addClass('in-view-plus');
+  });
+
+  $(document).on("click", ".prev-seat", function (e) {
+    e.preventDefault();
+
+    $(".next-seat").show();
+    if ($('#seat-list > .fields.in-view').prevAll(":not(:hidden)").first().get(0) == $('#seat-list > .fields:not(:hidden)').first().get(0)) {
+      $(this).hide();
+      $('.divider').hide();
+    } else {
+      $(this).show();
+      $('.divider').show();
+    }
+
+    data = $('#seat-list > .fields.in-view').prevAll(":not(:hidden)").first().attr("data-seat");
+
+    $('#seat-list > .fields').removeClass('in-view').removeClass('in-view-minus').removeClass('in-view-plus');
+    $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').addClass('in-view');
+    $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').prevAll().addClass('in-view-minus');
+    $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').nextAll().addClass('in-view-plus');
+  });
+
+  $(document).on("click", ".next-seat", function (e) {
+    e.preventDefault();
+
+    $(".prev-seat").show();
+    if ($('#seat-list > .fields.in-view').nextAll(":not(:hidden)").first().get(0) == $('#seat-list > .fields:not(:hidden)').last().get(0)) {
+      $(this).hide();
+      $('.divider').hide();
+    } else {
+      $(this).show();
+      $('.divider').show();
+    }
+
+    data = $('#seat-list > .fields.in-view').nextAll(":not(:hidden)").first().attr("data-seat");
+
+    $('#seat-list > .fields').removeClass('in-view').removeClass('in-view-minus').removeClass('in-view-plus');
+    $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').addClass('in-view');
+    $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').prevAll().addClass('in-view-minus');
+    $('#seat-list > .fields:not(:hidden)[data-seat="' + data + '"]').nextAll().addClass('in-view-plus');
+  });
 
   var data = $('#manufacturer').select2("data"),
       i = 1,
       val = 0;
   loadVideoAssets();
-
 
   $(document).on("click", '.prev', function () {
     if (i == 1) {
@@ -55,33 +124,33 @@ $(document).ready(function () {
       $('.video > video').removeClass("in-view");
       video2_dom.addClass("in-view");
       video2.currentTime = 1.2;
-      playVideo(video2, 1.2, 2.4, 2.4);
+      playVideo(video2_dom, video2, 1.2, 2.4, 2.4);
+      video1.currentTime = 0.0;
       setTimeout(function () {
         $('.video > video').removeClass("in-view");
         video1_dom.addClass("in-view");
-        video1.currentTime = 0.0;
-        playVideo(video1, 0.0, 1.2, 1.3);
+        playVideo(video1_dom, video1, 0.0, 1.2, 1.3);
       }, 1200);
     } else if (data.text.toLowerCase() == "boeing") {
       $('.video > video').removeClass("in-view");
       video1_dom.addClass("in-view");
       video1.currentTime = 1.3;
-      playVideo(video1, 1.3, 1.8, 1.8);
+      playVideo(video1_dom, video1, 1.3, 1.8, 1.8);
+      video_final_menu.currentTime = 0.0;
       setTimeout(function () {
         $('.video > video').removeClass("in-view");
         video_final_menu_dom.addClass("in-view");
-        video_final_menu.currentTime = 0.0;
-        playVideo(video_final_menu, 0.0, 1.5, 1.7);
+        playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6);
       }, 500);
     } else if (data.text.toLowerCase() == "embraer") {
       video3_dom.addClass("in-view");
       video3.currentTime = 0.0;
-      playVideo(video3, 0.0, 1.4, 1.4);
+      playVideo(video3_dom, video3, 0.0, 1.4, 1.4);
       setTimeout(function () {
         $('.video > video').removeClass("in-view");
         video2_dom.addClass("in-view");
         video2.currentTime = 0.0;
-        playVideo(video2, 0.0, 1.2, 1.3);
+        playVideo(video2_dom, video2, 0.0, 1.2, 1.3);
       }, 1400);
     }
 
@@ -110,33 +179,33 @@ $(document).ready(function () {
       $('.video > video').removeClass("in-view");
       video3_dom.addClass("in-view");
       video3.currentTime = 0.0;
-      playVideo(video3, 0.0, 1.4, 1.4);
+      playVideo(video3_dom, video3, 0.0, 1.4, 1.4);
+      video1.currentTime = 0.0;
       setTimeout(function () {
         $('.video > video').removeClass("in-view");
         video1_dom.addClass("in-view");
-        video1.currentTime = 0.0;
-        playVideo(video1, 0.0, 1.2, 1.3);
+        playVideo(video1_dom, video1, 0.0, 1.2, 1.3);
       }, 1400);
     } else if (data.text.toLowerCase() == "boeing") {
       video2_dom.addClass("in-view");
       video2.currentTime = 1.2;
-      playVideo(video2, 1.2, 2.4, 2.4);
+      playVideo(video2_dom, video2, 1.2, 2.4, 2.4);
+      video_final_menu.currentTime = 0.0;
       setTimeout(function () {
         $('.video > video').removeClass("in-view");
         video_final_menu_dom.addClass("in-view");
-        video_final_menu.currentTime = 0.0;
-        playVideo(video_final_menu, 0.0, 1.5, 1.7);
+        playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6);
       }, 1200);
     } else if (data.text.toLowerCase() == "embraer") {
       $('.video > video').removeClass("in-view");
       video1_dom.addClass("in-view");
       video1.currentTime = 1.3;
-      playVideo(video1, 1.3, 1.8, 1.8);
+      playVideo(video1_dom, video1, 1.3, 1.8, 1.8);
+      video2.currentTime = 0.0;
       setTimeout(function () {
         $('.video > video').removeClass("in-view");
         video2_dom.addClass("in-view");
-        video2.currentTime = 0.0;
-        playVideo(video2, 0.0, 1.2, 1.3);
+        playVideo(video2_dom, video2, 0.0, 1.2, 1.3);
       }, 500);
     }
 
@@ -170,44 +239,6 @@ $(document).ready(function () {
     $("#order_aeroplane_id").val(val);
   });
 
-
-});
-
-$(document).on('pjax:start', function () {
-  console.log("pjax:start");
-  $('#pjax-container').fadeOut("fast");
-});
-$(document).on('pjax:waiting', function () {
-  console.log("pjax:waiting");
-});
-$(document).on('pjax:end', function () {
-  console.log("pjax:end");
-  videoSwitch();
-  $('.select2-container').remove();
-  $('select.select2').select2();
-  $('select.select2-fixed-width').select2({width: "200px"});
-  $('#pjax-container').fadeIn("fast");
-});
-$(document).on('pjax:click', function () {
-  console.log("pjax:click");
-});
-$(document).on('pjax:beforeSend', function () {
-  console.log("pjax:beforeSend");
-});
-$(document).on('pjax:send', function () {
-  console.log("pjax:send");
-});
-$(document).on('pjax:complete', function () {
-  console.log("pjax:complete");
-});
-$(document).on('pjax:success', function () {
-  console.log("pjax:success");
-});
-$(document).on('pjax:error', function () {
-  console.log("pjax:error");
-});
-$(document).on('pjax:timeout', function () {
-  console.log("pjax:timeout");
 });
 
 $(document).on('nested:fieldAdded', function (event) {
@@ -288,12 +319,13 @@ function videoSwitch() {
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if (t == 1.7) {
-        video_final_menu.currentTime = 1.7;
+      if (t == 1.6) {
+        video_final_menu.currentTime = 1.6;
       } else {
+        video_final_menu.play();
         video_final_menu.currentTime = 0.0;
         setTimeout(function () {
-          playVideo(video_final_menu, 0.0, 1.5, 1.7);
+          playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6);
         }, timeout);
       }
       progress25.width(100 / 3 + "%");
@@ -307,12 +339,13 @@ function videoSwitch() {
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if (t == 1.7) {
-        video_final_menu.currentTime = 1.7;
+      if (t == 1.6) {
+        video_final_menu.currentTime = 1.6;
       } else {
+        video_final_menu.play();
         video_final_menu.currentTime = 0.0;
         setTimeout(function () {
-          playVideo(video_final_menu, 0.0, 1.5, 1.7);
+          playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6);
         }, timeout);
       }
       progress25.width(100 / 3 + "%");
@@ -326,12 +359,13 @@ function videoSwitch() {
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if (t == 1.7) {
-        video_final_menu.currentTime = 1.7;
+      if (t == 1.6) {
+        video_final_menu.currentTime = 1.6;
       } else {
+        video_final_menu.play();
         video_final_menu.currentTime = 0.0;
         setTimeout(function () {
-          playVideo(video_final_menu, 0.0, 1.5, 1.7);
+          playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6);
         }, timeout);
       }
       progress25.width(200 / 3 + "%");
@@ -345,12 +379,13 @@ function videoSwitch() {
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
       t = video_final_menu.currentTime;
-      if (t == 1.7 || t == 3.3) {
-        video_final_menu.currentTime = 1.7;
+      if (t == 1.6 || t == 3.3) {
+        video_final_menu.currentTime = 1.6;
       } else {
+        video_final_menu.play();
         video_final_menu.currentTime = 0.0;
         setTimeout(function () {
-          playVideo(video_final_menu, 0.0, 1.5, 1.7)
+          playVideo(video_final_menu_dom, video_final_menu, 0.0, 1.45, 1.6)
         }, timeout);
       }
       progress25.width("100%");
@@ -367,9 +402,10 @@ function videoSwitch() {
       if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
-        video_final_menu.currentTime = 1.7;
+        video_final_menu.play();
+        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
-          playVideo(video_final_menu, 1.7, 3.1, 3.3);
+          playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
@@ -386,9 +422,10 @@ function videoSwitch() {
       if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
-        video_final_menu.currentTime = 1.7;
+        video_final_menu.play();
+        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
-          playVideo(video_final_menu, 1.7, 3.1, 3.3);
+          playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
@@ -405,9 +442,10 @@ function videoSwitch() {
       if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
-        video_final_menu.currentTime = 1.7;
+        video_final_menu.play();
+        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
-          playVideo(video_final_menu, 1.7, 3.1, 3.3);
+          playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
@@ -424,9 +462,10 @@ function videoSwitch() {
       if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
-        video_final_menu.currentTime = 1.7;
+        video_final_menu.play();
+        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
-          playVideo(video_final_menu, 1.7, 3.1, 3.3);
+          playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
@@ -443,9 +482,10 @@ function videoSwitch() {
       if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
-        video_final_menu.currentTime = 1.7;
+        video_final_menu.play();
+        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
-          playVideo(video_final_menu, 1.7, 3.1, 3.3);
+          playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
@@ -462,9 +502,10 @@ function videoSwitch() {
       if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
-        video_final_menu.currentTime = 1.7;
+        video_final_menu.play();
+        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
-          playVideo(video_final_menu, 1.7, 3.1, 3.3);
+          playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
@@ -481,9 +522,10 @@ function videoSwitch() {
       if (t == 3.3) {
         video_final_menu.currentTime = 3.3;
       } else {
-        video_final_menu.currentTime = 1.7;
+        video_final_menu.play();
+        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
-          playVideo(video_final_menu, 1.7, 3.1, 3.3);
+          playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
@@ -500,9 +542,10 @@ function videoSwitch() {
       if (t == 3.3 || t == 5.2) {
         video_final_menu.currentTime = 3.3;
       } else {
-        video_final_menu.currentTime = 1.7;
+        video_final_menu.play();
+        video_final_menu.currentTime = 1.6;
         setTimeout(function () {
-          playVideo(video_final_menu, 1.7, 3.1, 3.3);
+          playVideo(video_final_menu_dom, video_final_menu, 1.6, 3.1, 3.3);
         }, timeout);
       }
       progress25.width("100%");
@@ -519,9 +562,10 @@ function videoSwitch() {
       if (t == 6.0) {
         video_final_menu.currentTime = 5.2;
       } else {
+        video_final_menu.play();
         video_final_menu.currentTime = 3.3;
         setTimeout(function () {
-          playVideo(video_final_menu, 3.3, 5.0, 5.2);
+          playVideo(video_final_menu_dom, video_final_menu, 3.3, 5.0, 5.2);
         }, timeout);
       }
       progress25.width("100%");
@@ -540,7 +584,7 @@ function videoSwitch() {
 //      } else {
 //        video_seats.currentTime = 0.0;
 //        setTimeout(function() {
-//          playVideo(video_seats, 0.0, 0.5);
+//          playVideo(video_seats_dom, video_seats, 0.0, 0.5);
 //        }, timeout);
 //      }
 //      break;
@@ -551,9 +595,10 @@ function videoSwitch() {
       if (t == 6.7) {
         video_final_menu.currentTime = 6.0;
       } else {
+        video_final_menu.play();
         video_final_menu.currentTime = 5.2;
         setTimeout(function () {
-          playVideo(video_final_menu, 5.2, 5.8, 6.0);
+          playVideo(video_final_menu_dom, video_final_menu, 5.2, 5.8, 6.0);
         }, timeout);
       }
       progress25.width("100%");
@@ -566,9 +611,10 @@ function videoSwitch() {
     case "first_class_seats_order_steps":
       $('.video > video').removeClass("in-view");
       video_final_menu_dom.addClass("in-view");
+      video_final_menu.play();
       video_final_menu.currentTime = 6.0;
       setTimeout(function () {
-        playVideo(video_final_menu, 6.0, 7.2, 7.4);
+        playVideo(video_final_menu_dom, video_final_menu, 6.0, 7.2, 7.4);
       }, timeout);
       progress25.width("100%");
       progress50.width("100%");
@@ -583,14 +629,26 @@ function videoSwitch() {
   }
 }
 
-function playVideo(videoAsset, start, end, setTime) {
+function playVideo(videoAsset_dom, videoAsset, start, end, setTime) {
 
-  videoAsset.ontimeupdate = function () {
+  videoAsset_dom.unbind("timeupdate");
+
+  videoAsset_dom.bind("timeupdate", function () {
+    console.log('Current time: ' + video_final_menu.currentTime);
     if (this.currentTime >= end) {
       this.pause();
+      console.log(this.currentTime);
       this.currentTime = setTime;
     }
-  };
+  });
+
+//  videoAsset.ontimeupdate = function () {
+//    if (this.currentTime >= end) {
+//      this.pause();
+//      console.log(this.currentTime);
+//      this.currentTime = setTime;
+//    }
+//  };
 
   try {
     videoAsset.currentTime = start;
@@ -598,10 +656,4 @@ function playVideo(videoAsset, start, end, setTime) {
   } catch (ex) {
     //handle exceptions here
   }
-}
-
-function playSecond() {
-  video1_dom.css('z-index', 1);
-  video2_dom.css('z-index', 2);
-  playVideo(video2, 0, 1);
 }

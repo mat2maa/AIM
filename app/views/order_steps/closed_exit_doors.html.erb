@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    <%= render :partial => 'options.js' %>
+  </script>
+<% end %>
+
 <%= content_for :order_title do %>
   <h3>Safety video builder</h3>
 <% end %>
@@ -6,7 +12,7 @@
   <div class="span12">
     <h3>Aeroplane closed exit door</h3>
     <br>
-    <%= minimal_nested_form_for @order, url: wizard_path do |f| %>
+    <%= minimal_nested_form_for @order, url: wizard_path, html: { class: 'pjax' } do |f| %>
       <%= f.simple_fields_for :closed_exit_doors do |builder| %>
         <div class="border">
           <%= image_tag builder.object.asset.url(:original) %>

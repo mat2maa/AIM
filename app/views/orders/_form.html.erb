@@ -1,5 +1,11 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    <%= render :partial => 'order_steps/options.js' %>
+  </script>
+<% end %>
+
 <%= minimal_nested_form_for @order,
-                            :html => {:class => 'form-vertical'} do |f| %>
+                            :html => {:class => 'form-vertical pjax'} do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

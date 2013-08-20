@@ -1,47 +1,49 @@
-<div class="hideable">
-  <div class="row">
-    <div class="span5">
-      <h5>Seat characteristics</h5>
-      <div class="controls controls-row">
-        <%= f.input_field :name,
-                          placeholder: 'Seat name',
-                          class: 'span3' %>
+<li>
+  <div class="hideable">
+    <div class="row">
+      <div class="span5">
+        <h5>Seat characteristics</h5>
+        <div class="controls controls-row">
+          <%= f.input_field :name,
+                            placeholder: 'Seat name',
+                            class: 'span3' %>
+        </div>
+
+        <div class="controls controls-row">
+          <%= f.input_field :seat_manufacturer_id,
+                            placeholder: 'Seat manufacturer',
+                            collection: SeatManufacturer.order('name'),
+                            class: 'select2 span3' %>
+        </div>
+
+        <div class="controls controls-row">
+          <%= f.input_field :seat_class_id,
+                            placeholder: 'Seat class',
+                            collection: SeatClass.order('name'),
+                            class: 'select2 span3' %>
+        </div>
       </div>
 
-      <div class="controls controls-row">
-        <%= f.input_field :seat_manufacturer_id,
-                          placeholder: 'Seat manufacturer',
-                          collection: SeatManufacturer.order('name'),
-                          class: 'select2 span3' %>
+      <div class="span3">
+        <h5>Seat assets</h5>
+        <%= f.simple_fields_for :seat_assets do |builder| %>
+          <%= render 'seat_asset_fields',
+                     f: builder %>
+        <% end %>
+        <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a seat asset".html_safe, :seat_assets %></p>
       </div>
 
-      <div class="controls controls-row">
-        <%= f.input_field :seat_class_id,
-                          placeholder: 'Seat class',
-                          collection: SeatClass.order('name'),
-                          class: 'select2 span3' %>
+      <div class="span3">
+        <h5>Seat belt assets</h5>
+        <%= f.simple_fields_for :seat_belt_assets do |builder| %>
+          <%= render 'seat_belt_asset_fields',
+                     f: builder %>
+        <% end %>
+        <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a seat belt asset".html_safe, :seat_belt_assets %></p>
       </div>
-    </div>
 
-    <div class="span3">
-      <h5>Seat assets</h5>
-      <%= f.simple_fields_for :seat_assets do |builder| %>
-        <%= render 'seat_asset_fields',
-                   f: builder %>
-      <% end %>
-      <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a seat asset".html_safe, :seat_assets %></p>
     </div>
-
-    <div class="span3">
-      <h5>Seat belt assets</h5>
-      <%= f.simple_fields_for :seat_belt_assets do |builder| %>
-        <%= render 'seat_belt_asset_fields',
-                   f: builder %>
-      <% end %>
-      <p><%= f.link_to_add "<i class='icon-plus-sign icon-white'></i>&nbsp;Add a seat belt asset".html_safe, :seat_belt_assets %></p>
-    </div>
-
+    <%= f.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove this seat".html_safe %>
+    <hr>
   </div>
-  <%= f.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove this seat".html_safe %>
-  <hr>
-</div>
+</li>
