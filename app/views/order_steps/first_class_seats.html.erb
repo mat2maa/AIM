@@ -11,7 +11,7 @@
 
 <%= content_for :order_steps_footer do %>
   <div class="span12">
-    <%= simple_nested_form_for @order, url: wizard_path, html: { class: 'pjax' } do |f| %>
+    <%= simple_nested_form_for @order, url: wizard_path, html: { class: '' } do |f| %>
       <h3>Aeroplane seats</h3>
       <br>
       <ul id="seat-list">

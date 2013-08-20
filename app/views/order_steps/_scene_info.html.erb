@@ -34,10 +34,12 @@
                   <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last}.png",
                                 class: 'storyboard-image' %>
                 </li>
-                <li class="in-view-plus storyboard-image-next" data-storyboard="3">
-                  <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 1}.png",
-                                class: 'storyboard-image' %>
-                </li>
+                <% if wizard_path.split("_").last != "40" %>
+                  <li class="in-view-plus storyboard-image-next" data-storyboard="3">
+                    <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 1}.png",
+                                  class: 'storyboard-image' %>
+                  </li>
+                <% end %>
                 <li class="in-view-plus2 storyboard-image-next2" data-storyboard="4">
                   <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 2}.png",
                                 class: 'storyboard-image' %>
@@ -46,6 +48,7 @@
             </div>
           </div>
           <br>
+
           <div class="row">
             <div class="span12">
               <ul>

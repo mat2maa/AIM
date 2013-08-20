@@ -1,6 +1,7 @@
 <% content_for :head do %>
   <script type="text/javascript">
     <%= render :partial => 'options.js' %>
+    <%= render :partial => 'seats.js' %>
   </script>
 <% end %>
 
@@ -15,7 +16,7 @@
     <%= minimal_nested_form_for @order, url: wizard_path, html: { class: 'pjax' } do |f| %>
       <%= f.simple_fields_for :carpet_textures do |builder| %>
         <div class="border">
-          <%= image_tag builder.object.asset.url(:original) %>
+          <%#= image_tag builder.object.asset.url(:original) %>
           <%= builder.input :asset,
                             as: :file %>
           <%= builder.link_to_remove "<i class='icon-minus-sign icon-white'></i>&nbsp;Remove carpet texture".html_safe %>

@@ -2,7 +2,7 @@
   <div class="hideable">
     <div class="row">
       <div class="span5">
-        <h5>Seat characteristics</h5>
+        <h4>Seat characteristics</h4>
         <div class="controls controls-row">
           <%= f.input_field :name,
                             placeholder: 'Seat name',
@@ -25,7 +25,7 @@
       </div>
 
       <div class="span3">
-        <h5>Seat assets</h5>
+        <h4>Seat assets</h4>
         <%= f.simple_fields_for :seat_assets do |builder| %>
           <%= render 'seat_asset_fields',
                      f: builder %>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="span3">
-        <h5>Seat belt assets</h5>
+        <h4>Seat belt assets</h4>
         <%= f.simple_fields_for :seat_belt_assets do |builder| %>
           <%= render 'seat_belt_asset_fields',
                      f: builder %>
