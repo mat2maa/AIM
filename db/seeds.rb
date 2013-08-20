@@ -31,7 +31,7 @@ UserProfile.create(
         },
         {
             contact_name: "Animation In Motion",
-            user_id: "2"
+            user_id: "11"
         }
     ]
 )
@@ -46,7 +46,7 @@ Airline.create(
         {
             name: "Guest Airline",
             code: "AIM",
-            user_profile_id: "2"
+            user_profile_id: "11"
         }
     ]
 )
@@ -107,7 +107,7 @@ Aeroplane.create(
 Script.create(
     [
         {
-            aeroplane_id: 5
+            aeroplane_id: "1"
         }
     ]
 )
