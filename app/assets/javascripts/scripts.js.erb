@@ -120,9 +120,9 @@ $(document).ready(function () {
 
   $(document).on("click", '.prev', function () {
     if (i == 1) {
-      i = 3;
+      i = 21;
     } else {
-      i = i - 1;
+      i = i - 10;
     }
 
     $('#manufacturer').select2("val", i);
@@ -175,10 +175,10 @@ $(document).ready(function () {
 
   });
   $(document).on("click", '.next', function () {
-    if (i == 3) {
+    if (i == 21) {
       i = 1;
     } else {
-      i = i + 1;
+      i = i + 10;
     }
     $('#manufacturer').select2("val", i);
     data = $('#manufacturer').select2("data");
