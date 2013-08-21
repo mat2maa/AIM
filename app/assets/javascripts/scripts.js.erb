@@ -266,35 +266,35 @@ $(window).load(function () {
   loadVideoAssets();
   videoSwitch();
 
-  if ($('.audio-player')) {
-    sound = $('.audio-player').attr('data-audio-file');
-    soundManager.setup({
-      url: '/path/to/swf-files/',
-      // optional: use 100% HTML5 mode where available
-      // preferFlash: false,
-      onready: function () {
-        var mySound = soundManager.createSound({
-          id: 'aSound',
-          url: sound
-        });
-        $('.play-button').on("click", function (e) {
-          e.preventDefault();
-          mySound.play();
-        });
-        $('.stop-button').on("click", function (e) {
-          e.preventDefault();
-          mySound.stop();
-        });
-        $('.pause-button').on("click", function (e) {
-          e.preventDefault();
-          mySound.pause();
-        });
-      },
-      ontimeout: function () {
-        // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
-      }
-    });
-  }
+//  if ($('.audio-player')) {
+//    sound = $('.audio-player').attr('data-audio-file');
+//    soundManager.setup({
+//      url: '/path/to/swf-files/',
+//      // optional: use 100% HTML5 mode where available
+//      // preferFlash: false,
+//      onready: function () {
+//        var mySound = soundManager.createSound({
+//          id: 'aSound',
+//          url: sound
+//        });
+//        $('.play-button').on("click", function (e) {
+//          e.preventDefault();
+//          mySound.play();
+//        });
+//        $('.stop-button').on("click", function (e) {
+//          e.preventDefault();
+//          mySound.stop();
+//        });
+//        $('.pause-button').on("click", function (e) {
+//          e.preventDefault();
+//          mySound.pause();
+//        });
+//      },
+//      ontimeout: function () {
+//        // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+//      }
+//    });
+//  }
 });
 
 function loadVideoAssets() {
