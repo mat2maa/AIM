@@ -29,22 +29,22 @@
             <div class="span8" id="scene-images">
               <ul id="storyboard-list">
                 <li class="in-view-minus storyboard-image-previous" data-storyboard="1">
-                  <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i - 1}.png",
+                  <%= image_tag "storyboard-#{wizard_path.split('_').last.to_i - 1}.png",
                                 class: 'storyboard-image' %>
                 </li>
                 <li class="in-view storyboard-image-current" data-storyboard="2">
-                  <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last}.png",
+                  <%= image_tag "storyboard-#{wizard_path.split('_').last}.png",
                                 class: 'storyboard-image' %>
                 </li>
                 <% if wizard_path.split("_").last != "40" %>
                   <li class="in-view-plus storyboard-image-next" data-storyboard="3">
-                    <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 1}.png",
+                    <%= image_tag "storyboard-#{wizard_path.split('_').last.to_i + 1}.png",
                                   class: 'storyboard-image' %>
                   </li>
                 <% end %>
                 <% if wizard_path.split("_").last != "39" %>
                   <li class="in-view-plus2 storyboard-image-next2" data-storyboard="4">
-                    <%= image_tag "storyboard/storyboard-#{wizard_path.split('_').last.to_i + 2}.png",
+                    <%= image_tag "storyboard-#{wizard_path.split('_').last.to_i + 2}.png",
                                   class: 'storyboard-image' %>
                   </li>
                 <% end %>
