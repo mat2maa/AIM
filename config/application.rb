@@ -83,5 +83,6 @@ module Aim
     config.assets.initialize_on_precompile = false
 
     config.assets.paths << "#{Rails.root}/app/assets/images/storyboard"
+    config.assets.precompile += %w(storyboard/*)
   end
 end
