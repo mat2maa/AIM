@@ -9,6 +9,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'unicorn'
+
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'cancan'
@@ -50,6 +52,11 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
   gem 'quiet_assets'
+  gem 'oink'
+  gem 'quiet_assets'
+  gem 'rack-mini-profiler'
+  gem 'ruby-prof'
+  gem 'better_errors'
 end
 
 group :development, :test do

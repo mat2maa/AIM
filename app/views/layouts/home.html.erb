@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Aim" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Aim" %>">
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+
+<div class="home-video">
+  <video preload="auto" muted="muted" volume="0">
+    <source src="http://matthewager.com/files/logo.webm" type="video/webm">
+    <source src="http://matthewager.com/files/logo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="home-contact">
+    <%= yield %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('video').on("canplaythrough", function() {
+    $(this).addClass("in-view");
+    $(this).get(0).play();
+  });
+
+  $('video').on("ended", function() {
+    $('.home-contact').find('a, h3').addClass("in-view");
+  });
+</script>
+
+</body>
+</html>

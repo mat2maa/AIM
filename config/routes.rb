@@ -1,5 +1,8 @@
 Aim::Application.routes.draw do
 
+  resources :pages
+
+
   resources :scenes
 
 
@@ -47,12 +50,12 @@ Aim::Application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root :to => 'home#index'
+      root :to => 'pages#home'
     end
     unauthenticated :user do
-      root :to => 'devise/sessions#new'
+      root :to => 'pages#home'
     end
-    root :to => 'devise/sessions#new'
+    root :to => 'pages#home'
   end
 
   resources :users
