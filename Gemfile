@@ -11,6 +11,8 @@ end
 
 gem 'unicorn'
 
+gem 'google-analytics-rails'
+
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'cancan'

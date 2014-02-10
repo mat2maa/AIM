@@ -60,4 +60,7 @@ Aim::Application.routes.draw do
 
   resources :users
 
+  match '/google2c1f50d8b701166d.html',
+        :to => proc { |env| [200, {}, ["google-site-verification: google2c1f50d8b701166d.html"]] }
+
 end
